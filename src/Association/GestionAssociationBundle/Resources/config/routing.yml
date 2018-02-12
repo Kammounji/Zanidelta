@@ -1,0 +1,28 @@
+
+evenement:
+    path:     /evenement
+    defaults: { _controller: AssociationGestionAssociationBundle:Default:evenement }
+
+evendetail:
+    path:     /evendetail
+    defaults: { _controller: AssociationGestionAssociationBundle:Default:evendetail }
+
+evenmeduim:
+    path:     /evenmeduim
+    defaults: { _controller: AssociationGestionAssociationBundle:Default:evenmeduim }
+
+modsuppevenn:
+    path:     /modsuppevenn
+    defaults: { _controller: AssociationGestionAssociationBundle:Default:modsuppevenn }
+
+moddetaileven:
+    path:     /moddetaileven
+    defaults: { _controller: AssociationGestionAssociationBundle:Default:moddetaileven }
+
+ajouteven:
+    path:     /ajouteven
+    defaults: { _controller: AssociationGestionAssociationBundle:Default:ajouteven }
+
+espaceassociation:
+    path:     /espaceassociation
+    defaults: { _controller: AssociationGestionAssociationBundle:Default:espaceassociation }

@@ -1,0 +1,67 @@
+{% extends "MyAppUserBundle:Default:layout.html.twig" %}
+        {% block head %}
+            {{ parent() }}
+        {% endblock %}
+    {% block content %}
+
+        <div class="cp-wrapper">
+            {% block header %}
+                {{ parent() }}
+            {% endblock %}
+
+            <section class="cp-inner-banner">
+                <div class="container">
+                    <div class="cp-inner-banner-outer">
+                        <h2>Login/Register</h2>
+
+                        <ul class="breadcrumb">
+                            <li><a href="{{ path("affiche") }}">Home</a>
+                            <li class="active">Login/Register</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <div class="cp-main-content">
+
+                <section class="cp-departments-section cp-departments-section_v2 pd-t100">
+                    <div class="cp-bg-movement" data-ibg-bg="{{ asset('images/White.jpg')}}"></div>
+                    <div class="container" >
+                        <div class="row">
+                            <div class="col-md-6" >
+
+                                    <div class="cp-banner-inner-box bg2">
+                                        <span class="num">0/1</span>
+                                        <h3>Login</h3>
+                                        <p>ici vous pouvez vous connecter à votre compte Zanimaux</p>
+                                        <a href="{{ path("fos_user_security_login") }}" class="more-btn">Login</a>
+                                    </div>
+
+
+                            </div>
+
+                            <div class="col-md-6" >
+
+
+                                    <div class="cp-banner-inner-box bg3">
+                                        <span class="num">0/2</span>
+                                        <h3>Register</h3>
+                                        <p>ici vous pouvez creer un compte sur notre application Zanimaux</p>
+                                        <a href="{{ path("fos_user_registration_register") }}" class="more-btn">Register</a>
+                                    </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            {% block footer %}
+                {{ parent() }}
+            {% endblock %}
+        </div>
+
+        {% block script %}
+            {{ parent() }}
+        {% endblock %}
+    {% endblock %}

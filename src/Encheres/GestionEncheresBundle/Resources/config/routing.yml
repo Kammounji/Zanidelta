@@ -1,0 +1,3 @@
+encheres_gestion_encheres_homepage:
+    path:     /
+    defaults: { _controller: EncheresGestionEncheresBundle:Default:index }
