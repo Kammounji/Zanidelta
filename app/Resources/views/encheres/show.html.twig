@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Enchere</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ enchere.id }}</td>
+            </tr>
+            <tr>
+                <th>Idcible</th>
+                <td>{{ enchere.idCible }}</td>
+            </tr>
+            <tr>
+                <th>Idproprietaire</th>
+                <td>{{ enchere.idProprietaire }}</td>
+            </tr>
+            <tr>
+                <th>Datedebut</th>
+                <td>{% if enchere.dateDebut %}{{ enchere.dateDebut|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Seuilmise</th>
+                <td>{{ enchere.seuilMise }}</td>
+            </tr>
+            <tr>
+                <th>Seuilparticipants</th>
+                <td>{{ enchere.seuilParticipants }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('encheres_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('encheres_edit', { 'id': enchere.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

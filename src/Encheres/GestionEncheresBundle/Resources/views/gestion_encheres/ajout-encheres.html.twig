@@ -1,0 +1,51 @@
+{% extends "StoreGestionProduitsBundle:Default:layout.html.twig" %}
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+{# {% form_theme form 'bootstrap_3_horizontal_layout.html.twig' %} #}
+        {% block head %}
+            {{ parent() }}
+        {% endblock %}
+    {% block content %}
+
+<div class="cp-wrapper">
+
+    {% block header %}
+        {{ parent() }}
+    {% endblock %}
+
+<section class="cp-inner-banner">
+<div class="container">
+<div class="cp-inner-banner-outer">
+<h2>Espace Ajout Produit</h2>
+
+<ul class="breadcrumb">
+<li><a href="{{ path("affiche") }}">Home</a></li>
+<li>Espace Magasin</li>
+<li class="active">EA-Produit</li>
+</ul>
+</div>
+</div>
+</section>
+
+<div class="cp-main-content">
+
+<section class="cp-checkout-section pd-t100">
+<div class="container">
+
+    {{ form_start(form) }}
+    {{ form_widget(form.idProprietaire, {value : app.user.id}) }}
+    {{ form_end(form) }}
+
+</div>
+</section>
+</div>
+
+    <script> $('#cat').hide(); </script>
+    {% block footer %}
+        {{ parent() }}
+    {% endblock %}
+</div>
+
+        {% block script %}
+            {{ parent() }}
+        {% endblock %}
+    {% endblock %}

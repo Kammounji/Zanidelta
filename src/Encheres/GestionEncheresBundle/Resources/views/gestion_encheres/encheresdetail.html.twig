@@ -1,0 +1,562 @@
+{% extends "StoreGestionProduitsBundle:Default:layout.html.twig" %}
+        {% block head %}
+            {{ parent() }}
+            <link href="{{ asset('css/countdown.css') }}" rel="stylesheet">
+        {% endblock %}
+    {% block content %}
+
+<div class="cp-wrapper">
+
+    {% block header %}
+        {{ parent() }}
+    {% endblock %}
+
+    <section class="cp-inner-banner">
+        <div class="container">
+            <div class="cp-inner-banner-outer">
+                <h2>Online store</h2>
+
+                <ul class="breadcrumb">
+                    <li><a href="{{ path("affiche") }}">Home</a></li>
+                    <li class="active">Product Detail</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <div class="cp-main-content">
+
+        <section class="cp-product-section pd-t100">
+            <div class="container">
+
+                <div class="cp-pro-detail-info">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12">
+
+                            <figure class="cp-gallery-item">
+                                <img class="cp-product-section" src="{{ asset('uploads/products/'~prod['url_img']) }}" alt="">
+                                <figcaption class="cp-caption">
+                                    <div class="cp-inner">
+                                        <h3 >Il reste encore</h3>
+
+                                        <a  class="gallery-btn">
+
+                                            <ul class="countdown" >
+                                                <li>
+                                                    <span class="days">00</span>
+                                        <p class="days_ref">days</p>
+                                        </li>
+                                        <li class="seperator">:</li>
+                                        <li>
+                                            <span class="hours">00</span>
+                                            <p class="hours_ref">hours</p>
+                                        </li>
+                                        <li class="seperator">:</li>
+                                        <li>
+                                            <span class="minutes">00</span>
+                                            <p class="minutes_ref">minutes</p>
+                                        </li>
+                                        <li class="seperator">:</li>
+                                        <li>
+                                            <span class="seconds">00</span>
+                                            <p class="seconds_ref">seconds</p>
+                                        </li>
+                                        </ul>
+
+                                        </a>
+
+                                    </div>
+                                </figcaption>
+                            </figure>
+                        </div>
+
+                        <div class="col-md-6 col-sm-12">
+                            <div class="container" id="jeu">
+
+                                <div class="col-md-3 col-sm-6" >
+                                    <h4>
+                                        <a  class="gallery-btn">
+
+                                            <ul class="countdown">
+                                                <li>
+                                                    <span class="minutes" id="min">00</span>
+                                                    <p class="minutes_ref">minutes</p>
+                                                </li>
+                                                <li class="seperator">:</li>
+                                                <li>
+                                                    <span class="seconds" id="sec">00</span>
+                                                    <p class="seconds_ref">seconds</p>
+                                                </li>
+                                            </ul>
+                                        </a>
+                                    </h4>
+
+                                    <div class="widget widget-recent-post" id="mises">
+                                        <h3>Dernieres mises </h3>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="cp-text" id="replace">
+                              <div id="start_session">
+                                <h3>{{ prod['label'] }}</h3>
+
+                                <div class="pro-price">
+                                    <span class="new">Seuil Jetons : {{ prod['seuil_mise'] }}</span>
+                                    <span class="new">Seuil Participants : {{ prod['seuil_participants'] }}</span>
+                                </div>
+
+                               <span> caracteristiques :
+                                <p>{{ prod['caracteristiques'] }} </p>
+                               </span>
+
+                               <span> description :
+                                <p>{{ prod['description'] }} </p>
+                               </span>
+
+                                <span> date debut de cette session :
+                                <p>{{ prod['date_debut'] }} </p>
+                               </span>
+                              </div>
+                            </div>
+
+                            <button href="#cp-btn-style3" class="cp-btn-style3" id="ajax" value="participer" >Participer</button>
+                            <button href="#cp-btn-style1" class="cp-btn-style1" id="mise_btn" value="mise" ><span id="mise" > mise </span></button>
+
+                            <div class="pro-price">
+                                <input id="zid" type="text" placeholder="placer votre mise ici " />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cp-tab-box cp-product-tabs">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="active"><a href="#cp_tab1" role="tab" data-toggle="tab">Description</a></li>
+                        <li><a href="#cp_tab2" role="tab" data-toggle="tab">Reviews(3)</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active fade in" id="cp_tab1">
+                            <div class="cp-tab-info-box">
+                                <div class="cp-tab-text">
+                                    <p>Etiam dictum. Nunc enim. Sed massa tellus, aliquam rhoncus, venenatis quis, suscipit ac, libero. Praesent odio tellus, posuere sed, dictum sed, fermentum at, orci. Aenean arcu tortor, suscipit vitae, hendrerit condimentum, dapibus ac, nulla. Curabitur sit consectetuer ipsum dolor sit amet justo et sit amet justo consectetuer adipiscing elit.Etiam dictum. Nunc enim. </p>
+                                    <p>Sed massa tellus, aliquam rhoncus, venenatis quis, suscipit ac, libero. Praesent odio tellus, posuere sed, dictum sed, fermentum at, orci. Aenean arcu tortor, suscipit vitae, hendrerit condimentum, dapibus ac, nulla. Curabitur sit consectetuer ipsum dolor sit amet justo et sit amet justo consectetuer adipiscing elit.Etiam dictum. Nunc enim. Sed massa tellus, aliquam rhoncus, venenatis quis, suscipit ac, libero. Praesent odio tellus, posuere sed, dictum sed, fermentum at, orci. Aenean arcu tortor, suscipit vitae, hendrerit condimentum, dapibus ac, nulla. Curabitur sit consectetuer ipsum dolor sit amet justo et sit amet justo consectetuer adipiscing elit.Etiam dictum. Nunc enim. </p>
+                                    <p>Sed massa tellus, aliquam rhoncus, venenatis quis, suscipit ac, libero. Praesent odio tellus, posuere sed, dictum sed, fermentum at, orci. Aenean arcu tortor, suscipit vitae, hendrerit condimentum, dapibus ac, nulla. Curabitur sit consectetuer ipsum dolor sit amet justo et sit amet justo consectetuer adipiscing elit.</p>
+                                </div>
+
+                                <div class="cp-pro-related-outer">
+                                    <h3>Related Product</h3>
+
+                                    <div id="cp_relted-slider" class="owl-carousel">
+                                        <div class="item">
+                                            <div class="cp-pro-item">
+                                                <div class="cp-pro-img">
+                                                    <img src="{{ asset('images/product/pro-img-01.jpg') }}" alt="">
+
+                                                    <div class="cp-pro-caption">
+                                                        <ul>
+                                                            <li class="pro-share-holder">
+                                                                <a href="#"><i class="fa fa-share-alt"></i></a>
+                                                                <div class="pro-social-links">
+                                                                    <a href="#"><i class="fa fa-facebook"></i></a>
+                                                                    <a href="#"><i class="fa fa-instagram"></i></a>
+                                                                    <a href="#"><i class="fa fa-behance"></i></a>
+                                                                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                                                                </div>
+                                                            </li>
+                                                            <li class="share">
+                                                                <a href="#"><i class="fa fa-heart-o"></i></a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="cp-text">
+                                                    <div class="top">
+                                                        <h3><a href="{{ path('produitdetail')}}">Friskies Cat food</a></h3>
+                                                        <span class="price">$50.00</span>
+                                                    </div>
+                                                    <span class="cp-rating">
+<i class="fa fa-star" aria-hidden="true"></i>
+<i class="fa fa-star" aria-hidden="true"></i>
+<i class="fa fa-star" aria-hidden="true"></i>
+<i class="fa fa-star" aria-hidden="true"></i>
+<i class="fa fa-star-o" aria-hidden="true"></i>
+</span>
+                                                    <div class="cp-listed">
+                                                        <span><a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></span>
+                                                        <span><a href="{{ path('produit')}}"><i class="fa fa-link" aria-hidden="true"></i></a></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="cp-pro-item">
+                                                <div class="cp-pro-img">
+                                                    <img src="{{ asset('images/product/pro-img-02.jpg') }}" alt="">
+
+                                                    <div class="cp-pro-caption">
+                                                        <ul>
+                                                            <li class="pro-share-holder">
+                                                                <a href="#"><i class="fa fa-share-alt"></i></a>
+                                                                <div class="pro-social-links">
+                                                                    <a href="#"><i class="fa fa-facebook"></i></a>
+                                                                    <a href="#"><i class="fa fa-instagram"></i></a>
+                                                                    <a href="#"><i class="fa fa-behance"></i></a>
+                                                                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                                                                </div>
+                                                            </li>
+                                                            <li class="share">
+                                                                <a href="#"><i class="fa fa-heart-o"></i></a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="cp-text">
+                                                    <div class="top">
+                                                        <h3><a href="{{ path('produitdetail')}}">Dog food</a></h3>
+                                                        <span class="price">$50.00</span>
+                                                    </div>
+                                                    <span class="cp-rating">
+<i class="fa fa-star" aria-hidden="true"></i>
+<i class="fa fa-star" aria-hidden="true"></i>
+<i class="fa fa-star" aria-hidden="true"></i>
+<i class="fa fa-star" aria-hidden="true"></i>
+ <i class="fa fa-star-o" aria-hidden="true"></i>
+</span>
+                                                    <div class="cp-listed">
+                                                        <span><a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></span>
+                                                        <span><a href="{{ path('produit')}}"><i class="fa fa-link" aria-hidden="true"></i></a></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="cp-pro-item">
+                                                <div class="cp-pro-img">
+                                                    <img src="{{ asset('images/product/pro-img-03.jpg') }}" alt="">
+
+                                                    <div class="cp-pro-caption">
+                                                        <ul>
+                                                            <li class="pro-share-holder">
+                                                                <a href="#"><i class="fa fa-share-alt"></i></a>
+                                                                <div class="pro-social-links">
+                                                                    <a href="#"><i class="fa fa-facebook"></i></a>
+                                                                    <a href="#"><i class="fa fa-instagram"></i></a>
+                                                                    <a href="#"><i class="fa fa-behance"></i></a>
+                                                                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                                                                </div>
+                                                            </li>
+                                                            <li class="share">
+                                                                <a href="#"><i class="fa fa-heart-o"></i></a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="cp-text">
+                                                    <div class="top">
+                                                        <h3><a href="{{ path('produitdetail')}}">Bissel Pet</a></h3>
+                                                        <span class="price">$50.00</span>
+                                                    </div>
+                                                    <span class="cp-rating">
+<i class="fa fa-star" aria-hidden="true"></i>
+<i class="fa fa-star" aria-hidden="true"></i>
+<i class="fa fa-star" aria-hidden="true"></i>
+<i class="fa fa-star" aria-hidden="true"></i>
+<i class="fa fa-star-o" aria-hidden="true"></i>
+</span>
+                                                    <div class="cp-listed">
+                                                        <span><a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></span>
+                                                        <span><a href="{{ path('produit')}}"><i class="fa fa-link" aria-hidden="true"></i></a></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="cp-pro-item">
+                                                <div class="cp-pro-img">
+                                                    <img src="{{ asset('images/product/pro-img-04.jpg') }}" alt="">
+
+                                                    <div class="cp-pro-caption">
+                                                        <ul>
+                                                            <li class="pro-share-holder">
+                                                                <a href="#"><i class="fa fa-share-alt"></i></a>
+                                                                <div class="pro-social-links">
+                                                                    <a href="#"><i class="fa fa-facebook"></i></a>
+                                                                    <a href="#"><i class="fa fa-instagram"></i></a>
+                                                                    <a href="#"><i class="fa fa-behance"></i></a>
+                                                                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                                                                </div>
+                                                            </li>
+                                                            <li class="share">
+                                                                <a href="#"><i class="fa fa-heart-o"></i></a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="cp-text">
+                                                    <div class="top">
+                                                        <h3><a href="{{ path('produitdetail')}}">Hen food</a></h3>
+                                                        <span class="price">$50.00</span>
+                                                    </div>
+                                                    <span class="cp-rating">
+<i class="fa fa-star" aria-hidden="true"></i>
+<i class="fa fa-star" aria-hidden="true"></i>
+<i class="fa fa-star" aria-hidden="true"></i>
+<i class="fa fa-star" aria-hidden="true"></i>
+<i class="fa fa-star-o" aria-hidden="true"></i>
+</span>
+                                                    <div class="cp-listed">
+                                                        <span><a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></span>
+                                                        <span><a href="{{ path('produit')}}"><i class="fa fa-link" aria-hidden="true"></i></a></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="cp-pro-item">
+                                                <div class="cp-pro-img">
+                                                    <img src="{{ asset('images/product/pro-img-05.jpg') }}" alt="">
+
+                                                    <div class="cp-pro-caption">
+                                                        <ul>
+                                                            <li class="pro-share-holder">
+                                                                <a href="#"><i class="fa fa-share-alt"></i></a>
+                                                                <div class="pro-social-links">
+                                                                    <a href="#"><i class="fa fa-facebook"></i></a>
+                                                                    <a href="#"><i class="fa fa-instagram"></i></a>
+                                                                    <a href="#"><i class="fa fa-behance"></i></a>
+                                                                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                                                                </div>
+                                                            </li>
+                                                            <li class="share">
+                                                                <a href="#"><i class="fa fa-heart-o"></i></a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="cp-text">
+                                                    <div class="top">
+                                                        <h3><a href="{{ path('produitdetail')}}">Friskies Cat food</a></h3>
+                                                        <span class="price">$50.00</span>
+                                                    </div>
+                                                    <span class="cp-rating">
+<i class="fa fa-star" aria-hidden="true"></i>
+<i class="fa fa-star" aria-hidden="true"></i>
+<i class="fa fa-star" aria-hidden="true"></i>
+<i class="fa fa-star" aria-hidden="true"></i>
+<i class="fa fa-star-o" aria-hidden="true"></i>
+</span>
+                                                    <div class="cp-listed">
+                                                        <span><a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></span>
+                                                        <span><a href="{{ path('produit')}}"><i class="fa fa-link" aria-hidden="true"></i></a></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="cp_tab2">
+                            <div class="cp-tab-info-box">
+
+                                <ul class="cp-comments-holder">
+                                    <li>
+
+                                        <div class="cp-comments-box">
+                                            <div class="cp-round-img">
+                                                <img src="{{ asset('images/comments-sm-img1.jpg') }}" alt="">
+                                            </div>
+                                            <div class="cp-text">
+                                                <h5>Miche hassy</h5>
+                                                <ul class="cp-meta-list">
+                                                    <li>March 18,2016</li>
+                                                </ul>
+                                                <p>Aenean arcu tortor, suscipit vitae,Aenean arcu tortor, suscipit vitae,Aenean arcu tortor, suscipit vitae,Aenean arcu torto.vitae,Aenean arcu tortor, suscipit vitae,Aenean arcu torto</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+
+                                        <div class="cp-comments-box">
+                                            <div class="cp-round-img">
+                                                <img src="{{ asset('images/comments-sm-img2.jpg') }}" alt="">
+                                            </div>
+                                            <div class="cp-text">
+                                                <h5>David Mate</h5>
+                                                <ul class="cp-meta-list">
+                                                    <li>April 18,2016</li>
+                                                </ul>
+                                                <p>Aenean arcu tortor, suscipit vitae,Aenean arcu tortor, suscipit vitae,Aenean arcu tortor, suscipit vitae,Aenean arcu torto.vitae,Aenean arcu tortor, suscipit vitae,Aenean arcu torto</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+
+                                        <div class="cp-comments-box">
+                                            <div class="cp-round-img">
+                                                <img src="{{ asset('images/comments-sm-img3.jpg') }}" alt="">
+                                            </div>
+                                            <div class="cp-text">
+                                                <h5>Niky Bard</h5>
+                                                <ul class="cp-meta-list">
+                                                    <li>May 18,2016</li>
+                                                </ul>
+                                                <p>Aenean arcu tortor, suscipit vitae,Aenean arcu tortor, suscipit vitae,Aenean arcu tortor, suscipit vitae,Aenean arcu torto.vitae,Aenean arcu tortor, suscipit vitae,Aenean arcu torto</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    {% block footer %}
+        {{ parent() }}
+    {% endblock %}
+</div>
+
+
+
+{% block script %}
+    {{ parent() }}
+
+    <script>
+/*
+       count down
+*/
+    </script>
+
+    <script type="text/javascript" src="{{ asset('js/jquery.downCount.js') }}"></script>
+
+        <script class="source" type="text/javascript">
+            $('#mise').hide();
+            $('#jeu').hide();
+            $('#zid').hide();
+            $('#mise_btn').hide();
+
+            $('.countdown').downCount({
+                date: '{{ prod['date_debut'] }}',
+                offset: +1
+            });
+
+            $('#ajax').mouseup(function () {
+                    $('#mise').show();
+                    $('#mise_btn').show();
+                    $(this).hide();
+                    $('#replace').hide();
+                    $('#jeu').show();
+                    $('#zid').show();
+            })
+
+        </script>
+
+    <script>
+        $('#zid').keyup(function () {
+            $('#mise').html('<span id="mise" >'+'mise '+$('#zid').val()+'</span>');
+        });
+    </script>
+
+    <script>
+
+ function act() {
+
+
+     $(document).ready(function(){
+
+            $('#ajax').mouseup(function () {
+                obj = new Object();
+                obj["action"] = "participer";
+                obj["usr"]="{{ app.user.id }}";
+                $.ajax({
+                    type: 'POST',
+                    url: '{{ path("produitdetail_encheres",{"id":prod['id_encheres']}) }}',
+                    //    contentType: 'application/json; charset=utf-8',
+                    data: obj,
+                    dataType: 'json'
+                    // success: function(response) {
+                    //   alert(response.val());
+                    //}
+                });
+            });
+
+         $('#mise_btn').mouseup(function(){
+             obj = new Object();
+             obj["action"]="mise";
+             obj["usr"]="{{ app.user.id }}";
+             obj["somme"]=$('#zid').val();
+             $.ajax({
+                 type: 'POST',
+                 url:'{{ path("produitdetail_encheres",{"id":prod['id_encheres']}) }}',
+                 //    contentType: 'application/json; charset=utf-8',
+                 data: obj,
+                 dataType: 'json'
+                 // success: function(response) {
+                 //   alert(response.val());
+                 //}
+             });
+            $('#zid').val('');
+         });
+
+     });
+ }
+     act();
+
+    </script>
+
+    <script>
+
+        <!--
+        function init(){
+            loop();
+        }
+        function loop(){
+            // ICI ON SET LE LOOP : 3000 = 3 secondes
+            setTimeout('loop();',10000);
+
+// ici il faut recuperer et afficher les dernieres mises chaque 3 secondes ensuite essayer d'implementer le event listener
+            $(document).ready(function(){
+
+                obj = new Object();
+                    obj["action"] = "afficher";
+                    var derniere_mise =0;
+                    $.ajax({
+                        type: 'POST',
+                        url: '{{ path("produitdetail_encheres",{"id":prod['id_encheres']}) }}',
+                        data: obj,
+                        dataType: 'json',
+                        success: function(mises) {
+                            $('#mises').html('<h3>Dernieres mises</h3>');
+                               $.each(mises,function(k,m){
+                                $('#mises').append(
+                                "<ul>"+
+                                "<li>"+
+                                "<div class='cp-recent-inner'>"+
+                                //    "<figure class='cp-thumb'>"+
+                             //   "</figure>"+
+                                    "<span class='text-error'>"+'id client : ' + m.id_client +"</span>"+"</br>"+
+                                    "<span class='text-danger'>"+'date mise : '+m.date_mise+"</span>"+"</br>"+
+                               "<span class='text-success' >"+'mise : '+m.mise+ "</span>"+
+                               "</div>"+
+                                "</li>"+
+                                "</ul>"
+                                );
+                                   derniere_mise=parseInt(m.derniere_mise)+1; })
+                         if($('#zid').val()=='')
+                         {$('#mise').html('<span id="mise" > mise '+derniere_mise+'</span> ');}
+                        }
+                    });
+                });
+        }
+
+        init();
+
+        -->
+    </script>
+
+{% endblock %}
+{% endblock %}

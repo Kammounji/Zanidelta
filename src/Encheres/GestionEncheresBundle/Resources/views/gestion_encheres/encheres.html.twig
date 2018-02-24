@@ -1,0 +1,305 @@
+{% extends "StoreGestionProduitsBundle:Default:layout.html.twig" %}
+        {% block head %}
+            {{ parent() }}
+            <link href="{{ asset('css/countdown.css') }}" rel="stylesheet">
+        {% endblock %}
+    {% block content %}
+
+<div class="cp-wrapper">
+
+    {% block header %}
+        {{ parent() }}
+    {% endblock %}
+
+    <section class="cp-inner-banner">
+        <div class="container">
+            <div class="cp-inner-banner-outer">
+                <h2>Online store</h2>
+
+                <ul class="breadcrumb">
+                    <li><a href="{{ path("affiche") }}">Home</a></li>
+                    <li class="active">Product with Sidebar</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <div class="cp-main-content">
+
+        <section class="cp-product-section pd-t100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+
+                        <div class="cp-show-result-outer">
+                            <div class="right-outer">
+                                <select id="tri">
+                                    <option value=""></option>
+                                    <option value="participants">seuil participants</option>
+                                    <option value="mise">seuil mise</option>
+                                    <option value="date">date debut enchere</option>
+                                </select>
+                                <div class="cp-btn-listing">
+
+                                    <ul class="nav nav-tabs" role="tablist">
+                                        <li class="active">
+                                            <a href="#tab-01" aria-controls="tab-01" role="tab" data-toggle="tab"><i class="fa fa-th-large" aria-hidden="true"></i></a>
+                                        </li>
+                                        <li><a href="#tab-02" aria-controls="tab-02" role="tab" data-toggle="tab"><i class="fa fa-list" aria-hidden="true"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="cp-tabs-holder">
+
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade in active" id="tab-01">
+                                    <div class="row" id="aff">
+                                     {% for p in prod %}
+                                        <div class="col-md-4 col-sm-6" >
+                                            <div class="cp-pro-item">
+                                                <div class="cp-pro-img">
+                                                    <img src="{{ asset('uploads/products/'~p.url_img) }}" alt="" />
+                                                </div>
+                                                <div class="cp-text">
+
+                                                    <div class="top">
+                                                        <h3><a href="{{ path("produitdetail_encheres",{"id":p.id_encheres}) }}">{{ p.label }}</a></h3>
+                                                        <span class="price"> Seuil Participants : {{ p.seuil_participants }} </span>
+                                                        <span class="price"> Seuil Mise : {{ p.seuil_mise }} </span>
+                                                    </div>
+
+                                                    <div class="top">
+
+                                                        <ul id="{{ p.id }}" class="countdown" >
+                                                            <li>
+                                                                <span class="days">00</span>
+                                                                <p class="days_ref">days</p>
+                                                            </li>
+                                                            <li class="seperator">:</li>
+                                                            <li>
+                                                                <span class="hours">00</span>
+                                                                <p class="hours_ref">hours</p>
+                                                            </li>
+                                                            <li class="seperator">:</li>
+                                                            <li>
+                                                                <span class="minutes">00</span>
+                                                                <p class="minutes_ref">minutes</p>
+                                                            </li>
+                                                            <li class="seperator">:</li>
+                                                            <li>
+                                                                <span class="seconds">00</span>
+                                                                <p class="seconds_ref">seconds</p>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                         {% endfor %}
+
+
+                                    </div>
+                                </div>
+
+
+
+
+
+                                <div role="tabpanel" class="tab-pane fade in" id="tab-02">
+                                    <div class="row cp-pro-listing">
+                                  {% for p in prod %}
+                                        <div class="col-md-12 col-sm-12">
+                                            <div class="cp-pro-item">
+                                                <div class="cp-pro-img">
+                                                    <img src="{{ asset('uploads/products/'~p.url_img) }}" alt="">
+
+                                                    <div class="cp-pro-caption">
+                                                        <ul>
+                                                            <li class="pro-share-holder">
+                                                                <a href="#"><i class="fa fa-share-alt"></i></a>
+                                                                <div class="pro-social-links">
+                                                                    <a href="#"><i class="fa fa-facebook"></i></a>
+                                                                    <a href="#"><i class="fa fa-instagram"></i></a>
+                                                                    <a href="#"><i class="fa fa-behance"></i></a>
+                                                                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                                                                </div>
+                                                            </li>
+                                                            <li class="share">
+                                                                <a href="#"><i class="fa fa-heart-o"></i></a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="cp-text">
+                                                    <div class="top">
+                                                        <h3><a href="{{ path("produitdetail_encheres",{"id":p.id_encheres}) }}">{{ p.label }}</a></h3>
+                                                        <span class="price">{{ p.seuil_participants }} DNT</span>
+                                                    </div>
+
+                                                    <div class="cp-listed">
+                                                        <span><a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></span>
+                                                        <span><a href="{{ path("produit") }}"><i class="fa fa-link" aria-hidden="true"></i></a></span>
+                                                    </div>
+                                                    <p>{{ p.description }}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                      {% endfor %}
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pagination-box">
+                            <nav>
+                                <ul class="pagination">
+                                    <li> <a href="#" aria-label="Previous"> <span aria-hidden="true"><i class="fa fa-angle-right" aria-hidden="true"></i></span> </a> </li>
+                                    <li><a href="#">1</a></li>
+                                    <li class="active"><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                    <li><a href="#">4</a></li>
+                                    <li><a href="#">5</a></li>
+                                    <li> <a href="#" aria-label="Next"> <span aria-hidden="true"><i class="fa fa-angle-left" aria-hidden="true"></i></span> </a> </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-3 col-sm-12">
+
+                        <aside class="cp-sidebar-outer">
+
+                            <div class="widget widget-search widget-search2">
+                                <form method="get">
+                                    <input type="text" placeholder="Search" required>
+                                    <button type="submit" class="btn-submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                                </form>
+                            </div>
+
+                            <div class="widget widget-categories">
+                                <h3>Categories</h3>
+                                <ul>
+                                    <li>chat <span>(01)</span></li>
+                                    <li>chien <span>(02)</span></li>
+                                    <li>oiseau<span>(03)</span></li>
+                                    <li>produits alimentaire <span>(04)</span></li>
+                                    <li>accessoires<span>(05)</span></li>
+                                </ul>
+                            </div>
+
+                            <div class="widget widget-appointment">
+                                <h3>Get appointment </h3>
+                                <form method="get">
+                                    <input type="text" placeholder="Your Name" required>
+                                    <input type="email" placeholder="Email Address" required>
+                                    <input type="tel" placeholder="Your Phone" required>
+                                    <input type="text" placeholder="Your Pte’s Type" required>
+                                    <button type="submit" class="btn-submit cp-btn-style3">Submit</button>
+                                </form>
+                            </div>
+
+                        </aside>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    {% block footer %}
+        {{ parent() }}
+    {% endblock %}
+</div>
+
+{% block script %}
+    {{ parent() }}
+
+    <script type="text/javascript" src="{{ asset('js/jquery.downCount.js') }}"></script>
+
+    {% for p in prod %}
+    <script class="source" type="text/javascript">
+        $('#{{ p.id }}').downCount({
+            date: '{{ p.date_debut }}',
+            offset: +1
+        });
+    </script>
+        {% endfor %}
+
+    <script>
+        $(document).ready(function () {
+            $('#tri').change(function () {
+                obj = new Object();
+                obj["trier"] =   $('#tri option:selected').val() ;
+                $.ajax({
+                    type: 'POST',
+                    url: '{{ path("affproduit",{"id":categorie}) }}',
+                    data: obj,
+                    dataType: 'json',
+                    success: function(produits) {
+
+                        $('#aff').html('');
+                        $.each(produits,function(k,p){
+                            $('#aff').append(
+                                "<div class='col-md-4 col-sm-6' >"+
+                                "<div class='cp-pro-item'>"+
+                                "<div class='cp-pro-img'>"+
+
+
+                                "</div>"+
+                                "<div class='cp-text'>"+
+                                "<div class='top'>"+
+                                "<h3>"+ p.label +"</h3>"+
+                                "<span class='price'> Seuil Participants : "+ p.seuil_participants  +" </span>"+
+                                "<span class='price'> Seuil Mise : "+ p.seuil_mise  +" </span>"+
+                                "</div>"+
+
+                                "<div class='top'>"+
+
+                                "<ul id='"+p.id_encheres+"' class='countdown' >"+
+                                "<li>"+
+                                "<span class='days'>"+"00"+"</span>"+
+                                "<p class='days_ref'>"+"days"+"</p>"+
+                                "</li>"+
+                                "<li class='seperator'>"+":"+"</li>"+
+                                "<li>"+
+                                "<span class='hours'>"+"00"+"</span>"+
+                                "<p class='hours_ref'>"+"hours"+"</p>"+
+                                "</li>"+
+                                "<li class='seperator'>"+":"+"</li>"+
+                                "<li>"+
+                                "<span class='minutes'>"+"00"+"</span>"+
+                                "<p class='minutes_ref'>"+"minutes"+"</p>"+
+                                "</li>"+
+                                "<li class='seperator'>"+":"+"</li>"+
+                                "<li>"+
+                                "<span class='seconds'>"+"00"+"</span>"+
+                                "<p class='seconds_ref'>"+"seconds"+"</p>"+
+                                "</li>"+
+                                "</ul>"+
+                                "</div>"+
+
+                                "</div>"+
+                                "</div>"+
+                                "</div>"
+                            );
+
+                           var id="#"+p.id_encheres;
+                            $(id.toString()).downCount({
+                                date: p.date_debut,
+                                offset: +1
+                            });
+
+                        })
+                    }
+                });
+            });
+        });
+
+    </script>
+
+{% endblock %}
+{% endblock %}
