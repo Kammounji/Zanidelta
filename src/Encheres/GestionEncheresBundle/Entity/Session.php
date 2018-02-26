@@ -17,7 +17,8 @@ class Session
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\OneToOne(targetEntity="Encheres\GestionEncheresBundle\Entity\Encheres", mappedBy="id")
+     * @ORM\OneToMany(targetEntity="Encheres\GestionEncheresBundle\Entity\Journal", mappedBy="id_session")
      */
     private $id;
 
@@ -51,6 +52,20 @@ class Session
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set id
+     *
+     * @param integer $id
+     *
+     * @return Session
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
     }
 
     /**
@@ -124,5 +139,5 @@ class Session
     {
         return $this->idGagnant;
     }
-}
 
+}

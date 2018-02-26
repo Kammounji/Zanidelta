@@ -3,7 +3,6 @@
 namespace Veterinaire\GestionRDVBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Commentaire
  *
@@ -20,6 +19,10 @@ class Commentaire
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+
+    /**
+     * @param int $id
+     */
 
     /**
      * @var string

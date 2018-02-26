@@ -25,6 +25,8 @@ class Journal
      * @var string
      *
      * @ORM\Column(name="id_session", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="EncheresGestionEncheresBundle\Entity\Session", inversedBy="id")
+     * @ORM\JoinColumn(nullable=true)
      */
     private $idSession;
 
@@ -39,6 +41,7 @@ class Journal
      * @var float
      *
      * @ORM\Column(name="mise", type="float")
+     * @ORM\OneToMany(targetEntity=" MyApp\UserBundle\Entity\User", mappedBy="id")
      */
     private $mise;
 

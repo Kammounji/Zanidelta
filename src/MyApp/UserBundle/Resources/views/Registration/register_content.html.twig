@@ -36,12 +36,21 @@
     </div>
 </div>
 
-
+<div class="col-md-12 col-sm-12">
+    <div class="inner-holder">
+        <div class="row">
+            <label>roles</label>
+            {{ form_widget(form.roles) }}
+        </div>
+    </div>
+</div>
+<br>
+<br>
 <div class="col-md-6 col-sm-12">
     <div class="input-field btn-holder">
         <input type="submit" class="cp-btn-style2 btn-submit" value="{{ 'registration.submit'|trans }}" />
 
     </div>
 </div>
-
 {{ form_end(form) }}
+

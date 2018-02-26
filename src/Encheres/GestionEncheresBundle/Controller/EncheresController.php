@@ -2,22 +2,18 @@
 
 namespace Encheres\GestionEncheresBundle\Controller;
 use Association\GestionAssociationBundle\Entity\Categorie;
-use Doctrine\DBAL\Types\DateTimeType;
-use Encheres\GestionEncheresBundle\EncheresGestionEncheresBundle;
 use Encheres\GestionEncheresBundle\Form\EncheresType;
-use Encheres\GestionEncheresBundle\Repository\EncheresRepository;
 use Store\GestionProduitsBundle\Entity\Produit;
 use Encheres\GestionEncheresBundle\Entity\Encheres;
 use Encheres\GestionEncheresBundle\Entity\Session;
-use Store\GestionProduitsBundle\Repository\animalRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Encheres\GestionEncheresBundle\Entity\Journal;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
-use Symfony\Component\Validator\Constraints\Time;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Validator\Constraints\Date;
 
 /**
  * Enchere controller.
@@ -295,15 +291,17 @@ class EncheresController extends Controller
             $journal->setIdSession($prd['id_encheres']);
             $journal->setIdClient($request->get('usr'));
 
+
             if($request->get('somme')=='')
                {$session = $em->getRepository('EncheresGestionEncheresBundle:Session')->findOneBy(['id'=>$prd['id_encheres']]);
                 $journal->setMise($session->getDerniereMise()+1);}
               else
-                  $journal->setMise($request->get('somme'));
+                $journal->setMise($request->get('somme'));
 
-            $em->persist($journal);
-            $em->flush();
-            return new Response("aa");
+
+             $em->persist($journal);
+             $em->flush();
+
         }
 
         else if($request->get('action')=="afficher")
@@ -316,9 +314,26 @@ class EncheresController extends Controller
             return new JsonResponse($data);
         }
 
+
+        else if($request->get('action')=="finish")
+        {
+            $serializer= new Serializer(array(new ObjectNormalizer()));
+            $em=$this->getDoctrine()->getManager();
+            $prd=$em->getRepository('EncheresGestionEncheresBundle:Encheres')->encheresById($id);
+            $session = $em->getRepository('EncheresGestionEncheresBundle:Session')->findOneBy(['id'=>$prd['id_encheres']]);
+            $session->setEtat("fini");
+            $em->persist($session);
+            $em->flush();
+
+            $data = $serializer->normalize($session);
+            return new JsonResponse($data);
+        }
+
+
         $prd=$em->getRepository('EncheresGestionEncheresBundle:Encheres')->encheresById($id);
         return $this->render('EncheresGestionEncheresBundle:gestion_encheres:encheresdetail.html.twig',array('prod'=>$prd));
     }
+
 
 
 }

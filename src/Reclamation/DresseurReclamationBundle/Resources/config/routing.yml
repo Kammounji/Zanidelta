@@ -1,3 +1,25 @@
 service:
     path:     /
     defaults: { _controller: ReclamationDresseurReclamationBundle:Services:service }
+accueilAdmin:
+    path:     /accueilAdmin
+    defaults: { _controller: ReclamationDresseurReclamationBundle:admin:acceuil }
+
+reclamationAdmin:
+    path:     /reclamationAdmin
+    defaults: { _controller: ReclamationDresseurReclamationBundle:admin:reclamationAdmin }
+animalp:
+    path:     /animalp
+    defaults: { _controller: ReclamationDresseurReclamationBundle:Services:animalp }
+animalsdf:
+    path:     /animalsdf
+    defaults: { _controller: ReclamationDresseurReclamationBundle:Services:animalsdf }
+rvdresseur:
+    path:     /rvdresseur
+    defaults: { _controller: ReclamationDresseurReclamationBundle:Services:rvdresseur }
+dresseurdetail:
+    path:     /dresseurdetail
+    defaults: { _controller: ReclamationDresseurReclamationBundle:Services:dresseurdetail }
+grvdresseur:
+    path:     /grvdresseur
+    defaults: { _controller: ReclamationDresseurReclamationBundle:Services:grvdresseur }

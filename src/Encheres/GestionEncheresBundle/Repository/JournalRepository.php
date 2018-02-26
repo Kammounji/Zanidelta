@@ -10,4 +10,28 @@ namespace Encheres\GestionEncheresBundle\Repository;
  */
 class JournalRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getMise($id_session)
+    {
+        $conn = $this->getEntityManager()->getConnection();
+
+        //il faut recuperer par cette requete l'url de l'utilisateur , son nom , la date de la mise , la derniere mise
+          //l'etat de la session et l'id du gangant dans l'ordre croissant par la date de la derniere mise des 5 ou 4 dernieres mises .
+
+
+
+
+        $sql = '
+        SELECT date_mise,id_client,mise,derniere_mise
+        FROM journal j , session s
+        WHERE j.id_session= :id and s.id= :id
+        ORDER BY date_mise DESC 
+        LIMIT 4
+         ';
+
+
+        $stmt = $conn->prepare($sql);
+        $stmt->execute(['id'=>$id_session]);
+        return $stmt->fetchAll();
+    }
+
 }

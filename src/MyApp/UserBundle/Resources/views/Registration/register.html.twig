@@ -6,39 +6,43 @@
 
 {% block content %}
 
-<div class="cp-wrapper">
-    {% block header %}
-        {{ parent() }}
+    <div class="cp-wrapper">
+        {% block header %}
+            {{ parent() }}
 
-    {% endblock %}
+        {% endblock %}
 
         <section class="cp-departments-section cp-departments-section_v2 pd-t100">
-            <div class="cp-bg-movement" data-ibg-bg="images/White.jpg"></div>
-            <div class="container" >
+            <div class="cp-checkout-form" method="post" action="{{ path("fos_user_registration_register")}}">
                 <div class="row">
-                    <div class="col-md-6" >
-                        <div class="cp-heading-style1_v1">
-                            <h2>Register</h2>
+                    <div class="cp-bg-movement" data-ibg-bg="images/White.jpg"></div>
+                    <div class="container" >
+
+                        <div class="col-md-6" >
+                            <div class="cp-heading-style1_v1">
+                                <h2>Register</h2>
+                            </div>
+                            {% block fos_user_content %}
+                                {% include "@FOSUser/Registration/register_content.html.twig" %}
+                            {% endblock fos_user_content %}
                         </div>
-                        {% block fos_user_content %}
-                            {% include "@FOSUser/Registration/register_content.html.twig" %}
-                        {% endblock fos_user_content %}
-                    </div>
 
-                    <div class="col-md-6" >
+                        <div class="col-md-6" >
 
+
+                        </div>
 
                     </div>
-
                 </div>
             </div>
+            </form>
         </section>
 
-    {% block footer %}
-        {{ parent() }}
+        {% block footer %}
+            {{ parent() }}
 
-    {% endblock %}
-</div>
+        {% endblock %}
+    </div>
 
 
     {% block script %}

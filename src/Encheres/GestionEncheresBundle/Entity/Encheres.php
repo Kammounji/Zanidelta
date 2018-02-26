@@ -3,7 +3,6 @@
 namespace Encheres\GestionEncheresBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Encheres
  *
@@ -15,16 +14,17 @@ class Encheres
     /**
      * @var int
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="id_encheres", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    private $id_encheres;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="id_cible", type="string", length=255)
+     * @ORM\Column(name="id_cible", type="string", length=255, unique=true)
+     * @ORM\OneToOne(targetEntity="Store\GestionProduitsBundle\Entity\Produit", mappedBy="id")
      */
     private $idCible;
 
@@ -32,6 +32,8 @@ class Encheres
      * @var string
      *
      * @ORM\Column(name="id_proprietaire", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="MyApp\UserBundle\Entity\User", inversedBy="id")
+     * @ORM\JoinColumn(nullable=true)
      */
     private $idProprietaire;
 
@@ -43,9 +45,9 @@ class Encheres
     private $dateDebut;
 
     /**
-     * @var string
+     * @var float
      *
-     * @ORM\Column(name="seuil_mise", type="decimal", precision=10, scale=0)
+     * @ORM\Column(name="seuil_mise", type="float")
      */
     private $seuilMise;
 
@@ -58,13 +60,13 @@ class Encheres
 
 
     /**
-     * Get id
+     * Get id_encheres
      *
      * @return int
      */
-    public function getId()
+    public function getId_Encheres()
     {
-        return $this->id;
+        return $this->id_encheres;
     }
 
     /**
@@ -142,7 +144,7 @@ class Encheres
     /**
      * Set seuilMise
      *
-     * @param string $seuilMise
+     * @param float $seuilMise
      *
      * @return Encheres
      */
@@ -156,7 +158,7 @@ class Encheres
     /**
      * Get seuilMise
      *
-     * @return string
+     * @return float
      */
     public function getSeuilMise()
     {
@@ -186,4 +188,6 @@ class Encheres
     {
         return $this->seuilParticipants;
     }
+
+
 }

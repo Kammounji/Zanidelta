@@ -10,4 +10,90 @@ namespace Encheres\GestionEncheresBundle\Repository;
  */
 class EncheresRepository extends \Doctrine\ORM\EntityRepository
 {
+
+    public function EncheresByCategorie($cat)
+    {
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = '
+        SELECT id,url_img,id_encheres,label,seuil_participants,seuil_mise,date_debut,description FROM produit p ,encheres e
+        WHERE p.id=e.id_cible and p.id_categorie=:categorie ';
+
+
+        $stmt = $conn->prepare($sql);
+        $stmt->execute(['categorie'=>$cat]);
+        return $stmt->fetchAll();
+    }
+
+    public function encheresById($id)
+    {
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = '
+        SELECT id_encheres,url_img,label,seuil_participants,seuil_mise,date_debut,description,caracteristiques
+        FROM produit p ,encheres e
+        WHERE p.id=e.id_cible and e.id_encheres=:id ';
+
+        $stmt = $conn->prepare($sql);
+        $stmt->execute(['id'=>$id]);
+        return $stmt->fetch();
+    }
+
+    public function get_produit_id($img)
+    {
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = 'SELECT id FROM produit WHERE url_img= :img ';
+
+        $stmt = $conn->prepare($sql);
+        $stmt->execute(['img'=>$img]);
+        return $stmt->fetch();
+    }
+
+    public function EncheresByParticipants($cat)
+    {
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = '
+        SELECT id_encheres,url_img,label,seuil_participants,seuil_mise,date_debut,description,caracteristiques
+        FROM produit p ,encheres e
+        WHERE p.id=e.id_cible and p.id_categorie=:categorie
+        ORDER BY e.seuil_participants DESC ';
+
+        $stmt = $conn->prepare($sql);
+        $stmt->execute(['categorie'=>$cat]);
+        return $stmt->fetchall();
+    }
+
+    public function EncheresByMise($cat)
+    {
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = '
+        SELECT id_encheres,url_img,label,seuil_participants,seuil_mise,date_debut,description,caracteristiques
+        FROM produit p ,encheres e
+        WHERE p.id=e.id_cible and p.id_categorie=:categorie 
+        ORDER BY e.seuil_mise DESC ';
+
+        $stmt = $conn->prepare($sql);
+        $stmt->execute(['categorie'=>$cat]);
+        return $stmt->fetchall();
+    }
+
+    public function EncheresByDate($cat)
+    {
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = '
+        SELECT id_encheres,url_img,label,seuil_participants,seuil_mise,date_debut,description,caracteristiques
+        FROM produit p ,encheres e
+        WHERE p.id=e.id_cible and p.id_categorie=:categorie
+        ORDER BY e.date_debut DESC ';
+
+        $stmt = $conn->prepare($sql);
+        $stmt->execute(['categorie'=>$cat]);
+        return $stmt->fetchall();
+    }
+
 }
+

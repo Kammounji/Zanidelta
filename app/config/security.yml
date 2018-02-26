@@ -57,3 +57,16 @@ security:
         - { path: ^/modifdetailmag, role: ROLE_MAGASIN}
         - { path: ^/espaceveterinaire, role: ROLE_VETERINAIRE}
         - { path: ^/rendezvous, role: ROLE_VETERINAIRE}
+        - { path: ^/animalp, role: [ROLE_ADMINISTRATEUR,ROLE_CLIENT,ROLE_MAGASIN,ROLE_CLIENT,ROLE_VETERINAIRE,ROLE_ASSOCIATION,ROLE_LIVREUR,ROLE_DRESSEUR]}
+        - { path: ^/animalsdf, role: [ROLE_ADMINISTRATEUR,ROLE_CLIENT,ROLE_MAGASIN,ROLE_CLIENT,ROLE_VETERINAIRE,ROLE_ASSOCIATION,ROLE_LIVREUR,ROLE_DRESSEUR]}
+        - { path: ^/rvdresseur, role: [ROLE_ADMINISTRATEUR,ROLE_CLIENT,ROLE_MAGASIN,ROLE_CLIENT,ROLE_VETERINAIRE,ROLE_ASSOCIATION,ROLE_LIVREUR]}
+        - { path: ^/grvdresseur, role: ROLE_DRESSEUR}
+        - { path: ^/reclamationAdmin, role:ROLE_ADMINISTRATEUR}
+        - { path: ^/evenementAdmin, role: ROLE_ADMINISTRATEUR}
+        - { path: ^/produitAdmin, role: ROLE_ADMINISTRATEUR}
+        - { path: ^/commandeAdmin, role: ROLE_ADMINISTRATEUR}
+        - { path: ^/enchereAdmin, role: ROLE_ADMINISTRATEUR}
+        - { path: ^/veterinaireAdmin, role: ROLE_ADMINISTRATEUR}
+        - { path: ^/accueilAdmin, role: ROLE_ADMINISTRATEUR}
+
+

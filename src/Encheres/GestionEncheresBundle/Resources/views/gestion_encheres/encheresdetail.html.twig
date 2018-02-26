@@ -14,7 +14,7 @@
     <section class="cp-inner-banner">
         <div class="container">
             <div class="cp-inner-banner-outer">
-                <h2>Online store</h2>
+                <h2 id="test">Online store</h2>
 
                 <ul class="breadcrumb">
                     <li><a href="{{ path("affiche") }}">Home</a></li>
@@ -41,7 +41,7 @@
 
                                         <a  class="gallery-btn">
 
-                                            <ul class="countdown" >
+                                            <ul id="cd" class="countdown" >
                                                 <li>
                                                     <span class="days">00</span>
                                         <p class="days_ref">days</p>
@@ -70,24 +70,19 @@
                             </figure>
                         </div>
 
+                        <div id="fin"></div>
+                        <div id="fin2"></div>
+
+
                         <div class="col-md-6 col-sm-12">
                             <div class="container" id="jeu">
 
                                 <div class="col-md-3 col-sm-6" >
                                     <h4>
                                         <a  class="gallery-btn">
+                                            <div data-type="countdown" data-id="489073" class="tickcounter" style="width: 100%; position: relative; padding-bottom: 25%"><a href="//www.tickcounter.com/countdown/489073/my-countdown" title="My countdown">My countdown</a><a href="//www.tickcounter.com/" title="Countdown">Countdown</a></div><script>(function(d, s, id) { var js, pjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = "//www.tickcounter.com/static/js/loader.js"; pjs.parentNode.insertBefore(js, pjs); }(document, "script", "tickcounter-sdk"));</script>
+                                            <div>Time left = <span id="timer"></span></div>
 
-                                            <ul class="countdown">
-                                                <li>
-                                                    <span class="minutes" id="min">00</span>
-                                                    <p class="minutes_ref">minutes</p>
-                                                </li>
-                                                <li class="seperator">:</li>
-                                                <li>
-                                                    <span class="seconds" id="sec">00</span>
-                                                    <p class="seconds_ref">seconds</p>
-                                                </li>
-                                            </ul>
                                         </a>
                                     </h4>
 
@@ -425,21 +420,21 @@
 {% block script %}
     {{ parent() }}
 
-    <script>
-/*
-       count down
-*/
-    </script>
+
 
     <script type="text/javascript" src="{{ asset('js/jquery.downCount.js') }}"></script>
 
         <script class="source" type="text/javascript">
             $('#mise').hide();
             $('#jeu').hide();
+            $('#fin').hide();
+            $('#fin2').hide();
             $('#zid').hide();
             $('#mise_btn').hide();
+            $('#compte_rebours').hide();
 
-            $('.countdown').downCount({
+
+            $('#cd').downCount({
                 date: '{{ prod['date_debut'] }}',
                 offset: +1
             });
@@ -457,6 +452,7 @@
 
     <script>
         $('#zid').keyup(function () {
+             if(parseInt($('#zid').val()) > parseInt($('#fin').html()))
             $('#mise').html('<span id="mise" >'+'mise '+$('#zid').val()+'</span>');
         });
     </script>
@@ -475,12 +471,8 @@
                 $.ajax({
                     type: 'POST',
                     url: '{{ path("produitdetail_encheres",{"id":prod['id_encheres']}) }}',
-                    //    contentType: 'application/json; charset=utf-8',
                     data: obj,
                     dataType: 'json'
-                    // success: function(response) {
-                    //   alert(response.val());
-                    //}
                 });
             });
 
@@ -492,13 +484,19 @@
              $.ajax({
                  type: 'POST',
                  url:'{{ path("produitdetail_encheres",{"id":prod['id_encheres']}) }}',
-                 //    contentType: 'application/json; charset=utf-8',
                  data: obj,
                  dataType: 'json'
-                 // success: function(response) {
-                 //   alert(response.val());
-                 //}
              });
+
+                $('#compte_rebours').show();
+             date_serveur = new Date();
+             date_serveur.setMinutes(date_serveur.getMinutes()+5);
+             $('#compte_rebours').downCount({
+                 date:  date_serveur,
+                 offset: +1
+             });
+             document.getElementById('timer').innerHTML =
+                 00 + ":" + 20;
             $('#zid').val('');
          });
 
@@ -510,47 +508,111 @@
 
     <script>
 
+        $('#timer').html(01 + ":" + 30);
+         var i=1;
+        startTimer();
+
+        function startTimer() {
+            var presentTime = $('#timer').html();
+            var timeArray = presentTime.split(/[:]+/);
+            var m = timeArray[0];
+            var s = checkSecond((timeArray[1] - 1));
+            if(s==59){m=m-1}
+            if(m<0){
+                //requete ajax recupere ligne session
+              if(i==1) {
+                  $(document).ready(function () {
+
+                      obj = new Object();
+                      obj["action"] = "finish";
+                      $.ajax({
+                          type: 'POST',
+                          url: '{{ path("produitdetail_encheres",{"id":prod['id_encheres']}) }}',
+                          data: obj,
+                          dataType: 'json',
+                          success: function (session) {
+                              $('#fin').show();
+                              $('#fin').html(
+                                  '<h3>  id de la session enchere : ' + session.id + '</h3>'+
+                                  '<h3>  le gangant est           : ' + session.idGagnant + '</h3>'+
+                                  '<h3>  la derniere mise est     : ' + session.derniereMise + '</h3>'
+                              );
+
+                              if( '{{ app.user.id }}' == session.idGagnant )
+                              {
+                                  $('#fin2').show();
+                                  $('#fin2').html('<h1>  Felicitation vous avez ganger cette enchere ! </h1>');
+                              }
+                          }
+                      });
+                  });
+              }
+              i++;
+                $('#mises').html('<h3>Cette Session est terminé</h3>');
+                $('#timer').hide();
+                $('#jeu').hide();
+                $('#mise_btn').hide();
+                $('#zid').hide();
+            }
+
+            $('#timer').html(m + ":" + s);
+            setTimeout(startTimer, 1000);
+        }
+
+        function checkSecond(sec) {
+            if (sec < 10 && sec >= 0) {sec = "0" + sec}; // add zero in front of numbers < 10
+            if (sec < 0) {sec = "59"};
+            return sec;
+        }
+
+
+        </script>
+
+    <script>
         <!--
         function init(){
             loop();
         }
         function loop(){
-            // ICI ON SET LE LOOP : 3000 = 3 secondes
-            setTimeout('loop();',10000);
+            // ICI ON SET LE LOOP : 5000 = 5 secondes
+            setTimeout('loop();',5000);
 
 // ici il faut recuperer et afficher les dernieres mises chaque 3 secondes ensuite essayer d'implementer le event listener
+            if($('#mises').html()!="<h3>Cette Session est terminé</h3>"){
             $(document).ready(function(){
 
                 obj = new Object();
-                    obj["action"] = "afficher";
-                    var derniere_mise =0;
-                    $.ajax({
-                        type: 'POST',
-                        url: '{{ path("produitdetail_encheres",{"id":prod['id_encheres']}) }}',
-                        data: obj,
-                        dataType: 'json',
-                        success: function(mises) {
-                            $('#mises').html('<h3>Dernieres mises</h3>');
-                               $.each(mises,function(k,m){
-                                $('#mises').append(
+                obj["action"] = "afficher";
+                var derniere_mise =0;
+                $.ajax({
+                    type: 'POST',
+                    url: '{{ path("produitdetail_encheres",{"id":prod['id_encheres']}) }}',
+                    data: obj,
+                    dataType: 'json',
+                    success: function(mises) {
+                        $('#mises').html('<h3>Dernieres mises</h3>');
+                        $.each(mises,function(k,m){
+                            $('#mises').append(
                                 "<ul>"+
                                 "<li>"+
                                 "<div class='cp-recent-inner'>"+
                                 //    "<figure class='cp-thumb'>"+
-                             //   "</figure>"+
-                                    "<span class='text-error'>"+'id client : ' + m.id_client +"</span>"+"</br>"+
-                                    "<span class='text-danger'>"+'date mise : '+m.date_mise+"</span>"+"</br>"+
-                               "<span class='text-success' >"+'mise : '+m.mise+ "</span>"+
-                               "</div>"+
+                                //   "</figure>"+
+                                "<span class='text-error'>"+'id client : ' + m.id_client +"</span>"+"</br>"+
+                                "<span class='text-danger'>"+'date mise : '+m.date_mise+"</span>"+"</br>"+
+                                "<span class='text-success' >"+'mise : '+m.mise+ "</span>"+
+                                "</div>"+
                                 "</li>"+
                                 "</ul>"
-                                );
-                                   derniere_mise=parseInt(m.derniere_mise)+1; })
-                         if($('#zid').val()=='')
-                         {$('#mise').html('<span id="mise" > mise '+derniere_mise+'</span> ');}
-                        }
-                    });
+                            );
+                            derniere_mise=parseInt(m.derniere_mise)+1; })
+                        if($('#zid').val()=='')
+                        {$('#mise').html('<span id="mise" > mise '+derniere_mise+'</span> ');
+                          $('#fin').html(derniere_mise);}
+                    }
                 });
+            });}
+
         }
 
         init();

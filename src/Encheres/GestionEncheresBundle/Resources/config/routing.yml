@@ -1,3 +1,38 @@
 encheres_gestion_encheres_homepage:
     path:     /
     defaults: { _controller: EncheresGestionEncheresBundle:Default:index }
+enchereAdmin:
+    path:     /enchereAdmin
+    defaults: { _controller: EncheresGestionEncheresBundle:admin:enchereAdmin }
+
+ajout_encheres:
+    path:     /addencheres
+    defaults: { _controller: EncheresGestionEncheresBundle:Encheres:ajout }
+
+affiche_encheres:
+    path:     /affencheres
+    defaults: { _controller: EncheresGestionEncheresBundle:Encheres:index }
+
+delete_encheres:
+    path:     /deleteencheres/{id}
+    defaults: { _controller: EncheresGestionEncheresBundle:Encheres:delete }
+
+modif_encheres:
+    path:     /modifencheres/{id}
+    defaults: { _controller: EncheresGestionEncheresBundle:Encheres:modif }
+
+affproduit:
+    path:     /prdencheres/{id}
+    defaults: { _controller: EncheresGestionEncheresBundle:Encheres:produit }
+
+produitdetail_encheres:
+    path:     /detailencheres/{id}
+    defaults: { _controller: EncheresGestionEncheresBundle:Encheres:detail }
+
+enchere_categorie:
+    path:     /encheres
+    defaults: { _controller: EncheresGestionEncheresBundle:Encheres:categorie }
+
+chat:
+    path:     /testchat
+    defaults: { _controller: EncheresGestionEncheresBundle:Sessionencheres:index }

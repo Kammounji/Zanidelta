@@ -19,10 +19,10 @@ class DefaultController extends Controller
 
     public function espaceveterinaireAction()
     {
-        return $this->render('VeterinaireGestionRDVBundle:gestion_veterinaire:veterinaire.html.twig');
+        return $this->render('VeterinaireGestionRDVBundle:gestion_veterinaire:espace-veterinaire.html.twig');
     }
     public function rendezvousAction()
     {
-        return $this->render('VeterinaireGestionRDVBundle:gestion_veterinaire:veterinairedetail.html.twig');
+        return $this->render('VeterinaireGestionRDVBundle:gestion_veterinaire:gestion-rendez-vous.html.twig');
     }
 }

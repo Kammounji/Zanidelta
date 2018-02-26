@@ -9,12 +9,12 @@ class DefaultController extends Controller
 
     public function slideproduitAction()
     {
-        return $this->render('StoreGestionProduitsBundle:gestion_produit:produitSlideBar.html.twig');
+        return $this->render('StoreGestionProduitsBundle:gestion_produit:encheres.html.twig');
     }
 
     public function produitdetailAction()
     {
-        return $this->render('StoreGestionProduitsBundle:gestion_produit:produitdetail.html.twig');
+        return $this->render('StoreGestionProduitsBundle:gestion_produit:encheresdetail.html.twig');
     }
 
     public function ajoutmagAction()

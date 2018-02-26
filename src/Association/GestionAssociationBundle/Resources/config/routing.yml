@@ -23,6 +23,9 @@ ajouteven:
     path:     /ajouteven
     defaults: { _controller: AssociationGestionAssociationBundle:Default:ajouteven }
 
-espaceassociation:
-    path:     /espaceassociation
-    defaults: { _controller: AssociationGestionAssociationBundle:Default:espaceassociation }
+accueilAdmin:
+    path:     /accueilAdmin
+    defaults: { _controller: AssociationGestionAssociationBundle:admin:acceuil }
+evenementAdmin:
+    path:     /evenementAdmin
+    defaults: { _controller: AssociationGestionAssociationBundle:admin:associationAdmin }

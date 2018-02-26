@@ -3,6 +3,8 @@
 namespace Store\GestionProduitsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * Produit
@@ -53,13 +55,15 @@ class Produit
      * @var string
      *
      * @ORM\Column(name="url_img", type="string", length=255)
+     * @Assert\NotBlank(message="Ajouter une image jpg")
+     * @Assert\File(mimeTypes={ "image/jpeg" })
      */
     private $urlImg;
 
     /**
-     * @var float
+     * @var string
      *
-     * @ORM\Column(name="poid", type="float")
+     * @ORM\Column(name="poid", type="string" , length=50)
      */
     private $poid;
 
@@ -84,6 +88,26 @@ class Produit
      */
     private $prixAncien;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="sexe", type="string", length=50)
+     */
+    private $sexe;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="label", type="string", length=50)
+     */
+    private $label;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="age", type="string" ,length=50)
+     */
+    private $age;
 
     /**
      * Get id
@@ -218,7 +242,7 @@ class Produit
     /**
      * Set poid
      *
-     * @param float $poid
+     * @param string $poid
      *
      * @return Produit
      */
@@ -232,7 +256,7 @@ class Produit
     /**
      * Get poid
      *
-     * @return float
+     * @return string
      */
     public function getPoid()
     {
@@ -309,6 +333,78 @@ class Produit
     public function getPrixAncien()
     {
         return $this->prixAncien;
+    }
+
+    /**
+     * Set sexe
+     *
+     * @param string $sexe
+     *
+     * @return animal
+     */
+    public function setSexe($sexe)
+    {
+        $this->sexe = $sexe;
+
+        return $this;
+    }
+
+    /**
+     * Get sexe
+     *
+     * @return string
+     */
+    public function getSexe()
+    {
+        return $this->sexe;
+    }
+
+    /**
+     * Set label
+     *
+     * @param string $label
+     *
+     * @return animal
+     */
+    public function setLabel($label)
+    {
+        $this->label = $label;
+
+        return $this;
+    }
+
+    /**
+     * Get label
+     *
+     * @return string
+     */
+    public function getLabel()
+    {
+        return $this->label;
+    }
+
+    /**
+     * Set age
+     *
+     * @param string $age
+     *
+     * @return animal
+     */
+    public function setAge($age)
+    {
+        $this->age = $age;
+
+        return $this;
+    }
+
+    /**
+     * Get age
+     *
+     * @return string
+     */
+    public function getAge()
+    {
+        return $this->age;
     }
 }
 

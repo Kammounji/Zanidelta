@@ -1,7 +1,6 @@
 # Learn more about services, parameters and containers at
 # https://symfony.com/doc/current/service_container.html
 parameters:
-    #parameter_name: value
 
 services:
     fos_user.doctrine_registry:
@@ -15,7 +14,14 @@ services:
         autoconfigure: true
         # this means you cannot fetch services directly from the container via $container->get()
         # if you need to do this, you can override this setting on individual services
-        public: false
+        public: true
+
+
+
+    doctrine.user_listener:
+        class: Encheres\GestionEncheresBundle\Services\EventListener
+        tags:
+            - { name: doctrine.event_listener, event: postPersist }
 
     # makes classes in src/AppBundle available to be used as services
     # this creates a service per class whose id is the fully-qualified class name

@@ -1,5 +1,5 @@
 <?php
-namespace MyApp\UserBundle \Entity;
+namespace MyApp\UserBundle\Entity;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 /**
@@ -47,21 +47,6 @@ protected $id;
         $this->prenom = $prenom;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getAdresse()
-    {
-        return $this->adresse;
-    }
-
-    /**
-     * @param mixed $Adresse
-     */
-    public function setAdresse($Adresse)
-    {
-        $this->adresse = $Adresse;
-    }
 
     /**
      * @ORM\Column(type="string",length=255)
@@ -74,9 +59,5 @@ protected $id;
      */
     protected $prenom;
 
-    /**
-     * @ORM\Column(type="string",length=255)
-     *
-     */
-    protected $adresse;
+
 }

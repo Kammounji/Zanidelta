@@ -1,4 +1,6 @@
 <?php
+
+
 /**
  * Created by PhpStorm.
  * User: azizkastalli
@@ -23,6 +25,7 @@ class EventListener
             return;
         }
 
+
         $em = $args->getEntityManager();
         if($entity->getMise()!=0) {
             $session= new Session();
@@ -30,18 +33,11 @@ class EventListener
             $session->setDerniereMise($entity->getMise());
            if($session->getEtat()=="en attente")
            { $session->setEtat("en cours"); }
-            $em->persist($session);
-            $em->flush();
+             $session->setidGagnant($entity->getIdClient());
+             $em->persist($session);
+             $em->flush();
         }
 
-
-    //    $stream= new StreamedResponse();
-      //  $stream->
-
-
-
-
-
-    }
+        }
 
 }

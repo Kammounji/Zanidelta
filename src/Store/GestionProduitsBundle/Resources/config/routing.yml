@@ -14,10 +14,6 @@ produitdetail:
     path:     /produitdetail
     defaults: { _controller: StoreGestionProduitsBundle:Default:produitdetail }
 
-espacemag:
-    path:     /espacemag
-    defaults: { _controller: StoreGestionProduitsBundle:Default:espacemag }
-
 modsuppstore:
     path:     /modsuppstore
     defaults: { _controller: StoreGestionProduitsBundle:Default:modsuppstore }
@@ -25,3 +21,10 @@ modsuppstore:
 modifdetailmag:
     path:     /modifdetailmag
     defaults: { _controller: StoreGestionProduitsBundle:Default:modifdetailmag }
+
+accueilProduit:
+    path:     /accueilProduit
+    defaults: { _controller: StoreGestionProduitsBundle:admin:acceuilProduit }
+produitAdmin:
+    path:     /produitAdmin
+    defaults: { _controller: StoreGestionProduitsBundle:admin:produitAdmin }
