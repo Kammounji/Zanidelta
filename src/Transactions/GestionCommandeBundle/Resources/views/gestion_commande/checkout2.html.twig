@@ -1,0 +1,103 @@
+{% extends "TransactionsGestionCommandeBundle:Default:layout.html.twig" %}
+        {% block head %}
+            {{ parent() }}
+        {% endblock %}
+    {% block content %}
+
+
+        <div class="cp-wrapper">
+
+            {% block header %}
+                {{ parent() }}
+            {% endblock %}
+
+
+    <section class="cp-inner-banner">
+        <div class="container">
+            <div class="cp-inner-banner-outer">
+                <h2>Les livraisons</h2>
+
+                <ul class="breadcrumb">
+                    <li><a href="{{ path("affiche") }}">Home</a></li>
+                    <li>Products</li>
+                    <li class="active">livraisons</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <div class="cp-main-content">
+
+        <section class="cp-checkout-section pd-t100">
+            <div class="container">
+
+
+
+                <div class="cart-table-row checkout-table-row">
+                    <div class="checkout-inner-holder">
+                        <h3>Liste des commandes pas encore livrée</h3>
+                        </div>
+                    <div class="woocommerce">
+                        <form method="get">
+                            <table class="cp-shop_table">
+                                <thead>
+                                <tr>
+                                    <th class="product-remove"></th>
+                                    <th class="product-thumbnail">ref</th>
+                                    <th class="product-brand">client</th>
+                                    <th class="product-des">actions</th>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for c in comm %}
+                                {% if c.etat ==1 %}
+                                <tr class="cart_item">
+
+                                    <td class="product-thumbnail">
+
+                                    </td>
+                                    <td class="product-brand">
+                                        {{ c.id }}
+                                    </td>
+                                    <td class="product-size">
+                                        {% for u in us %}
+                                        {% if c.idClient ==u.id %}
+                                        {{ u.nom }}
+                                        {% endif %}
+                                        {% endfor %}
+                                    </td>
+
+                                    <td class="product-remove">
+                                        <center>
+                                        <a href="{{ path('Livrer',{'id':c.id}) }}" class="cp-btn-style4">livrer</a>
+                                        </center>
+                                    </td>
+                                </tr>
+                                {% endif %}
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </form>
+
+                        <div class="cp-cart-bottom">
+
+                            <a href="{{ path("checkout3") }}" class="cp-btn-style3">voir mes livraisons</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    {% block footer %}
+        {{ parent() }}
+    {% endblock %}
+</div>
+
+{% block script %}
+    {{ parent() }}
+{% endblock %}
+{% endblock %}
+
+

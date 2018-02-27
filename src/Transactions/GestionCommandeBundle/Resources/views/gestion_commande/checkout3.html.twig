@@ -1,0 +1,123 @@
+{% extends "TransactionsGestionCommandeBundle:Default:layout.html.twig" %}
+        {% block head %}
+            {{ parent() }}
+        {% endblock %}
+    {% block content %}
+
+
+        <div class="cp-wrapper">
+
+            {% block header %}
+                {{ parent() }}
+            {% endblock %}
+
+
+    <section class="cp-inner-banner">
+        <div class="container">
+            <div class="cp-inner-banner-outer">
+                <h2>Mes livraisons</h2>
+
+                <ul class="breadcrumb">
+                    <li><a href="{{ path("affiche") }}">Home</a></li>
+                    <li>Products</li>
+                    <li class="active">livraisons</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <div class="cp-main-content">
+
+        <section class="cp-checkout-section pd-t100">
+            <div class="container">
+
+
+
+                <div class="cart-table-row checkout-table-row">
+                    <div class="checkout-inner-holder">
+                        <h3>Liste de mes livraisons</h3>
+                        </div>
+                    <div class="woocommerce">
+                        <form method="get">
+                            <table class="cp-shop_table">
+                                <thead>
+                                <tr>
+                                    <th class="product-remove"></th>
+                                    <th class="product-thumbnail">ref</th>
+                                    <th class="product-thumbnail">ref commande</th>
+                                    <th class="product-brand">client</th>
+
+                                    <th class="product-des">etat</th>
+                                    <th class="product-des">action</th>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for c in liv %}
+                                {% if c.idLivreur ==uid %}
+                                <tr class="cart_item">
+
+                                    <td class="product-thumbnail">
+
+                                    </td>
+                                    <td class="product-brand">
+                                        {{ c.id }}
+                                    </td>
+                                    </td>
+                                    <td class="product-brand">
+                                        {{ c.idCommande }}
+                                    </td>
+                                    <td class="product-size">
+                                        {% for u in us %}
+                                        {% if c.idClient ==u.id %}
+                                        {{ u.nom }}
+                                        {% endif %}
+                                        {% endfor %}
+                                    </td>
+
+                                    <td class="product-remove">
+                                        <center>
+
+                                            {% if c.etat ==0 %}
+                                                 en cours de livraison
+                                                {% else %}
+                                                     livraison terminé
+                                            {% endif %}
+                                        </center>
+                                    </td>
+                                    <td class="product-remove">
+                                        {% if c.etat ==0 %}
+                                            <center>
+                                        <a href="{{ path('livrerter',{'id':c.id}) }}" class="cp-btn-style4">livraison terminé</a>
+                                            </center>
+                                                {% endif %}
+                                    </td>
+                                </tr>
+                                {% endif %}
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                            <a href="{{ path('genpdf') }}" class="cp-btn-style3">genpdf</a>
+                        </form>
+
+                        <div class="cp-cart-bottom">
+
+                            <a href="{{ path("affiche") }}" class="cp-btn-style3">Go to the Home Page</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    {% block footer %}
+        {{ parent() }}
+    {% endblock %}
+</div>
+
+{% block script %}
+    {{ parent() }}
+{% endblock %}
+{% endblock %}
+
+

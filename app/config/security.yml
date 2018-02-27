@@ -1,0 +1,72 @@
+# To get started with security, check out the documentation:
+# https://symfony.com/doc/current/security.html
+# app/config/security.yml
+security:
+    encoders:
+        FOS\UserBundle\Model\UserInterface: bcrypt
+
+    role_hierarchy:
+        ROLE_ADMINISTRATEUR:  ROLE_ADMIN
+        ROLE_MAGASIN:     ROLE_USER
+        ROLE_CLIENT:      ROLE_USER
+        ROLE_VETERINAIRE: ROLE_USER
+        ROLE_ASSOCIATION: ROLE_USER
+        ROLE_LIVREUR: ROLE_USER
+        ROLE_DRESSEUR: ROLE_USER
+
+
+
+
+    providers:
+        fos_userbundle:
+            id: fos_user.user_provider.username
+
+    firewalls:
+        main:
+            pattern: ^/
+            form_login:
+                provider: fos_userbundle
+                csrf_token_generator: security.csrf.token_manager # Use form.csrf_provider instead for Symfony <2.4
+            logout:       true
+            anonymous:    true
+
+    access_control:
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/logreg, role: IS_AUTHENTICATED_ANONYMOUSLY}
+        - { path: ^/affiche, role: [ROLE_ADMINISTRATEUR,ROLE_CLIENT,ROLE_MAGASIN,ROLE_CLIENT,ROLE_VETERINAIRE,ROLE_ASSOCIATION,ROLE_LIVREUR,ROLE_DRESSEUR,IS_AUTHENTICATED_ANONYMOUSLY]}
+        - { path: ^/produit, role: [ROLE_ADMINISTRATEUR,ROLE_CLIENT,ROLE_MAGASIN,ROLE_CLIENT,ROLE_VETERINAIRE,ROLE_ASSOCIATION,ROLE_LIVREUR,ROLE_DRESSEUR,IS_AUTHENTICATED_ANONYMOUSLY]}
+        - { path: ^/evenement, role:[ROLE_ADMINISTRATEUR,ROLE_CLIENT,ROLE_MAGASIN,ROLE_CLIENT,ROLE_VETERINAIRE,ROLE_ASSOCIATION,ROLE_LIVREUR,ROLE_DRESSEUR,IS_AUTHENTICATED_ANONYMOUSLY]}
+        - { path: ^/slideproduit, role: [ROLE_ADMINISTRATEUR,ROLE_CLIENT,ROLE_MAGASIN,ROLE_CLIENT,ROLE_VETERINAIRE,ROLE_ASSOCIATION,ROLE_LIVREUR,ROLE_DRESSEUR,IS_AUTHENTICATED_ANONYMOUSLY]}
+        - { path: ^/produitdetail, role: [ROLE_ADMINISTRATEUR,ROLE_CLIENT,ROLE_MAGASIN,ROLE_CLIENT,ROLE_VETERINAIRE,ROLE_ASSOCIATION,ROLE_LIVREUR,ROLE_DRESSEUR,IS_AUTHENTICATED_ANONYMOUSLY]}
+        - { path: ^/cart, role: [ROLE_ADMINISTRATEUR,ROLE_CLIENT,ROLE_MAGASIN,ROLE_CLIENT,ROLE_VETERINAIRE,ROLE_ASSOCIATION,ROLE_LIVREUR,ROLE_DRESSEUR,IS_AUTHENTICATED_ANONYMOUSLY]}
+        - { path: ^/checkout, role: [ROLE_ADMINISTRATEUR,ROLE_CLIENT,ROLE_MAGASIN,ROLE_CLIENT,ROLE_VETERINAIRE,ROLE_ASSOCIATION,ROLE_LIVREUR,ROLE_DRESSEUR]}
+        - { path: ^/service, role:[ROLE_ADMINISTRATEUR,ROLE_CLIENT,ROLE_MAGASIN,ROLE_CLIENT,ROLE_VETERINAIRE,ROLE_ASSOCIATION,ROLE_LIVREUR,ROLE_DRESSEUR,IS_AUTHENTICATED_ANONYMOUSLY]}
+        - { path: ^/evendetail, role: [ROLE_ADMINISTRATEUR,ROLE_CLIENT,ROLE_MAGASIN,ROLE_CLIENT,ROLE_VETERINAIRE,ROLE_ASSOCIATION,ROLE_LIVREUR,ROLE_DRESSEUR,IS_AUTHENTICATED_ANONYMOUSLY]}
+        - { path: ^/evenmeduim, role: [ROLE_ADMINISTRATEUR,ROLE_CLIENT,ROLE_MAGASIN,ROLE_CLIENT,ROLE_VETERINAIRE,ROLE_ASSOCIATION,ROLE_LIVREUR,ROLE_DRESSEUR,IS_AUTHENTICATED_ANONYMOUSLY]}
+        - { path: ^/veterinaire, role: [ROLE_ADMINISTRATEUR,ROLE_CLIENT,ROLE_MAGASIN,ROLE_CLIENT,ROLE_VETERINAIRE,ROLE_ASSOCIATION,ROLE_LIVREUR,ROLE_DRESSEUR,IS_AUTHENTICATED_ANONYMOUSLY]}
+        - { path: ^/veterinairedetail, role: [ROLE_ADMINISTRATEUR,ROLE_CLIENT,ROLE_MAGASIN,ROLE_CLIENT,ROLE_VETERINAIRE,ROLE_ASSOCIATION,ROLE_LIVREUR,ROLE_DRESSEUR,IS_AUTHENTICATED_ANONYMOUSLY]}
+        - { path: ^/ajouteven, role: ROLE_ASSOCIATION}
+        - { path: ^/espaceassociation, role: ROLE_ASSOCIATION}
+        - { path: ^/modsuppevenn, role: ROLE_ASSOCIATION}
+        - { path: ^/moddetaileven, role: ROLE_ASSOCIATION}
+        - { path: ^/ajoutmag, role: ROLE_MAGASIN}
+        - { path: ^/espacemag, role: ROLE_MAGASIN}
+        - { path: ^/modsuppstore, role: ROLE_MAGASIN}
+        - { path: ^/modifdetailmag, role: ROLE_MAGASIN}
+        - { path: ^/espaceveterinaire, role: ROLE_VETERINAIRE}
+        - { path: ^/rendezvous, role: ROLE_VETERINAIRE}
+        - { path: ^/animalp, role: [ROLE_ADMINISTRATEUR,ROLE_CLIENT,ROLE_MAGASIN,ROLE_CLIENT,ROLE_VETERINAIRE,ROLE_ASSOCIATION,ROLE_LIVREUR,ROLE_DRESSEUR]}
+        - { path: ^/animalsdf, role: [ROLE_ADMINISTRATEUR,ROLE_CLIENT,ROLE_MAGASIN,ROLE_CLIENT,ROLE_VETERINAIRE,ROLE_ASSOCIATION,ROLE_LIVREUR,ROLE_DRESSEUR]}
+        - { path: ^/rvdresseur, role: [ROLE_ADMINISTRATEUR,ROLE_CLIENT,ROLE_MAGASIN,ROLE_CLIENT,ROLE_VETERINAIRE,ROLE_ASSOCIATION,ROLE_LIVREUR]}
+        - { path: ^/grvdresseur, role: ROLE_DRESSEUR}
+        - { path: ^/reclamationAdmin, role:ROLE_ADMINISTRATEUR}
+        - { path: ^/evenementAdmin, role: ROLE_ADMINISTRATEUR}
+        - { path: ^/produitAdmin, role: ROLE_ADMINISTRATEUR}
+        - { path: ^/commandeAdmin, role: ROLE_ADMINISTRATEUR}
+        - { path: ^/enchereAdmin, role: ROLE_ADMINISTRATEUR}
+        - { path: ^/veterinaireAdmin, role: ROLE_ADMINISTRATEUR}
+        - { path: ^/accueilAdmin, role: ROLE_ADMINISTRATEUR}
+
+

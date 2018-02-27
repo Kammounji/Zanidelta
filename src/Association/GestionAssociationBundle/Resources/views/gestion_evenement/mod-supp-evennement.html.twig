@@ -1,0 +1,170 @@
+{% extends "MyAppUserBundle:Default:layout.html.twig" %}
+        {% block head %}
+            {{ parent() }}
+        {% endblock %}
+    {% block content %}
+
+<div class="cp-wrapper">
+
+    {% block header %}
+        {{ parent() }}
+    {% endblock %}
+
+<section class="cp-inner-banner">
+<div class="container">
+<div class="cp-inner-banner-outer">
+<h2>Espace Gestion Des Evennements</h2>
+<ul class="breadcrumb">
+<li><a href="{{ path("affiche") }}">Home</a></li>
+<li>Espace Associations</li>
+<li class="active">EG-Evennements</li>
+</ul>
+</div>
+</div>
+</section>
+
+<div class="cp-main-content">
+<section class="cp-cart-section pd-tb100">
+<div class="container">
+
+<div class="col-md-3 col-sm-6">
+<div class="widget widget-appointment">
+<input type="text" placeholder="search" required="">
+</div>
+</div>
+<a href="#"><i class="icon-search"></i></a>
+
+<div class="cp-show-result-outer">
+<span class="showing">Showing 1–9 of 16 Results</span>
+<div class="right-outer">
+<select>
+<option value="">Default Sorting</option>
+<option value="">Default Sorting</option>
+<option value="">Default Sorting</option>
+<option value="">Default Sorting</option>
+<option value="">Default Sorting</option>
+</select>
+</div>
+</div>
+
+<div class="cart-table-row">
+<div class="woocommerce">
+<form method="get">
+<table class="cp-shop_table">
+<thead>
+<tr>
+<th class="product-remove"></th>
+<th class="product-thumbnail">event</th>
+<th class="product-price">date</th>
+<th class="product-quantity">lieu</th>
+<th class="product-subtotal">duree event</th>
+<th class="product-subtotal">prix</th>
+</tr>
+</thead>
+<tbody>
+<tr class="cart_item">
+<td class="product-remove">
+<a href="#"><i class="fa fa-close"></i></a>
+<a href="#"><i><img src="{{ asset('images/modif-icon.png') }}" width="70%"/></i></a>
+<a href="#"><i></i></a>
+
+</td>
+
+<td class="product-thumbnail">
+<a href="#"><img src="{{ asset('images/cart-img-01.jpg') }}" alt=""></a>
+<span>Friskies Cat</span>
+</td>
+<td class="product-price">
+$ 165.00
+</td>
+<td class="product-quantity">
+<div class="input-append spinner" data-trigger="spinner">
+<span class="spin-down" data-spin="down"><i class="fa fa-minus"></i></span>
+<input type="text" value="0" data-rule="quantity">
+<span class="spin-up" data-spin="up"><i class="fa fa-plus"></i></span>
+</div>
+</td>
+<td class="product-subtotal">
+$ 495.00
+</td>
+</tr>
+<tr class="cart_item">
+<td class="product-remove">
+<a href="#"><i class="fa fa-close"></i></a>
+<a href="#"><i><img src="{{ asset('images/modif-icon.png') }}" width="70%"/></i></a>
+</td>
+<td class="product-thumbnail">
+<a href="#"><img src="{{ asset('images/cart-img-02.jpg') }}" alt=""></a>
+<span>Dog food</span>
+</td>
+<td class="product-price">
+$ 210.00
+</td>
+<td class="product-quantity">
+<div class="input-append spinner" data-trigger="spinner">
+<span class="spin-down" data-spin="down"><i class="fa fa-minus"></i></span>
+<input type="text" value="0" data-rule="quantity">
+<span class="spin-up" data-spin="up"><i class="fa fa-plus"></i></span>
+</div>
+</td>
+<td class="product-subtotal">
+$ 300.00
+</td>
+</tr>
+<tr class="cart_item">
+<td class="product-remove">
+<a href="#"><i class="fa fa-close"></i></a>
+<a href="#"><i><img src="{{ asset('images/modif-icon.png') }}" width="70%"/></i></a>
+</td>
+<td class="product-thumbnail">
+<a href="#"><img src="{{ asset('images/cart-img-03.jpg') }}" alt=""></a>
+<span>Hen Food</span>
+</td>
+<td class="product-price">
+$ 160.00
+</td>
+<td class="product-quantity">
+<div class="input-append spinner" data-trigger="spinner">
+<span class="spin-down" data-spin="down"><i class="fa fa-minus"></i></span>
+<input type="text" value="0" data-rule="quantity">
+<span class="spin-up" data-spin="up"><i class="fa fa-plus"></i></span>
+</div>
+</td>
+<td class="product-subtotal">
+$ 300.00
+</td>
+</tr>
+</tbody>
+</table>
+</form>
+
+
+<div class="pagination-box">
+<nav>
+<ul class="pagination">
+<li> <a href="#" aria-label="Previous"> <span aria-hidden="true"><i class="fa fa-angle-right" aria-hidden="true"></i></span> </a> </li>
+<li><a href="#">1</a></li>
+<li class="active"><a href="#">2</a></li>
+<li><a href="#">3</a></li>
+<li><a href="#">4</a></li>
+<li><a href="#">5</a></li>
+<li> <a href="#" aria-label="Next"> <span aria-hidden="true"><i class="fa fa-angle-left" aria-hidden="true"></i></span> </a> </li>
+</ul>
+</nav>
+
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+
+    {% block footer %}
+        {{ parent() }}
+    {% endblock %}
+</div>
+
+        {% block script %}
+            {{ parent() }}
+        {% endblock %}
+    {% endblock %}

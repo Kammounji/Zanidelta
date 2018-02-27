@@ -1,0 +1,89 @@
+{% extends "TransactionsGestionCommandeBundle:Default:layout.html.twig" %}
+        {% block head %}
+            {{ parent() }}
+        {% endblock %}
+    {% block content %}
+
+<div class="cp-wrapper">
+    {% block header %}
+        {{ parent() }}
+    {% endblock %}
+
+    <section class="cp-inner-banner">
+        <div class="container">
+            <div class="cp-inner-banner-outer">
+                <h2>Ma Commande</h2>
+
+
+            </div>
+        </div>
+    </section>
+
+    <div class="cp-main-content">
+
+        <section class="cp-cart-section pd-tb100">
+            <div class="container">
+
+                <div class="cart-table-row">
+                    <div class="woocommerce">
+                        <form method="get">
+                            <table class="cp-shop_table">
+                                <thead>
+                                <tr>
+
+                                    <th class="product-thumbnail">Product</th>
+                                    <th class="product-price">Price</th>
+                                    <th class="product-quantity">Quantity</th>
+                                    <th class="product-subtotal">Total</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                {% for produits in produits %}
+                                    {% for ligne in ligne %}
+                                        {% if produits.id == ligne.idProduit %}
+                                <tr class="cart_item">
+
+
+                                    <td class="product-thumbnail">
+                                        <a href="#"><img src="{{ asset('images/product/'~produits.urlImg) }}" alt=""></a>
+                                        <span>{{ produits.caracteristiques }}</span>
+                                    </td>
+                                    <td class="product-price">
+                                        {{ produits.prixNouv }} tnd
+                                    </td>
+                                    <td class="product-quantity">
+                                        {{ ligne.qte }}
+                                    </td>
+                                    <td class="product-subtotal">
+                                        {{ produits.prixNouv * ligne.qte }} tnd
+                                    </td>
+
+
+                                </tr>
+                                       {% endif %}
+                                    {% endfor %}
+                                {% endfor %}
+
+                                </tbody>
+                            </table>
+                        </form>
+
+                        <div class="cp-cart-bottom">
+                            <a href="{{ path("checkout") }}" class="cp-btn-style3">Retourner a mes commandes</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    {% block footer %}
+        {{ parent() }}
+    {% endblock %}
+</div>
+
+{% block script %}
+    {{ parent() }}
+{% endblock %}
+{% endblock %}

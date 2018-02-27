@@ -1,0 +1,42 @@
+
+cart:
+    path:     /cart
+    defaults: { _controller: TransactionsGestionCommandeBundle:Default:cart }
+
+checkout:
+    path:     /checkout
+    defaults: { _controller: TransactionsGestionCommandeBundle:Default:checkout }
+checkout2:
+    path:     /checkout2
+    defaults: { _controller: TransactionsGestionCommandeBundle:Default:checkout2 }
+checkout3:
+    path:     /checkout3
+    defaults: { _controller: TransactionsGestionCommandeBundle:Default:checkout3 }
+
+accueilAdmin:
+    path:     /accueilAdmin
+    defaults: { _controller: TransactionsGestionCommandeBundle:admin:acceuil }
+commandeAdmin:
+    path:     /commandeAdmin
+    defaults: { _controller: TransactionsGestionCommandeBundle:admin:commandeAdmin }
+supprCart:
+    path:     /supprCart{id}
+    defaults: { _controller: TransactionsGestionCommandeBundle:Default:deleteCart}
+Livrer:
+    path:     /Livrer{id}
+    defaults: { _controller: TransactionsGestionCommandeBundle:Default:Livrer }
+commandepaiement:
+    path:     /commandepaiement{id}
+    defaults: { _controller: TransactionsGestionCommandeBundle:Default:commandepaiement }
+commandeannul:
+    path:     /commandeannul{id}
+    defaults: { _controller: TransactionsGestionCommandeBundle:Default:commandeannul }
+livrerter:
+    path:     /livrerter{id}
+    defaults: { _controller: TransactionsGestionCommandeBundle:Default:livrerter }
+genpdf:
+    path:     /genpdf
+    defaults: { _controller: TransactionsGestionCommandeBundle:Default:genpdf }
+ma_commande:
+    path:     /ma_commande{id}
+    defaults: { _controller: TransactionsGestionCommandeBundle:Default:ma_commande}

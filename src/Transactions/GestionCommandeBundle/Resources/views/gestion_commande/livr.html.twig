@@ -1,0 +1,35 @@
+<table >
+    <thead>
+    <tr>
+        <th>
+            ref
+        </th>
+        <th>
+           client
+            </th>
+    </tr>
+    {% for c in comm %}
+        {% if c.etat ==0 %}
+    <tr>
+        <td>
+
+                {{ c.id }}
+
+        </td>
+        <td>
+            {% for u in us %}
+                {% if c.idClient ==u.id %}
+                    {{ u.nom }}
+                {% endif %}
+            {% endfor %}
+
+        </td>
+
+    </tr>
+        {% endif %}
+    {% endfor %}
+    </thead>
+    <tbody>
+
+    </tbody>
+</table>
