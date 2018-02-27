@@ -1,0 +1,359 @@
+{% extends "MyAppUserBundle:Default:layout.html.twig" %}
+{% block head %}
+    {{ parent() }}
+
+
+{% endblock %}
+{% block content %}
+
+
+    <div class="cp-wrapper">
+
+        {% block header %}
+            {{ parent() }}
+
+        {% endblock %}
+
+    <section class="cp-inner-banner">
+        <div class="container">
+            <div class="cp-inner-banner-outer">
+                <h2>Evenement</h2>
+
+                <ul class="breadcrumb">
+                    <li><a href="{{ path('affiche') }}">Home</a></li>
+                    <li>Pages</li>
+                    <li class="active">Evenement</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <div class="cp-main-content">
+
+        <section class="cp-blog-section pd-t100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="col-md-12 col-sm-12">
+
+                            <article class="cp-blog-item">
+                                <figure class="cp-thumb">
+                                    <img src="{{ asset('images/blog/blog-full-img-01.jpg') }}" alt="">
+                                </figure>
+                                <div class="cp-text">
+                                    <div class="cp-date-box">
+                                        <span>15</span>
+                                        July
+                                    </div>
+                                    <div class="cp-inner">
+                                        <h3>evenement 1</h3>
+                                        <div class="cp-top">
+                                            <ul class="cp-meta-listed">
+                                                <li><i class="fa fa-user" aria-hidden="true"></i> Michel Jhon</li>
+                                                <li><i class="fa fa-user" aria-hidden="true"></i> 762</li>
+                                                <li>
+                                                    <i class="fa fa-user" aria-hidden="true"></i>
+                                                    <a href="#">Pets,</a>
+                                                    <a href="#">Cats,</a>
+                                                    <a href="#">Vaternity,</a>
+                                                    <a href="#">Pet Health,</a>
+                                                    <a href="#">Medical</a>
+                                                </li>
+                                            </ul>
+                                            <ul class="right-nav">
+                                                <li><i class="fa fa-heart" aria-hidden="true"></i> 232</li>
+                                                <li class="share share-push"><a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i></a></li>
+                                            </ul>
+                                            <ul class="cp-social-links share-holder">
+                                                <li><a href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-phone-square" aria-hidden="true"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-skype" aria-hidden="true"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
+                                            </ul>
+                                        </div>
+                                        <p>description. </p>
+                                        <a href="blog-details.html" class="cp-btn-style3">Read More</a>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        <div class="col-md-12 col-sm-12">
+
+                            <article class="cp-blog-item">
+                                <div class="owl-carousel" id="cp-blog-slider">
+                                    <div class="item">
+                                        <figure class="cp-thumb"><img src="{{ asset('images/blog/blog-full-img-02.jpg') }}" alt=""></figure>
+                                    </div>
+                                    <div class="item">
+                                        <figure class="cp-thumb"><img src="{{ asset('images/blog/blog-full-img-03.jpg') }}" alt=""></figure>
+                                    </div>
+                                    <div class="item">
+                                        <figure class="cp-thumb"><img src="{{ asset('images/blog/blog-full-img-03.jpg') }}" alt=""></figure>
+                                    </div>
+                                </div>
+                                <div class="cp-text">
+                                    <div class="cp-date-box">
+                                        <span>20</span>
+                                        July
+                                    </div>
+                                    <div class="cp-inner">
+                                        <h3>evenement 2. </h3>
+                                        <div class="cp-top">
+                                            <ul class="cp-meta-listed">
+                                                <li><i class="fa fa-user" aria-hidden="true"></i> Michel Jhon</li>
+                                                <li><i class="fa fa-user" aria-hidden="true"></i> 762</li>
+                                                <li>
+                                                    <i class="fa fa-user" aria-hidden="true"></i>
+                                                    <a href="#">Pets,</a>
+                                                    <a href="#">Cats,</a>
+                                                    <a href="#">Vaternity,</a>
+                                                    <a href="#">Pet Health,</a>
+                                                    <a href="#">Medical</a>
+                                                </li>
+                                            </ul>
+                                            <ul class="right-nav">
+                                                <li><i class="fa fa-heart" aria-hidden="true"></i> 232</li>
+                                                <li class="share share-push"><a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i></a></li>
+                                            </ul>
+                                            <ul class="cp-social-links share-holder">
+                                                <li><a href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-phone-square" aria-hidden="true"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-skype" aria-hidden="true"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
+                                            </ul>
+                                        </div>
+                                        <p>description. </p>
+                                        <a href="blog-details.html" class="cp-btn-style3">Read More</a>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        <div class="col-md-12 col-sm-12">
+
+                            <article class="cp-blog-item">
+                                <div class="cp-video-outer">
+                                    <iframe src="https://player.vimeo.com/video/79954511"></iframe>
+                                </div>
+                                <div class="cp-text">
+                                    <div class="cp-date-box">
+                                        <span>15</span>
+                                        July
+                                    </div>
+                                    <div class="cp-inner">
+                                        <h3>Evenement 3</h3>
+                                        <div class="cp-top">
+                                            <ul class="cp-meta-listed">
+                                                <li><i class="fa fa-user" aria-hidden="true"></i> Michel Jhon</li>
+                                                <li><i class="fa fa-user" aria-hidden="true"></i> 762</li>
+                                                <li>
+                                                    <i class="fa fa-user" aria-hidden="true"></i>
+                                                    <a href="#">Pets,</a>
+                                                    <a href="#">Cats,</a>
+                                                    <a href="#">Vaternity,</a>
+                                                    <a href="#">Pet Health,</a>
+                                                    <a href="#">Medical</a>
+                                                </li>
+                                            </ul>
+                                            <ul class="right-nav">
+                                                <li><i class="fa fa-heart" aria-hidden="true"></i> 232</li>
+                                                <li class="share share-push"><a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i></a></li>
+                                            </ul>
+                                            <ul class="cp-social-links share-holder">
+                                                <li><a href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-phone-square" aria-hidden="true"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-skype" aria-hidden="true"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
+                                            </ul>
+                                        </div>
+                                        <p>description. </p>
+                                        <a href="blog-details.html" class="cp-btn-style3">Read More</a>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        <div class="col-md-12 col-sm-12">
+
+                            <article class="cp-blog-item">
+                                <div class="cp-text">
+                                    <div class="cp-date-box">
+                                        <span>10</span>
+                                        Aug
+                                    </div>
+                                    <div class="cp-inner">
+                                        <h3>Evenement 4 </h3>
+                                        <div class="cp-top">
+                                            <ul class="cp-meta-listed">
+                                                <li><i class="fa fa-user" aria-hidden="true"></i> Michel Jhon</li>
+                                                <li><i class="fa fa-user" aria-hidden="true"></i> 762</li>
+                                                <li>
+                                                    <i class="fa fa-user" aria-hidden="true"></i>
+                                                    <a href="#">Pets,</a>
+                                                    <a href="#">Cats,</a>
+                                                    <a href="#">Vaternity,</a>
+                                                    <a href="#">Pet Health,</a>
+                                                    <a href="#">Medical</a>
+                                                </li>
+                                            </ul>
+                                            <ul class="right-nav">
+                                                <li><i class="fa fa-heart" aria-hidden="true"></i> 232</li>
+                                                <li class="share share-push"><a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i></a></li>
+                                            </ul>
+                                            <ul class="cp-social-links share-holder">
+                                                <li><a href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-phone-square" aria-hidden="true"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-skype" aria-hidden="true"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
+                                            </ul>
+                                        </div>
+                                        <p>description . </p>
+                                        <a href="blog-details.html" class="cp-btn-style3">Read More</a>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        <div class="col-md-12 col-sm-12">
+
+                            <article class="cp-blog-item">
+                                <div class="cp-audio-item">
+                                    <div class="mp3-player-box">
+                                        <audio preload="auto" controls>
+                                            <source src="{{ asset('audio/BlueDucks_FourFlossFiveSix.mp3') }}">
+                                            <source src="{{ asset('audio/BlueDucks_FourFlossFiveSix.ogg') }}">
+                                            <source src="{{ asset('audio/BlueDucks_FourFlossFiveSix.wav') }}">
+                                        </audio>
+                                    </div>
+                                </div>
+                                <div class="cp-text">
+                                    <div class="cp-date-box">
+                                        <span>10</span>
+                                        Aug
+                                    </div>
+                                    <div class="cp-inner">
+                                        <h3>evenement 5</h3>
+                                        <div class="cp-top">
+                                            <ul class="cp-meta-listed">
+                                                <li><i class="fa fa-user" aria-hidden="true"></i> Michel Jhon</li>
+                                                <li><i class="fa fa-user" aria-hidden="true"></i> 762</li>
+                                                <li>
+                                                    <i class="fa fa-user" aria-hidden="true"></i>
+                                                    <a href="#">Pets,</a>
+                                                    <a href="#">Cats,</a>
+                                                    <a href="#">Vaternity,</a>
+                                                    <a href="#">Pet Health,</a>
+                                                    <a href="#">Medical</a>
+                                                </li>
+                                            </ul>
+                                            <ul class="right-nav">
+                                                <li><i class="fa fa-heart" aria-hidden="true"></i> 232</li>
+                                                <li class="share share-push"><a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i></a></li>
+                                            </ul>
+                                            <ul class="cp-social-links share-holder">
+                                                <li><a href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-phone-square" aria-hidden="true"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-skype" aria-hidden="true"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
+                                            </ul>
+                                        </div>
+                                        <p>description. </p>
+                                        <a href="blog-details.html" class="cp-btn-style3">Read More</a>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+
+                        <div class="pagination-box">
+                            <nav>
+                                <ul class="pagination">
+                                    <li> <a href="#" aria-label="Next"> <span aria-hidden="true"><i class="fa fa-angle-left" aria-hidden="true"></i></span> </a> </li>
+                                    <li><a href="#">1</a></li>
+                                    <li class="active"><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                    <li><a href="#">4</a></li>
+                                    <li><a href="#">5</a></li>
+                                    <li> <a href="#" aria-label="Previous"> <span aria-hidden="true"><i class="fa fa-angle-right" aria-hidden="true"></i></span> </a> </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-12">
+
+                        <aside class="cp-sidebar-outer">
+
+                            <div class="widget widget-search widget-search2">
+                                <form method="get">
+                                    <input type="text" placeholder="Search" required>
+                                    <button type="submit" class="btn-submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                                </form>
+                            </div>
+
+
+
+
+
+                            <div class="widget widget-categories">
+                                <h3>Categories</h3>
+                                <ul>
+                                    <li>Behavior <span>(09)</span></li>
+                                    <li>Cat Care <span>(11)</span></li>
+                                    <li>Dog Care<span>(14)</span></li>
+                                    <li>Genral Care <span>(15)</span></li>
+                                    <li>General Health<span>(13)</span></li>
+                                    <li>CIBC Cure<span>(14)</span></li>
+                                </ul>
+                            </div>
+
+                            <div class="widget widget-range-slider">
+                                <h3>Filter By Price</h3>
+                                <div class="cp-range-slider-holder">
+                                    <div id="cp-range-slider"></div>
+                                    <p><span>Range</span>
+                                        <input type="text" id="amount">
+                                        <span class="cp-filter">Filter</span>
+                                    </p>
+                                </div>
+                            </div>
+
+
+                            <div class="widget widget-clouds">
+                                <h3>POPULAR TAGS</h3>
+                                <div class="tagcloud">
+                                    <a href="#">Cat Care</a>
+                                    <a href="#">Community</a>
+                                    <a href="#">CIBC</a>
+                                    <a href="#">General Health</a>
+                                    <a href="#">Behavior</a>
+                                    <a href="#">CIBC</a>
+                                    <a href="#">Dog Care</a>
+                                    <a href="#">Health Care</a>
+                                    <a href="#">Emergecy</a>
+                                </div>
+                            </div>
+
+
+                        </aside>
+                    </div>
+                </div>
+            </div>
+        </section>
+        {% block footer %}
+            {{ parent() }}
+        {% endblock %}
+    </div>
+
+
+
+    {% block script %}
+        {{ parent() }}
+    {% endblock %}
+
+{% endblock %}

@@ -1,0 +1,320 @@
+{% extends "MyAppUserBundle:Default:layout.html.twig" %}
+        {% block head %}
+            <style>
+                .modal {
+                    text-align: center;
+                    padding: 0!important;
+                }
+
+                .modal:before {
+                    content: '';
+                    display: inline-block;
+                    height: 100%;
+                    vertical-align: middle;
+                    margin-right: -4px;
+                }
+
+                .modal-dialog {
+                    display: inline-block;
+                    text-align: left;
+                    vertical-align: middle;
+                }
+            </style>
+            <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Update comment</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="input-field textarea-field">
+                                    <textarea name="texte" id="texteupdate" class="validate"></textarea>
+                                    <label>Comment</label>
+                                </div>
+                                <div class="col">
+                                    <button type="button" class="btn btn-info" onclick="confirmer()">Confirmer</button>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{ parent() }}
+        {% endblock %}
+    {% block content %}
+
+<div class="cp-wrapper">
+
+    {% block header %}
+        {{ parent() }}
+
+
+    {% endblock %}
+
+    <section class="cp-inner-banner">
+        <div class="container">
+            <div class="cp-inner-banner-outer">
+                <h2>Nom du veterinaire</h2>
+
+                <ul class="breadcrumb">
+                    <li><a href="{{ path("affiche") }}">Home</a></li>
+                    <li><a href="{{ path("veterinaire") }}">Nos veterinaires</a></li>
+                    <li class="active">Nom du veterinaire</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <div class="cp-main-content">
+
+        <section class="cp-product-section pd-t100">
+            <div class="container">
+
+                <div class="cp-pro-detail-info">
+                    <div class="row">
+
+                        <div class="col-md-6 col-sm-12">
+                            <div class="cp-text">
+                                <div class="cp-top">
+<span class="cp-rating">
+<i class="fa fa-star" aria-hidden="true"></i>
+<i class="fa fa-star" aria-hidden="true"></i>
+<i class="fa fa-star" aria-hidden="true"></i>
+<i class="fa fa-star" aria-hidden="true"></i>
+<i class="fa fa-star" aria-hidden="true"></i>
+</span>
+
+                                    <span class="view">(Customer view)</span>
+                                </div>
+                                <div class="pro-price">
+                                    <label>Prix de consultation</label>
+                                    <span class="new">${{ vet.prixUnitaire }}</span>
+                                </div>
+                                <p>{{ vet.nom }}</p>
+                                <p>{{ vet.prenom }}</p>
+                                <p>{{ vet.username }}</p>
+                                <ul class="categories-list">
+                                    <li>Share :
+                                        <span class="cp-social-links">
+<a href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+<a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+<a href="#"><i class="fa fa-phone-square" aria-hidden="true"></i></a>
+<a href="#"><i class="fa fa-skype" aria-hidden="true"></i></a>
+<a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+<a href="#"><i class="fa fa-rss" aria-hidden="true"></i></a>
+</span>
+                                    </li>
+                                </ul>
+
+                                <button onclick="addrdv();" class="cp-btn-style3">Prendre un rdv</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cp-tab-box cp-product-tabs">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="active"><a href="#cp_tab1" role="tab" data-toggle="tab">Cabinet</a></li>
+                        <li><a href="#cp_tab2" role="tab" data-toggle="tab">Commentaires</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active fade in" id="cp_tab1">
+                            <div class="cp-tab-info-box">
+                                <div class="cp-tab-text">
+                                    <iframe width="600" height="450" frameborder="0" style="border:0"
+                                            src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJQ_V-Xn8z_RIRdQJKcU6ScdY&key=AIzaSyBExXPRcPTN3kFVW0ViJlvogBXDNQkcDPY" allowfullscreen></iframe>
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="cp_tab2">
+                            <div class="cp-tab-info-box">
+
+                                <ul class="cp-comments-holder">
+        {% for c in comments %}
+
+                                    <li id="li{{ c.id }}">
+
+                                        <div class="cp-comments-box">
+                                            <div class="cp-round-img">
+                                                <img src="{{ asset('images/comments-sm-img3.jpg') }}" alt="">
+                                            </div>
+                                            <div class="cp-text">
+                                                <h5>{{ c.idClient }}</h5>
+                                                <ul class="cp-meta-list">
+                                                    <li>{{ c.date|date('Y-m-d H:i:s') }}</li>
+                                                </ul>
+                                                <p id="{{ c.id }}">{{ c.texte }}</p>
+                                            </div>
+            {% if c.idClient == app.user.getUsername() %}
+                                            <a href="#" onclick="GetComment({{ c.id }})" class="" data-toggle="tooltip" title="Edit" >
+                                                <i class="fa fa-pencil"></i>
+                                            </a>
+
+                                                <button  title="Delete" onclick="deletecom({{ c.id }})">
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
+            {% endif %}
+                                        </div>
+                                    </li>
+
+            {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <section class="cp-home-contact-section pd-t100">
+                        <div class="container">
+
+                            <div class="src=cp-heading-style1_v1">
+                                <h2>Your Comment</h2>
+                            </div>
+
+                            <div class="cp-contact-inner">
+
+                                    <div class="row">
+
+                                        <div class="col-md-12 col-sm-12">
+                                            <div class="input-field textarea-field">
+                                                <textarea name="texte" id="texte" class="validate"></textarea>
+                                                <label>Comment</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 col-sm-12">
+                                            <div class="input-field btn-holder">
+                                                <button class="btn-submit cp-btn-style1"  id="btn_add_comment" name="btn_add_comment" value="Comment" >Comment</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                            </div>
+                        </div>
+
+                        <div class="{{ asset('scrollme')}}">
+                            <div class="cp-pet-animate animateme" data-when="span" data-from="0.2" data-to="0.9" data-opacity="0" data-translatex="100" data-rotatez="10">
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+    </div>
+    <input type="hidden" id="cible" name="cible" value="{{ vet.id }}">
+
+
+    {% block footer %}
+        {{ parent() }}
+
+    {% endblock %}
+</div>
+
+
+{% block script %}
+    {{ parent() }}
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script>
+        var idc=0;
+        $( document ).ready(function() {
+
+            $("#btn_add_comment").on('click', function (evt) {
+                if( $('#texte').val()=="" )
+
+                {
+                    alert("Your Comment is Empty !");
+                    return false;
+                }
+
+                obj = new Object();
+                obj["texte"] = $('#texte').val();
+
+                obj["cible"] = $('#cible').val();
+
+                $.ajax({
+                    type: "POST",
+                    url: "{{ path('commentaire_ajouter') }}",
+                    data: obj,
+                    dataType: "json",
+                    success: function () {
+                        //
+                    }
+                });
+                alert("Comment Ajouter avec succés !");
+                $('#texte').val("");
+                location.href = "{{ path('veterinaire_profile',{'id':vet.id}) }}";
+            });
+        });
+        function GetComment(id) {
+
+            idc=id;
+            $('#myModal').modal('show');
+
+        }
+
+
+        function confirmer() {
+
+            obj = new Object();
+            obj["texte"] = $('#texteupdate').val();
+            obj["idcomment"] = idc;
+
+            $.ajax({
+                type: "POST",
+                url: "{{ path('updateComment_avec_ajax') }}",
+                data: obj,
+                dataType: "json",
+                success: function (response) {
+
+                }
+            });
+
+            $('#myModal').modal('hide');
+            alert("terminé!",'comment updated',"success");
+            $( '#'+idc+'' ).replaceWith( "<p id="+idc+">"+obj["texte"]+"</p>");
+            $('#texteupdate').val("");
+            idc=0;
+        }
+
+        function deletecom(id) {
+
+
+            obj = new Object();
+            obj["idsupp"] = id ;
+            $.ajax({
+                type: "POST",
+                url: "{{ path('delete_comm') }}",
+                data: obj,
+                dataType: "json",
+                success: function (response) {
+
+                }
+
+            });
+            alert("terminé!",'comment deleted',"success");
+            $('#li'+id+'').remove();
+
+        }
+
+
+
+
+
+    </script>
+    <script>
+
+        function addrdv() {
+
+            location.href = "{{ path('add_rdv',{'id':vet.id}) }}";
+
+        }
+    </script>
+
+{% endblock %}
+{% endblock %}

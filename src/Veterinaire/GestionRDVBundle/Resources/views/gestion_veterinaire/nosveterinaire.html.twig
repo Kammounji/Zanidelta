@@ -1,0 +1,93 @@
+{% extends "MyAppUserBundle:Default:layout.html.twig" %}
+{% block head %}
+
+<meta charset="UTF-8">
+<!-- For Resposive Device -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- For IE -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title> MyPet - Pet Shop & Veterinary HTML Template </title>
+
+
+<!-- Favicon -->
+<link rel="icon" type="{{ asset('image/png') }}" sizes="56x56" href="{{ asset('images/them-logo/favicon-1.png')}}">
+
+<!-- Main style sheet -->
+<link rel="stylesheet" href="{{ asset('css/style.css')}}">
+<!-- responsive style sheet -->
+<link rel="stylesheet" href="{{ asset('css/responsive.css')}}">
+
+
+    {{ parent() }}
+
+    <!------ Include the above in your HEAD tag ---------->
+{% endblock head %}
+
+    {% block content %}
+
+<div class="cp-wrapper">
+
+    <div class="main-page-wrapper">
+    {% block header %}
+        {{ parent() }}
+    {% endblock header %}
+        <section class="our-team-section">
+            <div class="container">
+                <div class="inner-title-one">
+                    <h2>Your pet is in good hands with a team of professional</h2>
+                    <span></span>
+                    <p>In a professional context it often happens that private or corporate clients order a publication to be made and presented with the actual content still not being ready.</p>
+                </div>
+                <div class="row">
+
+
+                    <table id="vet"  class="table table-bordred table-striped" cellspacing="0" width="100%">
+                        <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Prenom</th>
+                            <th>Email</th>
+                            <th>Prix Unitaire</th>
+                        </tr>
+                        </thead>
+                        <tfoot>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Prenom</th>
+                            <th>Email</th>
+                            <th>Prix Unitaire</th>
+                        </tr>
+                        </tfoot>
+                        <tbody>
+                        {% for v in vet %}
+
+                            <tr>
+                                <td><a href="{{ path('veterinaire_profile',{'id':v.id}) }}">{{ v.nom }}</a></td>
+                                <td>{{ v.prenom }}</td>
+                                <td><a href="{{ path('veterinaire_profile',{'id':v.id}) }}">{{ v.email }}</a></td>
+                                <td>{{ v.prixUnitaire }}</td>
+
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+                </div> </div>
+        </section>
+    </div>
+
+</div>
+
+    {% endblock content %}
+{% block script %}
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js" ></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function(){
+
+            $('#vet').DataTable();
+        });
+    </script>
+{% endblock script %}

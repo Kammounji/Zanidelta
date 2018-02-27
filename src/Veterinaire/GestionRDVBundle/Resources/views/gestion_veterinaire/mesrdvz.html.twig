@@ -1,0 +1,147 @@
+{% extends "MyAppUserBundle:Default:layout.html.twig" %}
+        {% block head %}
+            <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+            {{ parent() }}
+        {% endblock %}
+    {% block content %}
+
+        <div class="cp-wrapper">
+
+            {% block header %}
+                {{ parent() }}
+            {% endblock %}
+            <option value="">Default Sorting</option>
+            <option value="">Default Sorting</option>
+            </select>
+        </div>
+        </div>
+
+        <div class="cart-table-row">
+            <div class="woocommerce">
+        <div class="col-md-12">
+            <h4>mes rdvz</h4>
+            <div class="table-responsive">
+
+
+                <table id="mytable" class="table table-bordred table-striped">
+
+                    <thead>
+
+
+                    <th>client</th>
+                    <th>date rendez vous</th>
+                    <th>prix</th>
+                    <th>etat</th>
+                    <th>duree seance</th>
+
+
+                    <th>Delete</th>
+                    </thead>
+                    <tbody>
+                    {% for v in rdv %}
+                    <tr id="tr{{ v.id }}">
+
+
+                        <td>{{ v.idClient.nom }}</td>
+                        <td>{{ v.dateRdv|date('Y-m-d H:i:s') }}</td>
+                        <td>{{ v.prix }}</td>
+                        {%  if v.etat is null %}
+                        <td id="{{ v.id }}">non validé</td>
+                        {% elseif v.etat %}
+
+                            <td id="{{ v.id }}">validé</td>
+                        {% else %}
+                            <td id="{{ v.id }}">annulé</td>
+                        {% endif  %}
+
+
+                        <td>{{ v.dureeSeance }}</td>
+                        {% if v.etat is null %}
+                        <td id="approuver"><p data-placement="top" data-toggle="tooltip" title="Valider"><button onclick="approuver({{ v.id }},{{ v.idClient.id }});" class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+                        {% endif %}
+                        {% if v.etat is null or not v.etat %}
+                        <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button onclick="deleterdv({{ v.id }},{{ v.idClient.id }});" class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
+                        {% endif %}
+                    </tr>
+                    {% endfor %}
+
+
+
+
+
+
+                    </tbody>
+
+                </table>
+
+                <div class="pagination-box">
+                    <nav>
+                        <ul class="pagination">
+                            <li> <a href="#" aria-label="Previous"> <span aria-hidden="true"><i class="fa fa-angle-right" aria-hidden="true"></i></span> </a> </li>
+                            <li><a href="#">1</a></li>
+                            <li class="active"><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li> <a href="#" aria-label="Next"> <span aria-hidden="true"><i class="fa fa-angle-left" aria-hidden="true"></i></span> </a> </li>
+                        </ul>
+                    </nav>
+
+                </div>
+            </div>
+        </div>
+
+        {% block footer %}
+            {{ parent() }}
+        {% endblock %}
+
+        {% block script %}
+            <script>
+                function approuver(id,idc)
+                {
+                    obj = new Object();
+                    obj["idrdv"] = id ;
+                    obj["idclientnotification"]=idc;
+                    $.ajax({
+                        type: "POST",
+                        url: "{{ path('approuver') }}",
+                        data: obj,
+                        dataType: "json",
+                        success: function (response) {
+
+                        }
+
+                    });
+                    alert("terminé!",'comment deleted',"success");
+                    $( '#'+id+'' ).replaceWith( "<td id="+id+">vaidé</td>");
+                    $('#approuver').remove();
+                    delete obj;
+
+
+                }
+                function deleterdv(id,idc)
+                {
+                    obj = new Object();
+                    obj["idrdv"] = id ;
+                    obj["idclientnotification"]=idc;
+                    $.ajax({
+                        type: "POST",
+                        url: "{{ path('delete_rdv') }}",
+                        data: obj,
+                        dataType: "json",
+                        success: function (response) {
+
+                        }
+
+                    });
+                    alert("terminé!",'comment deleted',"success");
+                    $('#tr'+id+'').remove();
+                    delete obj;
+
+
+                }
+            </script>
+
+            {{ parent() }}
+        {% endblock %}
+    {% endblock %}

@@ -1,0 +1,93 @@
+{% extends "MyAppUserBundle:Default:layout.html.twig" %}
+        {% block head %}
+            <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+            {{ parent() }}
+        {% endblock %}
+    {% block content %}
+
+        <div class="cp-wrapper">
+
+            {% block header %}
+                {{ parent() }}
+            {% endblock %}
+            <option value="">Default Sorting</option>
+            <option value="">Default Sorting</option>
+            </select>
+        </div>
+        </div>
+
+        <div class="cart-table-row">
+        <div class="woocommerce">
+        <div class="col-md-12">
+            <h4>mes rdvz</h4>
+            <div class="table-responsive">
+
+
+                <table id="mytable" class="table table-bordred table-striped">
+
+                    <thead>
+
+
+
+
+                    <th>nbr</th>
+
+                    <th>Notification</th>
+                    <th>RDV</th>
+                    </thead>
+                    <tbody>
+                    {% set i=0 %}
+                    {% for notif in notifs %}
+                        <tr>
+
+
+                            <td>{{ loop.index+1 }}</td>
+                            <td>{{ notif.notification }}</td>
+                            <td>
+                                {% if notif.idRdv %}
+                                {{ notif.idRdv.dateRdv|date('Y-m-d H:i:s') }}
+                                    {% if notif.idRdv.etat %}
+                                    <a href="{{ path('annuler_rdv',{'id':notif.idRdv.id}) }}" class="btn btn-danger btn-xs"  >Annuler<span class="glyphicon glyphicon-minus-sign"></span></a>
+                                    {% else %}
+                                        <span>Annulée</span>
+                                    {% endif %}
+                                {% endif %}
+                            </td>
+
+                        </tr>
+                    {% endfor %}
+
+
+
+
+
+
+                    </tbody>
+
+                </table>
+
+                <div class="pagination-box">
+                    <nav>
+                        <ul class="pagination">
+                            <li> <a href="#" aria-label="Previous"> <span aria-hidden="true"><i class="fa fa-angle-right" aria-hidden="true"></i></span> </a> </li>
+                            <li><a href="#">1</a></li>
+                            <li class="active"><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li> <a href="#" aria-label="Next"> <span aria-hidden="true"><i class="fa fa-angle-left" aria-hidden="true"></i></span> </a> </li>
+                        </ul>
+                    </nav>
+
+                </div>
+            </div>
+        </div>
+
+        {% block footer %}
+            {{ parent() }}
+        {% endblock %}
+
+        {% block script %}
+            {{ parent() }}
+        {% endblock %}
+    {% endblock %}

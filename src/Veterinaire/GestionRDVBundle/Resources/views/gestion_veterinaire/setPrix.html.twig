@@ -1,0 +1,86 @@
+{% extends "MyAppUserBundle:Default:layout.html.twig" %}
+        {% block head %}
+            {{ parent() }}
+        {% endblock %}
+    {% block content %}
+
+        <div class="cp-wrapper">
+
+            {% block header %}
+                {{ parent() }}
+            {% endblock %}
+<option value="">Default Sorting</option>
+<option value="">Default Sorting</option>
+</select>
+</div>
+</div>
+
+<div class="cart-table-row">
+    <div class="woocommerce">
+veillez entrez votre prix unitaire d'une heure:
+        <input id="prix" type="number">
+            <button class="btn-submit cp-btn-style1"  id="setPrix" onclick="addprix();"  value="setPrix" >setPrix</button>
+
+
+        <div class="pagination-box">
+            <nav>
+                <ul class="pagination">
+                    <li> <a href="#" aria-label="Previous"> <span aria-hidden="true"><i class="fa fa-angle-right" aria-hidden="true"></i></span> </a> </li>
+                    <li><a href="#">1</a></li>
+                    <li class="active"><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li> <a href="#" aria-label="Next"> <span aria-hidden="true"><i class="fa fa-angle-left" aria-hidden="true"></i></span> </a> </li>
+                </ul>
+            </nav>
+
+        </div>
+    </div>
+</div>
+</div>
+</section>
+</div>
+
+{% block footer %}
+    {{ parent() }}
+{% endblock %}
+</div>
+{% block script %}
+    <script>
+        function addprix() {
+
+
+            var obj = new Object();
+            var prix=parseInt($('#prix').val());
+
+            if(prix){
+                if(prix>0){
+
+
+                    obj["prix"] =  $('#prix').val() ;
+                    $.ajax({
+                        type: "POST",
+                        url: "{{ path('set_my_prix') }}",
+                        data: obj,
+                        dataType: "json",
+                        success: function (response) {
+
+                        }
+
+                    });
+                    alert("terminé!",'prix set with success',"success");
+                    location.href = "{{ path('affiche') }}";
+                }else {
+                    alert("Alert! invalide number error");
+                }
+            }else{
+                alert("Alert! invalide number error");
+            }
+        }
+
+    </script>
+
+    {{ parent() }}
+{% endblock %}
+    {% endblock %}

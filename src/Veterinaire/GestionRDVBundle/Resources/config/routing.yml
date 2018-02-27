@@ -1,0 +1,61 @@
+
+veterinaire:
+    path:     /veterinaire
+    defaults: { _controller: VeterinaireGestionRDVBundle:veterinaire:veterinaire }
+
+veterinairedetail:
+    path:     /veterinairedetail
+    defaults: { _controller: VeterinaireGestionRDVBundle:Default:veterinairedetail }
+
+
+espaceveterinaire:
+    path:     /espaceveterinaire
+    defaults: { _controller: VeterinaireGestionRDVBundle:Default:espaceveterinaire }
+
+rendezvous:
+    path:     /rendezvous
+    defaults: { _controller: VeterinaireGestionRDVBundle:Default:rendezvous }
+
+
+accueilAdmin:
+    path:     /accueilAdmin
+    defaults: { _controller: VeterinaireGestionRDVBundle:admin:acceuil }
+veterinaireAdmin:
+    path:     /veterinaireAdmin
+    defaults: { _controller: VeterinaireGestionRDVBundle:admin:veterinaireAdmin }
+veterinaire_profile:
+    path:   /Profile
+    defaults: { _controller: VeterinaireGestionRDVBundle:veterinaire:veterinaireprofile }
+commentaire_ajouter:
+    path:   /commentadd
+    defaults: { _controller: VeterinaireGestionRDVBundle:commentaire:commentadd }
+updateComment_avec_ajax:
+    path:   /commentupdate
+    defaults: { _controller: VeterinaireGestionRDVBundle:commentaire:commentupdate }
+delete_comm:
+     path:   /commentdelete
+     defaults: { _controller: VeterinaireGestionRDVBundle:commentaire:commentdelete }
+add_rdv:
+     path:   /AjouterRdv
+     defaults: { _controller: VeterinaireGestionRDVBundle:veterinaire:addrdv }
+set_my_prix:
+     path: /setprix
+     defaults: { _controller: VeterinaireGestionRDVBundle:veterinaire:set_prix }
+voir_mes_rdvz:
+     path: /voirMerrdvz
+     defaults: { _controller: VeterinaireGestionRDVBundle:veterinaire:voirMezRdvz }
+approuver:
+     path: /approuver
+     defaults: { _controller: VeterinaireGestionRDVBundle:veterinaire:approuver }
+
+delete_rdv:
+     path: /deleterdv
+     defaults: { _controller: VeterinaireGestionRDVBundle:veterinaire:deleterdv }
+
+annuler_rdv:
+     path: /annulerrdv/{id}
+     defaults: { _controller: VeterinaireGestionRDVBundle:veterinaire:annulerrdv }
+
+voir_notif:
+     path: /voirnotif
+     defaults: { _controller: VeterinaireGestionRDVBundle:veterinaire:voirnotif }

@@ -1,0 +1,66 @@
+{% extends "MyAppUserBundle:Default:layout.html.twig" %}
+        {% block head %}
+            {{ parent() }}
+        {% endblock %}
+    {% block content %}
+
+<div class="cp-wrapper">
+
+    {% block header %}
+        {{ parent() }}
+    {% endblock %}
+
+<section class="cp-inner-banner">
+<div class="container">
+<div class="cp-inner-banner-outer">
+<h2>Espace Gestion Des Rendez-vous</h2>
+
+<ul class="breadcrumb">
+<li><a href="{{ path("affiche") }}">Home</a></li>
+<li>Espace Veterinaire</li>
+<li class="active">EG-RDV</li>
+</ul>
+</div>
+</div>
+</section>
+
+<div class="cp-main-content">
+<section class="cp-cart-section pd-tb100">
+<div class="container">
+
+
+
+
+<div class="cart-table-row">
+<div class="woocommerce">
+    {{ form(Form) }}
+
+
+<div class="pagination-box">
+<nav>
+<ul class="pagination">
+<li> <a href="#" aria-label="Previous"> <span aria-hidden="true"><i class="fa fa-angle-right" aria-hidden="true"></i></span> </a> </li>
+<li><a href="#">1</a></li>
+<li class="active"><a href="#">2</a></li>
+<li><a href="#">3</a></li>
+<li><a href="#">4</a></li>
+<li><a href="#">5</a></li>
+<li> <a href="#" aria-label="Next"> <span aria-hidden="true"><i class="fa fa-angle-left" aria-hidden="true"></i></span> </a> </li>
+</ul>
+</nav>
+
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+
+    {% block footer %}
+        {{ parent() }}
+    {% endblock %}
+</div>
+        {% block script %}
+            {{ parent() }}
+        {% endblock %}
+    {% endblock %}

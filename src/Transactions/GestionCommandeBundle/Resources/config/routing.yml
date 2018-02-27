@@ -1,0 +1,15 @@
+
+cart:
+    path:     /cart
+    defaults: { _controller: TransactionsGestionCommandeBundle:Default:cart }
+
+checkout:
+    path:     /checkout
+    defaults: { _controller: TransactionsGestionCommandeBundle:Default:checkout }
+
+accueilAdmin:
+    path:     /accueilAdmin
+    defaults: { _controller: TransactionsGestionCommandeBundle:admin:acceuil }
+commandeAdmin:
+    path:     /commandeAdmin
+    defaults: { _controller: TransactionsGestionCommandeBundle:admin:commandeAdmin }
