@@ -1,0 +1,124 @@
+<section class="cp-departments-section pd-t100">
+<div class="cp-bg-movement" data-ibg-bg="images/banner/banner-before-img.png"></div>
+<div class="container">
+
+
+<div class="row">
+<div class="col-md-6">
+
+<div class="cp-heading-style1_v2">
+<h2>Espace Magasin</h2>
+
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-6">
+
+<div class="cp-accordian-item">
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+<div class="panel panel-default">
+<div class="panel-heading" role="tab" id="cp-headingOne">
+<h3 class="panel-title">
+<a role="button" data-toggle="collapse" data-parent="#accordion" href="#cp-collapseOne" aria-expanded="true" aria-controls="cp-collapseOne">
+<span class="icon-medical micon"></span>
+Ajouter store
+</a>
+</h3>
+</div>
+<div id="cp-collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="cp-headingOne">
+<div class="panel-body">
+<div class="cp-text">
+<p>ici vous pouvez ajouter et vendre vos produits sur notre store </p>
+</div>
+ <form action="{{ path("ajoutmag") }}">
+  <button type="submit" class="btn-submit cp-btn-style2" value="Submit" >Ajouter</button></form>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading bg1" role="tab" id="cp-headingTwo">
+<h3 class="panel-title">
+<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#cp-collapseTwo" aria-expanded="false" aria-controls="cp-collapseTwo">
+<span class="icon-medical32 micon"></span>
+modifier/supprimer store
+</a>
+</h3>
+</div>
+<div id="cp-collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="cp-headingTwo">
+<div class="panel-body">
+<div class="cp-text">
+<p>ici vous modifier le prix,la quantite,la description ou le poid de vos produits ou de les enlever du store </p>
+ </div>
+ <form action="{{ path("modsuppstore") }}">
+  <button type="submit" class="btn-submit cp-btn-style2" value="Submit" name="submit">Modifier/Supprimer</button></form>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading" role="tab" id="cp-headingThree">
+<h3 class="panel-title">
+<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#cp-collapseThree" aria-expanded="false" aria-controls="cp-collapseThree">
+<span class="icon-medical1 micon"></span>
+Ajouter encheres
+</a>
+</h3>
+</div>
+<div id="cp-collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="cp-headingThree">
+<div class="panel-body">
+<div class="cp-text">
+<p>ici vous pouvez ajouter et vendre vos produits sur notre store encheres </p>
+</div>
+<button type="submit" class="btn-submit cp-btn-style2" value="Submit" name="submit">Ajouter</button>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading bg2" role="tab" id="cp-headingFour">
+<h3 class="panel-title">
+<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#cp-collapseFour" aria-expanded="false" aria-controls="cp-collapseFour">
+<span class="icon-medical2 micon"></span>
+modifier/supprimer encheres
+</a>
+</h3>
+</div>
+<div id="cp-collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="cp-headingFour">
+<div class="panel-body">
+<div class="cp-text">
+<p>ici vous modifier la date du debut d'un evennement d'encheres,le seuil de mise ou la description de vos produits ou de les enlever du store encheres </p>
+</div>
+<button type="submit" class="btn-submit cp-btn-style2" value="Submit" name="submit">Modifier/Supprimer</button>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading bg3" role="tab" id="cp-headingFive">
+<h3 class="panel-title">
+<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#cp-collapseFive" aria-expanded="false" aria-controls="cp-collapseFive">
+<span class="icon-medical32 micon"></span>
+deplacer vos produits
+</a>
+</h3>
+</div>
+<div id="cp-collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="cp-headingFive">
+<div class="panel-body">
+<div class="cp-text">
+<p>ici vous pouvez deplacer vos produits du store vers le store encheres ou bien le contraire </p>
+</div>
+<button type="submit" class="btn-submit cp-btn-style2" value="Submit" name="submit">Deplacer</button>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<div class="col-md-6">
+
+<figure class="cp-thumb">
+<img src="{{ asset('images/magasin.jpg') }}" alt="">
+</figure>
+</div>
+</div>
+</div>
+</section>

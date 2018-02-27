@@ -1,0 +1,139 @@
+{% extends "MyAppUserBundle:Default:layout.html.twig" %}
+
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+{# {% form_theme form 'bootstrap_3_horizontal_layout.html.twig' %} #}
+        {% block head %}
+            {{ parent() }}
+        {% endblock %}
+    {% block content %}
+
+<div class="cp-wrapper">
+
+    {% block header %}
+        {{ parent() }}
+    {% endblock %}
+
+<section class="cp-inner-banner">
+<div class="container">
+<div class="cp-inner-banner-outer">
+<h2>Espace Modification Evennement</h2>
+
+<ul class="breadcrumb">
+<li><a href="{{ path("affiche") }}">Home</a></li>
+<li class="">Espace Association  </li>
+<li class="active">EM-Evennement</li>
+</ul>
+</div>
+</div>
+</section>
+    <div class="cp-main-content">
+
+    <section class="cp-checkout-section pd-t100">
+        <div class="container">
+
+
+            {{form_start(form)}}
+            <div class="row">
+
+
+
+                <div class="col-md-12 col-sm-12" >
+                    <div class="inner-holder" >
+                        <div class="row">
+                            <label>nom *</label><br>
+
+                            {{ form_widget(form.nom) }}
+                        </div>
+                    </div></div>
+
+                <div class="col-md-12 col-sm-12">
+                    <div class="inner-holder" >
+                        <div class="row">
+                            <label>description *</label><br>
+                            {{ form_widget(form.description) }}
+                        </div></div>
+                </div>
+
+                <div class="col-md-12 col-sm-12">
+                    <div class="inner-holder" >
+                        <div class="row">
+                            <label>description *</label><br>
+                            {{ form_widget(form.nbrParticipants) }}
+                        </div></div>
+                </div>
+
+                <div class="col-md-12 col-sm-12" >
+                    <div class="inner-holder" >
+                        <div class="row">
+
+                            {{ form_widget(form.file) }}
+                        </div></div>
+                </div>
+
+                <div class="col-md-12 col-sm-12" >
+                    <div class="inner-holder" >
+                        <div class="row">
+                            <label>prix </label><br>
+                            {{ form_widget(form.prix) }}
+                        </div></div>
+                </div>
+
+
+
+                <div class="col-md-12 col-sm-12" >
+                    <div class="inner-holder" >
+                        <div class="row">
+                            <label>date debut</label><br>
+
+                            {{ form_widget(form.dateDebut) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 col-sm-12">
+                    <div class="inner-holder" >
+                        <div class="row">
+                            <label>date fin</label><br>
+
+                            {{ form_widget(form.dateFin) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 col-sm-12" >
+                    <div class="inner-holder" >
+                        <div class="row">
+                            <label>categorie</label><br>
+                            {{ form_widget(form.id_categorie) }}
+                        </div>
+                    </div>
+                </div>
+
+                <br>
+                <br>
+                <div class="col-md-12 col-sm-12" >
+
+                    <div class=class="cp-btn-style3">
+
+                        {{ form_widget(form.ajouter) }}
+                        <div align="center">
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+            {{form_end(form)}}
+
+        </div>
+    </section>
+</div>
+
+    {% block footer %}
+        {{ parent() }}
+    {% endblock %}
+</div>
+        {% block script %}
+            {{ parent() }}
+        {% endblock %}
+    {% endblock %}

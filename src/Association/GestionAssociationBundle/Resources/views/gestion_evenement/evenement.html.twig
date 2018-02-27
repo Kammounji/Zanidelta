@@ -1,0 +1,155 @@
+{% extends "MyAppUserBundle:Default:layout.html.twig" %}
+{% block head %}
+    {{ parent() }}
+
+
+{% endblock %}
+{% block content %}
+
+
+    <div class="cp-wrapper">
+
+    {% block header %}
+        {{ parent() }}
+
+    {% endblock %}
+
+    <section class="cp-inner-banner">
+        <div class="container">
+            <div class="cp-inner-banner-outer">
+                <h2>Evenement</h2>
+
+                <ul class="breadcrumb">
+                    <li><a href="{{ path('affiche') }}">Home</a></li>
+                    <li>Pages</li>
+                    <li class="active">Evenement</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+
+
+    <div class="cp-main-content">
+
+        <section class="cp-blog-section pd-t100">
+            <div class="container">
+                <div class="row">
+                    <div class="inner-holder">
+
+                        <div class="widget widget-clouds">
+
+                            <div class="tagcloud">
+                                <a href="{{ path('trierEventNom') }}" >trier avec nom</a>
+                                <a href="{{ path('trierEventNbre') }}">trie avec nombre de place dispo</a>
+
+                            </div>
+                        </div>
+                      <br><br>
+
+
+                    </div>
+
+                    <div class="col-md-9">
+                        <div class="col-md-12 col-sm-12">
+                            {% for e in event %}
+                                {% if e.etat==true %}
+
+                                <article class="cp-blog-item">
+                                    <figure class="cp-thumb">
+
+
+                                        <img src="{{ asset('images/' ~ e.nomImage ) }}" alt="" width="1900" height="150">
+
+                                    </figure>
+                                    <div class="cp-text">
+                                        <div class="cp-date-box">
+                                            <span>{{ e.dateDebut|date("d") }}</span>
+                                            {{ e.dateDebut|date("F") }}
+                                        </div>
+
+                                        <div class="cp-inner">
+                                            <h3>{{ e.nom }}</h3><br>
+
+                                            <label>heure evenement</label>:
+                                          <p> {{ e.heure_event|date('H:i:s') }}</p>
+
+                                            <label>nombre de place restant</label>:
+                                            <p>{{ e.nbrParticipants }} </p>
+
+
+
+                                            <label>description</label>:
+                                            <p>{{ e.description }} </p>
+
+                                        </div>
+                                    </div>
+                                </article>
+                                {% endif %}
+                            {% endfor %}
+
+                        </div>
+
+
+
+
+                        <div class="pagination-box">
+                            <nav>
+                                <ul class="pagination">
+                                    <li> <a href="#" aria-label="Next"> <span aria-hidden="true"><i class="fa fa-angle-left" aria-hidden="true"></i></span> </a> </li>
+                                    <li><a href="#">1</a></li>
+                                    <li class="active"><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                    <li><a href="#">4</a></li>
+                                    <li><a href="#">5</a></li>
+                                    <li> <a href="#" aria-label="Previous"> <span aria-hidden="true"><i class="fa fa-angle-right" aria-hidden="true"></i></span> </a> </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-12">
+
+                        <aside class="cp-sidebar-outer">
+
+                            <div class="widget widget-search widget-search2">
+                                <form method="get">
+                                    <input type="text" placeholder="Search" required>
+                                    <button type="submit" class="btn-submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                                </form>
+                            </div>
+
+
+
+
+
+                            <div class="widget widget-clouds">
+                                <h3>Categories</h3>
+
+                                <div class="tagcloud">
+{% for c in cat %}
+                                    <a href="{{ path('afficheCat',{'id':c.id}) }}">{{ c.nom }}</a>
+                                    {% endfor %}
+                                </div>
+
+                            </div>
+
+
+
+
+                        </aside>
+                    </div>
+                </div>
+            </div>
+        </section>
+        {% block footer %}
+            {{ parent() }}
+        {% endblock %}
+    </div>
+
+
+
+    {% block script %}
+        {{ parent() }}
+    {% endblock %}
+
+{% endblock %}

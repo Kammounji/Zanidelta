@@ -1,0 +1,161 @@
+{% extends "MyAppUserBundle:Default:layout.html.twig" %}
+        {% block head %}
+            {{ parent() }}
+        {% endblock %}
+    {% block content %}
+
+<div class="cp-wrapper">
+
+    {% block header %}
+        {{ parent() }}
+    {% endblock %}
+
+<section class="cp-inner-banner">
+<div class="container">
+<div class="cp-inner-banner-outer">
+<h2>Espace Gestion Des Evennements</h2>
+<ul class="breadcrumb">
+<li><a href="{{ path("affiche") }}">Home</a></li>
+<li>Espace Associations</li>
+<li class="active">EG-Evennements</li>
+</ul>
+</div>
+</div>
+</section>
+
+<div class="cp-main-content">
+<section class="cp-cart-section pd-tb100">
+<div class="container">
+
+<div class="col-md-3 col-sm-6">
+<div class="widget widget-appointment">
+<input type="text" placeholder="search" required="">
+</div>
+</div>
+<a href="#"><i class="icon-search"></i></a>
+
+<div class="cp-show-result-outer">
+<span class="showing">Showing 1–9 of 16 Results</span>
+<div class="right-outer">
+<select>
+<option value="">Default Sorting</option>
+<option value="">Default Sorting</option>
+<option value="">Default Sorting</option>
+<option value="">Default Sorting</option>
+<option value="">Default Sorting</option>
+</select>
+</div>
+</div>
+
+<div class="cart-table-row">
+<div class="woocommerce">
+<form method="get">
+<table class="cp-shop_table">
+<thead>
+<tr>
+<th class="product-remove"></th>
+
+    <th>
+        categorie
+    </th>
+    <th>Nom</th>
+    <th>Description</th>
+    <th>participants</th>
+    <th>url image</th>
+
+    <th>date debut</th>
+    <th>date fin</th>
+
+    <th>prix</th>
+</tr>
+</thead>
+        {% for e in event %}
+<tbody>
+
+<tr class="cart_item">
+<td class="product-remove">
+<a href="{{ path('suppEvenement',{'id':e.id}) }}"><i class="fa fa-close"></i></a>
+<a href="{{ path('moddetaileven',{'id':e.id}) }}"><i><img src="{{ asset('images/modif-icon.png') }}" width="70%"/></i></a>
+<a href="#"><i></i></a>
+
+</td>
+
+
+    <td>
+        {{ e.id_categorie.nom }}
+    </td>
+
+
+
+    <td>
+        {{ e.nom }}
+    </td>
+
+
+    <td>
+        {{ e.description }}
+    </td>
+
+    <td>
+        {{ e.nbrParticipants }}
+    </td>
+
+    <td>
+        {{ e.nomImage }}
+    </td>
+
+
+
+    <td>
+        {{ e.dateDebut|date}}
+    </td>
+
+    <td>
+        {{ e.dateFin|date }}
+    </td>
+
+
+
+    <td>
+        {{ e.prix }}
+    </td>
+
+
+</tr>
+
+
+</tbody>
+            {% endfor %}
+</table>
+</form>
+
+
+<div class="pagination-box">
+<nav>
+<ul class="pagination">
+<li> <a href="#" aria-label="Previous"> <span aria-hidden="true"><i class="fa fa-angle-right" aria-hidden="true"></i></span> </a> </li>
+<li><a href="#">1</a></li>
+<li class="active"><a href="#">2</a></li>
+<li><a href="#">3</a></li>
+<li><a href="#">4</a></li>
+<li><a href="#">5</a></li>
+<li> <a href="#" aria-label="Next"> <span aria-hidden="true"><i class="fa fa-angle-left" aria-hidden="true"></i></span> </a> </li>
+</ul>
+</nav>
+
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+
+    {% block footer %}
+        {{ parent() }}
+    {% endblock %}
+</div>
+
+        {% block script %}
+            {{ parent() }}
+        {% endblock %}
+    {% endblock %}

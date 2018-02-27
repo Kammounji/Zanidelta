@@ -1,0 +1,71 @@
+
+evenement:
+    path:     /evenement
+    defaults: { _controller: AssociationGestionAssociationBundle:Evenement:evenement }
+
+evendetail:
+    path:     /evendetail{id}
+    defaults: { _controller: AssociationGestionAssociationBundle:Evenement:evendetail }
+
+evenmeduim:
+    path:     /evenmeduim
+    defaults: { _controller: AssociationGestionAssociationBundle:Evenement:evenmeduim }
+
+modsuppevenn:
+    path:     /modsuppevenn
+    defaults: { _controller: AssociationGestionAssociationBundle:Evenement:modsuppevenn }
+
+moddetaileven:
+    path:     /moddetaileven{id}
+    defaults: { _controller: AssociationGestionAssociationBundle:Evenement:moddetaileven }
+
+ajouteven:
+    path:     /ajouteven
+    defaults: { _controller: AssociationGestionAssociationBundle:Evenement:ajouteven }
+
+espaceassociation:
+    path:     /espaceassociation
+    defaults: { _controller: AssociationGestionAssociationBundle:Default:espaceassociation }
+
+accueilAdmin:
+    path:     /accueilAdmin
+    defaults: { _controller: AssociationGestionAssociationBundle:admin:acceuil }
+categorieAdmin:
+    path:     /categorieAdmin
+    defaults: { _controller: AssociationGestionAssociationBundle:admin:categorieAdmin }
+
+evenementAdmin:
+    path:     /evenementAdmin
+    defaults: { _controller: AssociationGestionAssociationBundle:admin:evenementAdmin }
+
+ajoutCategorie:
+    path:     /ajoutCatAdmin
+    defaults: { _controller: AssociationGestionAssociationBundle:admin:ajoutCatAdmin}
+deleteCat:
+    path:     /deleteCat{id}
+    defaults: { _controller: AssociationGestionAssociationBundle:admin:delete}
+modifCat:
+    path:     /modifCat{id}
+    defaults: { _controller: AssociationGestionAssociationBundle:admin:modif}
+
+modifEvenement:
+    path:     /modifevenement{id}
+    defaults: { _controller: AssociationGestionAssociationBundle:admin:modifEtat}
+suppEvenement:
+    path:     /suppevenement{id}
+    defaults: { _controller: AssociationGestionAssociationBundle:Evenement:delete}
+trierEventNom:
+    path:     /trierEvent
+    defaults: { _controller: AssociationGestionAssociationBundle:Evenement:trierEvent}
+trierEventNbre:
+    path:     /trierEventNombre
+    defaults: { _controller: AssociationGestionAssociationBundle:Evenement:trierEventNombre}
+reserverEvent:
+    path:     /reserverEvent{id}
+    defaults: { _controller: AssociationGestionAssociationBundle:Evenement:reserverEvent}
+afficheCat:
+    path:     /afficheCat{id}
+    defaults: { _controller: AssociationGestionAssociationBundle:Evenement:afficheCat}
+annulerEvent:
+    path:     /annulerEvent{id}/{id1}
+    defaults: { _controller: AssociationGestionAssociationBundle:Evenement:annulerEvent}

@@ -1,0 +1,120 @@
+{% extends "MyAppUserBundle:Default:layout.html.twig" %}
+
+        {% block head %}
+            {{ parent() }}
+
+            <meta property="og:type"            content="product" />
+            <meta property="og:url"             content="http://google.tn" />
+            <meta property="og:title"           content="Introducing our New Site" />
+            <meta property="og:image"           content="{{ asset('images/' ~ event.nomImage ) }}" />
+            <meta property="og:description"    content="http://samples.ogp.me/390580850990722" />
+        {% endblock %}
+    {% block content %}
+
+<div class="cp-wrapper">
+
+    {% block header %}
+        {{ parent() }}
+    {% endblock %}
+
+    <section class="cp-inner-banner">
+        <div class="container">
+            <div class="cp-inner-banner-outer">
+                <h2>Blog</h2>
+
+                <ul class="breadcrumb">
+                    <li><a href="{{ path("affiche") }}">Home</a></li>
+                    <li>Pages</li>
+                    <li class="active">Blog Detail</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <div class="cp-main-content">
+
+        <section class="cp-blog-section pd-t100">
+            <div class="container">
+                <div class="row">
+                        {% if event.etat==true %}
+                            <div class="col-md-6 col-sm-12">
+
+                            <article class="cp-blog-item">
+                            <figure class="cp-thumb">
+                                <img src="{{ asset('images/' ~ event.nomImage ) }}" alt="" width="1900" height="150">
+
+                                {% include 'FOSCommentBundle:Thread:async.html.twig' with {'id': 'event'~ event.nomImage} %}
+                            </figure>
+                            <div class="cp-text">
+                            <div class="cp-date-box">
+                                <span>{{ event.dateDebut|date("d") }}</span>
+                                {{ event.dateDebut|date('F') }}
+                            </div>
+                            <div class="cp-inner">
+                            <h4>{{ event.nom }} </h4>
+                            <div class="cp-top">
+                                <ul class="cp-meta-listed">
+                                    <li><i class="fa fa-user" aria-hidden="true"></i>{{  event.id_association}}</li>
+                                    <li><i class="fa fa-user" aria-hidden="true"></i>{{ event.nom_association }}</li>
+                                    <p>il reste {{ event.nbrParticipants }} place disponible </p>
+                                </ul>
+                            </div>
+                            <p>{{ event.description }} </p>
+                                <div id="fb-root"></div>
+                                <script>(function(d, s, id) {
+                                        var js, fjs = d.getElementsByTagName(s)[0];
+                                        if (d.getElementById(id)) return;
+                                        js = d.createElement(s); js.id = id;
+                                        js.src = 'https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.12';
+                                        fjs.parentNode.insertBefore(js, fjs);
+                                    }(document, 'script', 'facebook-jssdk'));</script>
+
+                                <div class="fb-share-button"
+
+                                     data-layout="button_count">
+
+                                </div>
+
+
+                            {%if not( is_granted('ROLE_ASSOCIATION') ) %}
+
+                             {% if  part == false %}
+                                <a href="{{ path("reserverEvent",{'id':event.id}) }}"  class="cp-btn-style3">reserver place</a>
+
+
+                                 {% else %}
+                                    <a href="{{ path("annulerEvent",{'id':event.id,'id1':part.id}) }}"  class="cp-btn-style3">annuler</a>
+                                {% endif %}
+
+
+
+
+
+                        </div>
+                        </div>
+                        </article>
+
+                        </div>   {% endif %}
+
+                </div>
+                {% endif %}
+            </div>
+        </section>
+    </div>
+
+
+    {% block footer %}
+        {{ parent() }}
+    {% endblock %}
+</div>
+
+
+        {% block script %}
+            {{ parent() }}
+
+        {% endblock %}
+
+    {% endblock %}
