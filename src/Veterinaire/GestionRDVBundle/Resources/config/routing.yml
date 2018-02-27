@@ -24,7 +24,7 @@ veterinaireAdmin:
     path:     /veterinaireAdmin
     defaults: { _controller: VeterinaireGestionRDVBundle:admin:veterinaireAdmin }
 veterinaire_profile:
-    path:   /Profile
+    path:   /Profile/{id}
     defaults: { _controller: VeterinaireGestionRDVBundle:veterinaire:veterinaireprofile }
 commentaire_ajouter:
     path:   /commentadd

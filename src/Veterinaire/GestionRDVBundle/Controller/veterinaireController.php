@@ -37,12 +37,12 @@ class veterinaireController extends Controller
 
             ));
     }
-    public function veterinaireprofileAction(Request $request)
+    public function veterinaireprofileAction($id)
     {
         $user = $this->getUser();
 
         $em = $this->getDoctrine()->getManager();
-        $id = $request->get('id');
+
         $vet=$em->getRepository("MyAppUserBundle:User")->findOneById($id);
         $comments=$em->getRepository("VeterinaireGestionRDVBundle:Commentaire")->findByIdCible($id);
         return $this->render('VeterinaireGestionRDVBundle:gestion_veterinaire:veterinairedetail.html.twig',
@@ -112,7 +112,7 @@ class veterinaireController extends Controller
         $em = $this->getDoctrine()->getManager();
         $rdv=$em->getRepository("VeterinaireGestionRDVBundle:Rdv_veterinaire")->findOneById($request->get('idrdv'));
    $rdv->setEtat(true);
-    $em->persist($rdv);
+    $em->merge($rdv);
     $em->flush();
     $notification = new Notification();
     $client=$em->getRepository("MyAppUserBundle:User")->findOneById($request->get('idclientnotification'));
