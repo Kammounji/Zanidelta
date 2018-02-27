@@ -76,3 +76,16 @@ fos_user:
     from_email:
         address: "%mailer_user%"
         sender_name: "%mailer_user%"
+# app/config/config.yml
+knp_snappy:
+    pdf:
+        enabled:    true
+        binary:     '"C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe"' #"\"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe\"" for Windows users
+        options:    []
+    image:
+        enabled:    true
+        binary:     /usr/local/bin/wkhtmltoimage #"\"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltoimage.exe\"" for Windows users
+        options:    []
+
+jms_payment_core:
+    secret: someS3cretP4ssw0rd

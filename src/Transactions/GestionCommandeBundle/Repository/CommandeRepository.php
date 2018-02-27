@@ -10,4 +10,18 @@ namespace Transactions\GestionCommandeBundle\Repository;
  */
 class CommandeRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findLast($id)
+    {
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = '
+        SELECT id
+        FROM commande 
+        WHERE id_client= :id ORDER BY id DESC   ';
+
+        $stmt = $conn->prepare($sql);
+        $stmt->execute(['id'=>$id]);
+        return $stmt->fetch();
+    }
+
 }

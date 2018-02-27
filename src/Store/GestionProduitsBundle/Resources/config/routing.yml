@@ -25,3 +25,13 @@ modsuppstore:
 modifdetailmag:
     path:     /modifdetailmag
     defaults: { _controller: StoreGestionProduitsBundle:Default:modifdetailmag }
+
+accueilProduit:
+    path:     /accueilProduit
+    defaults: { _controller: StoreGestionProduitsBundle:admin:acceuilProduit }
+produitAdmin:
+    path:     /produitAdmin
+    defaults: { _controller: StoreGestionProduitsBundle:admin:produitAdmin }
+ajoutCart:
+    path:     /ajoutCart{id}
+    defaults: { _controller: TransactionsGestionCommandeBundle:Default:ajoutCart }

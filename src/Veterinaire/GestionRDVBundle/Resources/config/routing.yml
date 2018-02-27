@@ -15,3 +15,11 @@ espaceveterinaire:
 rendezvous:
     path:     /rendezvous
     defaults: { _controller: VeterinaireGestionRDVBundle:Default:rendezvous }
+
+
+accueilAdmin:
+    path:     /accueilAdmin
+    defaults: { _controller: VeterinaireGestionRDVBundle:admin:acceuil }
+veterinaireAdmin:
+    path:     /veterinaireAdmin
+    defaults: { _controller: VeterinaireGestionRDVBundle:admin:veterinaireAdmin }

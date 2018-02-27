@@ -22,19 +22,30 @@ class Lignecommande
     private $id;
 
     /**
-     * @var string
+     * @var int
      *
-     * @ORM\Column(name="id_panier", type="string", length=255)
+     * @ORM\Column(name="id_client", type="integer")
      */
-    private $idPanier;
+    private $idClient;
 
     /**
-     * @var string
+     * @var int
      *
-     * @ORM\Column(name="id_commande", type="string", length=255)
+     * @ORM\Column(name="id_commande", type="integer")
      */
     private $idCommande;
-
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id_produit", type="integer")
+     */
+    private $idProduit;
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="qte", type="integer")
+     */
+    private $qte;
 
     /**
      * Get id
@@ -47,33 +58,33 @@ class Lignecommande
     }
 
     /**
-     * Set idPanier
+     * Set idClient
      *
-     * @param string $idPanier
+     * @param integer $idClient
      *
      * @return Lignecommande
      */
-    public function setIdPanier($idPanier)
+    public function setIdClient($idClient)
     {
-        $this->idPanier = $idPanier;
+        $this->idClient = $idClient;
 
         return $this;
     }
 
     /**
-     * Get idPanier
+     * Get idClient
      *
-     * @return string
+     * @return int
      */
-    public function getIdPanier()
+    public function getIdClient()
     {
-        return $this->idPanier;
+        return $this->idClient;
     }
 
     /**
      * Set idCommande
      *
-     * @param string $idCommande
+     * @param integer $idCommande
      *
      * @return Lignecommande
      */
@@ -87,11 +98,57 @@ class Lignecommande
     /**
      * Get idCommande
      *
-     * @return string
+     * @return int
      */
     public function getIdCommande()
     {
         return $this->idCommande;
+    }
+    /**
+     * Set idProduit
+     *
+     * @param integer $idProduit
+     *
+     * @return Lignecommande
+     */
+    public function setIdProduit($idProduit)
+    {
+        $this->idProduit = $idProduit;
+
+        return $this;
+    }
+
+    /**
+     * Get idProduit
+     *
+     * @return int
+     */
+    public function getIdProduit()
+    {
+        return $this->idProduit;
+    }
+    /**
+     * Set qte
+     *
+     * @param integer $qte
+     *
+     * @return Lignecommande
+     */
+    public function setQte($qte)
+    {
+        $this->qte = $qte;
+
+        return $this;
+    }
+
+    /**
+     * Get qte
+     *
+     * @return int
+     */
+    public function getQte()
+    {
+        return $this->qte;
     }
 }
 

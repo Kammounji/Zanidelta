@@ -22,51 +22,30 @@ class Livraison
     private $id;
 
     /**
-     * @var string
+     * @var int
      *
-     * @ORM\Column(name="id_commande", type="string", length=255)
+     * @ORM\Column(name="id_commande", type="integer")
      */
     private $idCommande;
 
     /**
-     * @var \DateTime
+     * @var int
      *
-     * @ORM\Column(name="date_livraison", type="date")
-     */
-    private $dateLivraison;
-
-    /**
-     * @var float
-     *
-     * @ORM\Column(name="frais_livraison", type="float")
-     */
-    private $fraisLivraison;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="adresse_livraison", type="string", length=255)
-     */
-    private $adresseLivraison;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="id_livreur", type="string", length=255)
+     * @ORM\Column(name="id_livreur", type="integer")
      */
     private $idLivreur;
 
     /**
-     * @var string
+     * @var int
      *
-     * @ORM\Column(name="id_client", type="string", length=255)
+     * @ORM\Column(name="id_client", type="integer")
      */
     private $idClient;
 
     /**
-     * @var bool
+     * @var int
      *
-     * @ORM\Column(name="etat", type="boolean")
+     * @ORM\Column(name="etat", type="integer")
      */
     private $etat;
 
@@ -84,7 +63,7 @@ class Livraison
     /**
      * Set idCommande
      *
-     * @param string $idCommande
+     * @param integer $idCommande
      *
      * @return Livraison
      */
@@ -98,7 +77,7 @@ class Livraison
     /**
      * Get idCommande
      *
-     * @return string
+     * @return int
      */
     public function getIdCommande()
     {
@@ -106,81 +85,9 @@ class Livraison
     }
 
     /**
-     * Set dateLivraison
-     *
-     * @param \DateTime $dateLivraison
-     *
-     * @return Livraison
-     */
-    public function setDateLivraison($dateLivraison)
-    {
-        $this->dateLivraison = $dateLivraison;
-
-        return $this;
-    }
-
-    /**
-     * Get dateLivraison
-     *
-     * @return \DateTime
-     */
-    public function getDateLivraison()
-    {
-        return $this->dateLivraison;
-    }
-
-    /**
-     * Set fraisLivraison
-     *
-     * @param float $fraisLivraison
-     *
-     * @return Livraison
-     */
-    public function setFraisLivraison($fraisLivraison)
-    {
-        $this->fraisLivraison = $fraisLivraison;
-
-        return $this;
-    }
-
-    /**
-     * Get fraisLivraison
-     *
-     * @return float
-     */
-    public function getFraisLivraison()
-    {
-        return $this->fraisLivraison;
-    }
-
-    /**
-     * Set adresseLivraison
-     *
-     * @param string $adresseLivraison
-     *
-     * @return Livraison
-     */
-    public function setAdresseLivraison($adresseLivraison)
-    {
-        $this->adresseLivraison = $adresseLivraison;
-
-        return $this;
-    }
-
-    /**
-     * Get adresseLivraison
-     *
-     * @return string
-     */
-    public function getAdresseLivraison()
-    {
-        return $this->adresseLivraison;
-    }
-
-    /**
      * Set idLivreur
      *
-     * @param string $idLivreur
+     * @param integer $idLivreur
      *
      * @return Livraison
      */
@@ -194,7 +101,7 @@ class Livraison
     /**
      * Get idLivreur
      *
-     * @return string
+     * @return int
      */
     public function getIdLivreur()
     {
@@ -204,7 +111,7 @@ class Livraison
     /**
      * Set idClient
      *
-     * @param string $idClient
+     * @param integer $idClient
      *
      * @return Livraison
      */
@@ -218,7 +125,7 @@ class Livraison
     /**
      * Get idClient
      *
-     * @return string
+     * @return int
      */
     public function getIdClient()
     {
@@ -228,7 +135,7 @@ class Livraison
     /**
      * Set etat
      *
-     * @param boolean $etat
+     * @param integer $etat
      *
      * @return Livraison
      */
@@ -242,7 +149,7 @@ class Livraison
     /**
      * Get etat
      *
-     * @return bool
+     * @return int
      */
     public function getEtat()
     {

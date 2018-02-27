@@ -10,4 +10,11 @@ namespace Transactions\GestionCommandeBundle\Repository;
  */
 class LignecommandeRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findArray($id)
+    {
+        $qb = $this->createQueryBuilder('u')
+            ->Select('u')->where('u.idCommande IN (:id)')
+            ->setParameter('id',$id);
+        return $qb->getQuery()->getResult();
+    }
 }

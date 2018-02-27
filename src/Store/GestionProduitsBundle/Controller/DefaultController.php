@@ -39,7 +39,10 @@ class DefaultController extends Controller
 
     public function produitAction()
     {
-        return $this->render('StoreGestionProduitsBundle:gestion_produit:produit.html.twig');
+        $em=$this->getDoctrine()->getManager();
+        $am=$em->getRepository("StoreGestionProduitsBundle:Produit")->findAll();
+
+        return $this->render('StoreGestionProduitsBundle:gestion_produit:produit.html.twig',array('prod'=>$am));
     }
 
 }

@@ -6,6 +6,7 @@ services:
     resource: "@ReclamationDresseurReclamationBundle/Resources/config/routing.yml"
     prefix: /service
 
+
 store_gestion_produits:
     resource: "@StoreGestionProduitsBundle/Resources/config/routing.yml"
 

@@ -24,6 +24,8 @@ class AppKernel extends Kernel
             new Reclamation\DresseurReclamationBundle\ReclamationDresseurReclamationBundle(),
             new Transactions\GestionCommandeBundle\TransactionsGestionCommandeBundle(),
             new Store\GestionProduitsBundle\StoreGestionProduitsBundle(),
+            new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
+            new JMS\Payment\CoreBundle\JMSPaymentCoreBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

@@ -21,34 +21,28 @@ class Commande
      */
     private $id;
 
+
+
     /**
      * @var int
      *
-     * @ORM\Column(name="nbr_totale", type="integer")
+     * @ORM\Column(name="etat", type="integer")
      */
-    private $nbrTotale;
+    private $etat;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id_client", type="integer")
+     */
+    private $idClient;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="prix_totale", type="float")
+     * @ORM\Column(name="prix_tot", type="float")
      */
-    private $prixTotale;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="date", type="date")
-     */
-    private $date;
-
-    /**
-     * @var bool
-     *
-     * @ORM\Column(name="etat", type="boolean")
-     */
-    private $etat;
-
+    private $prixTot;
 
     /**
      * Get id
@@ -60,82 +54,12 @@ class Commande
         return $this->id;
     }
 
-    /**
-     * Set nbrTotale
-     *
-     * @param integer $nbrTotale
-     *
-     * @return Commande
-     */
-    public function setNbrTotale($nbrTotale)
-    {
-        $this->nbrTotale = $nbrTotale;
 
-        return $this;
-    }
-
-    /**
-     * Get nbrTotale
-     *
-     * @return int
-     */
-    public function getNbrTotale()
-    {
-        return $this->nbrTotale;
-    }
-
-    /**
-     * Set prixTotale
-     *
-     * @param float $prixTotale
-     *
-     * @return Commande
-     */
-    public function setPrixTotale($prixTotale)
-    {
-        $this->prixTotale = $prixTotale;
-
-        return $this;
-    }
-
-    /**
-     * Get prixTotale
-     *
-     * @return float
-     */
-    public function getPrixTotale()
-    {
-        return $this->prixTotale;
-    }
-
-    /**
-     * Set date
-     *
-     * @param \DateTime $date
-     *
-     * @return Commande
-     */
-    public function setDate($date)
-    {
-        $this->date = $date;
-
-        return $this;
-    }
-
-    /**
-     * Get date
-     *
-     * @return \DateTime
-     */
-    public function getDate()
-    {
-        return $this->date;
-    }
 
     /**
      * Set etat
      *
-     * @param boolean $etat
+     * @param integer $etat
      *
      * @return Commande
      */
@@ -149,11 +73,58 @@ class Commande
     /**
      * Get etat
      *
-     * @return bool
+     * @return int
      */
     public function getEtat()
     {
         return $this->etat;
+    }
+
+    /**
+     * Set idClient
+     *
+     * @param integer $idClient
+     *
+     * @return Commande
+     */
+    public function setIdClient($idClient)
+    {
+        $this->idClient = $idClient;
+
+        return $this;
+    }
+
+    /**
+     * Get idClient
+     *
+     * @return int
+     */
+    public function getIdClient()
+    {
+        return $this->idClient;
+    }
+    /**
+     * Set prixTot
+     *
+     * @param float $prixTot
+     *
+     * @return Commande
+     */
+    public function setPrixTot($prixTot)
+    {
+        $this->prixTot = $prixTot;
+
+        return $this;
+    }
+
+    /**
+     * Get prixTot
+     *
+     * @return float
+     */
+    public function getPrixTot()
+    {
+        return $this->prixTot;
     }
 }
 
