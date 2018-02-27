@@ -1,4 +1,0 @@
-services:
-#    store_gestion_produits.example:
-#        class: Store\GestionProduitsBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]
