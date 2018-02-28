@@ -1,8 +1,0 @@
-
-cart:
-    path:     /cart
-    defaults: { _controller: TransactionsGestionCommandeBundle:Default:cart }
-
-checkout:
-    path:     /checkout
-    defaults: { _controller: TransactionsGestionCommandeBundle:Default:checkout }

@@ -1,3 +1,0 @@
-service:
-    path:     /
-    defaults: { _controller: ReclamationDresseurReclamationBundle:Services:service }
