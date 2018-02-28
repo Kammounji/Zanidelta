@@ -14,6 +14,7 @@ use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Validator\Constraints\Date;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * Enchere controller.
@@ -66,7 +67,6 @@ class EncheresController extends Controller
             $age='';}
 
             $seuilmise=$data['seuilMise'];
-            $seuilparticipants=$data['seuilParticipants'];
             $caracteristiques=$data['caracteristiques'];
             $idProprietaire=$data['idProprietaire'];
 
@@ -86,7 +86,6 @@ class EncheresController extends Controller
             $enchere->setIdProprietaire($idProprietaire);
             $enchere->setSeuilMise($seuilmise);
             $enchere->setDateDebut($date);
-            $enchere->setSeuilParticipants($seuilparticipants);
 
             $file=$produit->getUrlImg();
             $fileName = md5($file->getClientOriginalName());
@@ -101,9 +100,9 @@ class EncheresController extends Controller
             $em->flush();
 
             $id_encheres=$em->getRepository('EncheresGestionEncheresBundle:Session')
-                ->getEncheresId($id_prd['id'],$idProprietaire,$seuilmise,$seuilparticipants);
+                ->getEncheresId($id_prd['id'],$idProprietaire,$seuilmise);
 
-            $session->setDerniereMise(0);
+            $session->setDerniereMise($seuilmise);
             $session->setEtat("en attente");
             $session->setIdGagnant("");
             $session->setId( $id_encheres['id_encheres']);
@@ -146,7 +145,7 @@ class EncheresController extends Controller
         $produit=$em->getRepository('StoreGestionProduitsBundle:Produit')->find($id_produit);
 
 
-        $form= $this->creerformulaire();
+        $form = $this->createForm(EncheresType::class);
         $form->handleRequest($request);
 
         if ($form->isValid())
@@ -167,9 +166,8 @@ class EncheresController extends Controller
              $age='';}
 
             $seuilmise=$data['seuilMise'];
-            $seuilparticipants=$data['seuilParticipants'];
             $caracteristiques=$data['caracteristiques'];
-            $userid=$data['userid'];
+            $userid=$data['idProprietaire'];
 
             $produit->setAge($age);
             $produit->setCaracteristiques($caracteristiques);
@@ -187,7 +185,6 @@ class EncheresController extends Controller
             $enchere->setIdProprietaire($userid);
             $enchere->setSeuilMise($seuilmise);
             $enchere->setDateDebut($date);
-            $enchere->setSeuilParticipants($seuilparticipants);
 
             $em->persist($produit);
             $em->flush();
@@ -219,7 +216,7 @@ class EncheresController extends Controller
 
         $em->remove($produit);
         $em->remove($encheres);
-            $em->flush();
+        $em->flush();
 
         return $this->indexAction();
     }
@@ -227,15 +224,13 @@ class EncheresController extends Controller
 
     public function produitAction(Request $request,$id)
     {
+
         if($request->get('trier')!="")
         {
             $em=$this->getDoctrine()->getManager();
             $serializer= new Serializer(array(new ObjectNormalizer()));
-            if($request->get('trier')=="participants")
-            {
-                $encheres=$em->getRepository('EncheresGestionEncheresBundle:Encheres')->EncheresByParticipants($id);
-            }
-            else if($request->get('trier')=="mise")
+
+            if($request->get('trier')=="mise")
             {
                 $encheres=$em->getRepository('EncheresGestionEncheresBundle:Encheres')->EncheresByMise($id);
             }
@@ -263,26 +258,9 @@ class EncheresController extends Controller
     public function detailAction($id,Request $request)
     {
         $journal=new Journal();
-        $session = new Session();
         $em=$this->getDoctrine()->getManager();
 
-        if($request->get('action')=="participer")
-        {
-            $time = new \DateTime();
-            $time->format('H:i:s \O\n Y-m-d');
-            $em=$this->getDoctrine()->getManager();
-            $prd=$em->getRepository('EncheresGestionEncheresBundle:Encheres')->encheresById($id);
-            $journal->setDateMise($time);
-            $journal->setIdSession($prd['id_encheres']);
-            $usr=$this->getUser();
-            $journal->setIdClient($request->get('usr'));
-            $journal->setMise(0);
-            $em->persist($journal);
-            $em->flush();
-            return new Response("aa");
-        }
-
-        else if($request->get('action')=="mise")
+        if($request->get('action')=="mise")
         {    $time = new \DateTime();
             $time->format('H:i:s \O\n Y-m-d');
             $em=$this->getDoctrine()->getManager();
@@ -290,9 +268,13 @@ class EncheresController extends Controller
             $journal->setDateMise($time);
             $journal->setIdSession($prd['id_encheres']);
             $journal->setIdClient($request->get('usr'));
+            $session = $em->getRepository('EncheresGestionEncheresBundle:Session')->findOneBy(['id'=>$prd['id_encheres']]);
 
-
-            if($request->get('somme')=='')
+            if($session->getDerniereMise()==0 && $request->get('somme')=='')
+                {
+                    $journal->setMise($prd['seuil_mise']);
+                }
+           else if($request->get('somme')=='')
                {$session = $em->getRepository('EncheresGestionEncheresBundle:Session')->findOneBy(['id'=>$prd['id_encheres']]);
                 $journal->setMise($session->getDerniereMise()+1);}
               else
@@ -322,6 +304,9 @@ class EncheresController extends Controller
             $prd=$em->getRepository('EncheresGestionEncheresBundle:Encheres')->encheresById($id);
             $session = $em->getRepository('EncheresGestionEncheresBundle:Session')->findOneBy(['id'=>$prd['id_encheres']]);
             $session->setEtat("fini");
+            $encheres = $em->getRepository('EncheresGestionEncheresBundle:Encheres')->find($id);
+            $encheres->setSeuilMise(-1);
+            $em->persist($encheres);
             $em->persist($session);
             $em->flush();
 
@@ -329,11 +314,18 @@ class EncheresController extends Controller
             return new JsonResponse($data);
         }
 
-
         $prd=$em->getRepository('EncheresGestionEncheresBundle:Encheres')->encheresById($id);
-        return $this->render('EncheresGestionEncheresBundle:gestion_encheres:encheresdetail.html.twig',array('prod'=>$prd));
+        $session = $em->getRepository('EncheresGestionEncheresBundle:Session')->findOneBy(['id'=>$prd['id_encheres']]);
+
+        //date control
+        $current_date = date("Y-m-d H:i:s", time());
+        if($current_date>$prd['date_debut'])
+          $check="true";
+            else
+              $check="false";
+
+        return $this->render('EncheresGestionEncheresBundle:gestion_encheres:encheresdetail.html.twig',
+            array('prod'=>$prd,'time_check'=>$check,'session'=>$session));
     }
-
-
 
 }

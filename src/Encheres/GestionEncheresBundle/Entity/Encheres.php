@@ -51,13 +51,6 @@ class Encheres
      */
     private $seuilMise;
 
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="seuil_participants", type="integer")
-     */
-    private $seuilParticipants;
-
 
     /**
      * Get id_encheres
@@ -164,30 +157,5 @@ class Encheres
     {
         return $this->seuilMise;
     }
-
-    /**
-     * Set seuilParticipants
-     *
-     * @param int $seuilParticipants
-     *
-     * @return Encheres
-     */
-    public function setSeuilParticipants($seuilParticipants)
-    {
-        $this->seuilParticipants = $seuilParticipants;
-
-        return $this;
-    }
-
-    /**
-     * Get seuilParticipants
-     *
-     * @return int
-     */
-    public function getSeuilParticipants()
-    {
-        return $this->seuilParticipants;
-    }
-
 
 }

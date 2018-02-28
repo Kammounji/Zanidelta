@@ -35,7 +35,6 @@
                             <div class="right-outer">
                                 <select id="tri">
                                     <option value=""></option>
-                                    <option value="participants">seuil participants</option>
                                     <option value="mise">seuil mise</option>
                                     <option value="date">date debut enchere</option>
                                 </select>
@@ -66,7 +65,6 @@
 
                                                     <div class="top">
                                                         <h3><a href="{{ path("produitdetail_encheres",{"id":p.id_encheres}) }}">{{ p.label }}</a></h3>
-                                                        <span class="price"> Seuil Participants : {{ p.seuil_participants }} </span>
                                                         <span class="price"> Seuil Mise : {{ p.seuil_mise }} </span>
                                                     </div>
 
@@ -136,7 +134,6 @@
                                                 <div class="cp-text">
                                                     <div class="top">
                                                         <h3><a href="{{ path("produitdetail_encheres",{"id":p.id_encheres}) }}">{{ p.label }}</a></h3>
-                                                        <span class="price">{{ p.seuil_participants }} DNT</span>
                                                     </div>
 
                                                     <div class="cp-listed">
@@ -247,13 +244,13 @@
                                 "<div class='col-md-4 col-sm-6' >"+
                                 "<div class='cp-pro-item'>"+
                                 "<div class='cp-pro-img'>"+
-
-
+                                    
                                 "</div>"+
                                 "<div class='cp-text'>"+
                                 "<div class='top'>"+
+
+
                                 "<h3>"+ p.label +"</h3>"+
-                                "<span class='price'> Seuil Participants : "+ p.seuil_participants  +" </span>"+
                                 "<span class='price'> Seuil Mise : "+ p.seuil_mise  +" </span>"+
                                 "</div>"+
 

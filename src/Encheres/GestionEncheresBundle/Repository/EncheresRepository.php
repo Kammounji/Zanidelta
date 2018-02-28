@@ -16,8 +16,8 @@ class EncheresRepository extends \Doctrine\ORM\EntityRepository
         $conn = $this->getEntityManager()->getConnection();
 
         $sql = '
-        SELECT id,url_img,id_encheres,label,seuil_participants,seuil_mise,date_debut,description FROM produit p ,encheres e
-        WHERE p.id=e.id_cible and p.id_categorie=:categorie ';
+        SELECT id,url_img,id_encheres,label,seuil_mise,date_debut,description FROM produit p ,encheres e
+        WHERE p.id=e.id_cible and p.id_categorie=:categorie and e.seuil_mise > -1 ';
 
 
         $stmt = $conn->prepare($sql);
@@ -30,9 +30,9 @@ class EncheresRepository extends \Doctrine\ORM\EntityRepository
         $conn = $this->getEntityManager()->getConnection();
 
         $sql = '
-        SELECT id_encheres,url_img,label,seuil_participants,seuil_mise,date_debut,description,caracteristiques
+        SELECT id_encheres,url_img,label,seuil_mise,date_debut,description,caracteristiques,poid
         FROM produit p ,encheres e
-        WHERE p.id=e.id_cible and e.id_encheres=:id ';
+        WHERE p.id=e.id_cible and e.id_encheres=:id  ';
 
         $stmt = $conn->prepare($sql);
         $stmt->execute(['id'=>$id]);
@@ -50,29 +50,14 @@ class EncheresRepository extends \Doctrine\ORM\EntityRepository
         return $stmt->fetch();
     }
 
-    public function EncheresByParticipants($cat)
-    {
-        $conn = $this->getEntityManager()->getConnection();
-
-        $sql = '
-        SELECT id_encheres,url_img,label,seuil_participants,seuil_mise,date_debut,description,caracteristiques
-        FROM produit p ,encheres e
-        WHERE p.id=e.id_cible and p.id_categorie=:categorie
-        ORDER BY e.seuil_participants DESC ';
-
-        $stmt = $conn->prepare($sql);
-        $stmt->execute(['categorie'=>$cat]);
-        return $stmt->fetchall();
-    }
-
     public function EncheresByMise($cat)
     {
         $conn = $this->getEntityManager()->getConnection();
 
         $sql = '
-        SELECT id_encheres,url_img,label,seuil_participants,seuil_mise,date_debut,description,caracteristiques
+        SELECT id_encheres,url_img,label,seuil_mise,date_debut,description,caracteristiques
         FROM produit p ,encheres e
-        WHERE p.id=e.id_cible and p.id_categorie=:categorie 
+        WHERE p.id=e.id_cible and p.id_categorie=:categorie and e.seuil_mise > -1
         ORDER BY e.seuil_mise DESC ';
 
         $stmt = $conn->prepare($sql);
@@ -85,9 +70,9 @@ class EncheresRepository extends \Doctrine\ORM\EntityRepository
         $conn = $this->getEntityManager()->getConnection();
 
         $sql = '
-        SELECT id_encheres,url_img,label,seuil_participants,seuil_mise,date_debut,description,caracteristiques
+        SELECT id_encheres,url_img,label,seuil_mise,date_debut,description,caracteristiques
         FROM produit p ,encheres e
-        WHERE p.id=e.id_cible and p.id_categorie=:categorie
+        WHERE p.id=e.id_cible and p.id_categorie=:categorie and e.seuil_mise > -1
         ORDER BY e.date_debut DESC ';
 
         $stmt = $conn->prepare($sql);

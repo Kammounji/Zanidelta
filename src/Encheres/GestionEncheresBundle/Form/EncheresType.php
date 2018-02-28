@@ -42,7 +42,6 @@ class EncheresType extends AbstractType
             ->add('age',TextType::class)
             ->add('dateDebut',DateTimeType::class)
             ->add('seuilMise',MoneyType::class)
-            ->add('seuilParticipants')
             ->add('idProprietaire',HiddenType::class)
             ->add('ajouter',SubmitType::class);
     }/**

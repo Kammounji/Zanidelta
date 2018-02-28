@@ -28,7 +28,6 @@ class EventListener
 
         $em = $args->getEntityManager();
         if($entity->getMise()!=0) {
-            $session= new Session();
             $session = $em->getRepository('EncheresGestionEncheresBundle:Session')->find($entity->getIdSession());
             $session->setDerniereMise($entity->getMise());
            if($session->getEtat()=="en attente")

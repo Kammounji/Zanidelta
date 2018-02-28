@@ -33,6 +33,10 @@ enchere_categorie:
     path:     /encheres
     defaults: { _controller: EncheresGestionEncheresBundle:Encheres:categorie }
 
-chat:
-    path:     /testchat
-    defaults: { _controller: EncheresGestionEncheresBundle:Sessionencheres:index }
+ma_session:
+    path:     /ma_session/{id}
+    defaults: { _controller: EncheresGestionEncheresBundle:admin:ma_session }
+
+sessionsupprim:
+    path:     /sessionsupprim/{id}
+    defaults: { _controller: EncheresGestionEncheresBundle:admin:sessionsupprim }

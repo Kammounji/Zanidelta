@@ -24,6 +24,7 @@ class AppKernel extends Kernel
             new Reclamation\DresseurReclamationBundle\ReclamationDresseurReclamationBundle(),
             new Transactions\GestionCommandeBundle\TransactionsGestionCommandeBundle(),
             new Store\GestionProduitsBundle\StoreGestionProduitsBundle(),
+            new FOS\MessageBundle\FOSMessageBundle()
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

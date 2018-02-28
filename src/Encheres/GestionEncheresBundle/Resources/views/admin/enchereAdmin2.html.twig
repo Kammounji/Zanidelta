@@ -455,32 +455,29 @@
                                         <th>
                                             ID
                                         </th>
-                                        <th>etat</th>
-                                        <th>dernier mise</th>
-                                        <th>id gagnant</th>
-                                        <th>actions</th>
+                                        <th>id session</th>
+                                        <th>id client</th>
+                                        <th>mise</th>
 
                                     </tr>
                                     </thead>
 
                                     <tbody>
-                                    {% for session in sessions %}
+                                    {% for journal in journals %}
                                     <tr>
-                                        <td><a href={{ path('ma_session',{'id':session.id}) }}>{{ session.id }}</a></td>
+                                        <td><b>{{ journal.id }}</b></td>
                                         <td>
-                                            {{ session.etat }}
+                                            {{ journal.idSession }}
                                         </td>
 
                                         <td>
-                                            {{ session.derniereMise }}
+                                            {{ journal.idClient }}
                                         </td>
 
                                         <td>
-                                            {{ session.idGagnant }}
+                                            {{ journal.mise }}
                                         </td>
-                                        <td>
-                                            <a href={{ path('sessionsupprim',{'id':session.id}) }}> supprimer </a>
-                                        </td>
+
 
 
                                     </tr>

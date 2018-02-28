@@ -10,6 +10,14 @@ namespace Encheres\GestionEncheresBundle\Repository;
  */
 class JournalRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findArray($id)
+    {
+        $qb = $this->createQueryBuilder('u')
+            ->Select('u')->where('u.idSession IN (:id)')
+            ->setParameter('id',$id);
+        return $qb->getQuery()->getResult();
+    }
+
     public function getMise($id_session)
     {
         $conn = $this->getEntityManager()->getConnection();
@@ -23,7 +31,7 @@ class JournalRepository extends \Doctrine\ORM\EntityRepository
         $sql = '
         SELECT date_mise,id_client,mise,derniere_mise
         FROM journal j , session s
-        WHERE j.id_session= :id and s.id= :id
+        WHERE j.id_session= :id and s.id= :id and j.mise != 0 
         ORDER BY date_mise DESC 
         LIMIT 4
          ';

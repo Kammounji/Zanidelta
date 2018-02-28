@@ -57,7 +57,6 @@
 <th class="product-thumbnail">id</th>
 <th class="product-price">date debut</th>
 <th class="product-quantity">seuil mies</th>
-<th class="product-subtotal">seuil participants</th>
 </tr>
 </thead>
     {% for e in encheres %}
@@ -74,14 +73,11 @@
 <span> {{ e.id_encheres }}</span>
 </td>
 <td class="product-price">
-    {{ e.seuilMise }}
+    {{ e.dateDebut|date }}
 </td>
 
-<td class="product-subtotal">
-    {{ e.seuilParticipants }}
-</td>
     <td class="product-subtotal">
-        {{ e.dateDebut|date }}
+        {{ e.seuilMise }}
     </td>
 </tr>
 </tbody>

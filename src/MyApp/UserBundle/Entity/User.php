@@ -1,12 +1,13 @@
 <?php
 namespace MyApp\UserBundle\Entity;
 use FOS\UserBundle\Model\User as BaseUser;
+use FOS\MessageBundle\Model\ParticipantInterface;
 use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity
  * @ORM\Table(name="utilisateur")
  */
-class User extends BaseUser
+class User extends BaseUser implements ParticipantInterface
 {
 /**
  * @ORM\Id

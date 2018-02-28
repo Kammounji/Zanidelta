@@ -25,7 +25,6 @@
     </section>
 
     <div class="cp-main-content">
-
         <section class="cp-product-section pd-t100">
             <div class="container">
 
@@ -41,7 +40,7 @@
 
                                         <a  class="gallery-btn">
 
-                                            <ul id="cd" class="countdown" >
+                                            <ul class="countdown" >
                                                 <li>
                                                     <span class="days">00</span>
                                         <p class="days_ref">days</p>
@@ -75,13 +74,15 @@
 
 
                         <div class="col-md-6 col-sm-12">
+
+
+
                             <div class="container" id="jeu">
 
                                 <div class="col-md-3 col-sm-6" >
                                     <h4>
                                         <a  class="gallery-btn">
-                                            <div data-type="countdown" data-id="489073" class="tickcounter" style="width: 100%; position: relative; padding-bottom: 25%"><a href="//www.tickcounter.com/countdown/489073/my-countdown" title="My countdown">My countdown</a><a href="//www.tickcounter.com/" title="Countdown">Countdown</a></div><script>(function(d, s, id) { var js, pjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = "//www.tickcounter.com/static/js/loader.js"; pjs.parentNode.insertBefore(js, pjs); }(document, "script", "tickcounter-sdk"));</script>
-                                            <div>Time left = <span id="timer"></span></div>
+                                            <div>Time left : <span id="timer"></span></div>
 
                                         </a>
                                     </h4>
@@ -99,8 +100,11 @@
 
                                 <div class="pro-price">
                                     <span class="new">Seuil Jetons : {{ prod['seuil_mise'] }}</span>
-                                    <span class="new">Seuil Participants : {{ prod['seuil_participants'] }}</span>
                                 </div>
+
+                                  <span> Poid :
+                                <p>{{ prod['poid'] }} </p>
+                               </span>
 
                                <span> caracteristiques :
                                 <p>{{ prod['caracteristiques'] }} </p>
@@ -116,8 +120,7 @@
                               </div>
                             </div>
 
-                            <button href="#cp-btn-style3" class="cp-btn-style3" id="ajax" value="participer" >Participer</button>
-                            <button href="#cp-btn-style1" class="cp-btn-style1" id="mise_btn" value="mise" ><span id="mise" > mise </span></button>
+                            <button href="#cp-btn-style1" class="cp-btn-style1" id="mise_btn" value="mise" ><span id="mise" > mise {{ prod['seuil_mise'] }}</span></button>
 
                             <div class="pro-price">
                                 <input id="zid" type="text" placeholder="placer votre mise ici " />
@@ -128,7 +131,7 @@
                 <div class="cp-tab-box cp-product-tabs">
                     <ul class="nav nav-tabs" role="tablist">
                         <li class="active"><a href="#cp_tab1" role="tab" data-toggle="tab">Description</a></li>
-                        <li><a href="#cp_tab2" role="tab" data-toggle="tab">Reviews(3)</a></li>
+                        <li><a href="#cp_tab2" role="tab" data-toggle="tab">Public Chat</a></li>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active fade in" id="cp_tab1">
@@ -353,56 +356,13 @@
                             </div>
                         </div>
                         <div class="tab-pane fade" id="cp_tab2">
-                            <div class="cp-tab-info-box">
 
-                                <ul class="cp-comments-holder">
-                                    <li>
+                            <h1>Public chat</h1>
+                            <ul id="chat-list"></ul>
+                            <hr>
+                            <textarea id="form-message" placeholder="Your public message here"></textarea>
+                            <input type="button" id="form-submit" value="Send message"/>
 
-                                        <div class="cp-comments-box">
-                                            <div class="cp-round-img">
-                                                <img src="{{ asset('images/comments-sm-img1.jpg') }}" alt="">
-                                            </div>
-                                            <div class="cp-text">
-                                                <h5>Miche hassy</h5>
-                                                <ul class="cp-meta-list">
-                                                    <li>March 18,2016</li>
-                                                </ul>
-                                                <p>Aenean arcu tortor, suscipit vitae,Aenean arcu tortor, suscipit vitae,Aenean arcu tortor, suscipit vitae,Aenean arcu torto.vitae,Aenean arcu tortor, suscipit vitae,Aenean arcu torto</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-
-                                        <div class="cp-comments-box">
-                                            <div class="cp-round-img">
-                                                <img src="{{ asset('images/comments-sm-img2.jpg') }}" alt="">
-                                            </div>
-                                            <div class="cp-text">
-                                                <h5>David Mate</h5>
-                                                <ul class="cp-meta-list">
-                                                    <li>April 18,2016</li>
-                                                </ul>
-                                                <p>Aenean arcu tortor, suscipit vitae,Aenean arcu tortor, suscipit vitae,Aenean arcu tortor, suscipit vitae,Aenean arcu torto.vitae,Aenean arcu tortor, suscipit vitae,Aenean arcu torto</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-
-                                        <div class="cp-comments-box">
-                                            <div class="cp-round-img">
-                                                <img src="{{ asset('images/comments-sm-img3.jpg') }}" alt="">
-                                            </div>
-                                            <div class="cp-text">
-                                                <h5>Niky Bard</h5>
-                                                <ul class="cp-meta-list">
-                                                    <li>May 18,2016</li>
-                                                </ul>
-                                                <p>Aenean arcu tortor, suscipit vitae,Aenean arcu tortor, suscipit vitae,Aenean arcu tortor, suscipit vitae,Aenean arcu torto.vitae,Aenean arcu tortor, suscipit vitae,Aenean arcu torto</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -415,40 +375,41 @@
     {% endblock %}
 </div>
 
-
-
 {% block script %}
     {{ parent() }}
 
-
-
     <script type="text/javascript" src="{{ asset('js/jquery.downCount.js') }}"></script>
-
         <script class="source" type="text/javascript">
-            $('#mise').hide();
-            $('#jeu').hide();
-            $('#fin').hide();
-            $('#fin2').hide();
-            $('#zid').hide();
-            $('#mise_btn').hide();
-            $('#compte_rebours').hide();
-
-
-            $('#cd').downCount({
+            $('.countdown').downCount({
                 date: '{{ prod['date_debut'] }}',
                 offset: +1
             });
-
-            $('#ajax').mouseup(function () {
-                    $('#mise').show();
-                    $('#mise_btn').show();
-                    $(this).hide();
-                    $('#replace').hide();
-                    $('#jeu').show();
-                    $('#zid').show();
-            })
-
         </script>
+
+
+    <script>
+
+        $('#mise').hide();
+        $('#jeu').hide();
+        $('#fin').hide();
+        $('#fin2').hide();
+        $('#zid').hide();
+        $('#mise_btn').hide();
+
+        var checktime={{ time_check }};
+
+        if(checktime)
+        {
+            $('#mise').show();
+            $('#mise_btn').show();
+            $(this).hide();
+            $('#replace').hide();
+            $('#jeu').show();
+            $('#zid').show();
+        }
+
+</script>
+
 
     <script>
         $('#zid').keyup(function () {
@@ -464,18 +425,6 @@
 
      $(document).ready(function(){
 
-            $('#ajax').mouseup(function () {
-                obj = new Object();
-                obj["action"] = "participer";
-                obj["usr"]="{{ app.user.id }}";
-                $.ajax({
-                    type: 'POST',
-                    url: '{{ path("produitdetail_encheres",{"id":prod['id_encheres']}) }}',
-                    data: obj,
-                    dataType: 'json'
-                });
-            });
-
          $('#mise_btn').mouseup(function(){
              obj = new Object();
              obj["action"]="mise";
@@ -488,16 +437,14 @@
                  dataType: 'json'
              });
 
-                $('#compte_rebours').show();
-             date_serveur = new Date();
-             date_serveur.setMinutes(date_serveur.getMinutes()+5);
-             $('#compte_rebours').downCount({
-                 date:  date_serveur,
-                 offset: +1
-             });
+             loop();
+
              document.getElementById('timer').innerHTML =
-                 00 + ":" + 20;
-            $('#zid').val('');
+                 02 + ":" + 00;
+             $('#zid').val('');
+
+             $('#timer').show();
+
          });
 
      });
@@ -508,8 +455,8 @@
 
     <script>
 
-        $('#timer').html(01 + ":" + 30);
-         var i=1;
+        var i=1;
+        $('#timer').hide();
         startTimer();
 
         function startTimer() {
@@ -522,7 +469,6 @@
                 //requete ajax recupere ligne session
               if(i==1) {
                   $(document).ready(function () {
-
                       obj = new Object();
                       obj["action"] = "finish";
                       $.ajax({
@@ -531,13 +477,13 @@
                           data: obj,
                           dataType: 'json',
                           success: function (session) {
+                              $('#fin').html('');
                               $('#fin').show();
                               $('#fin').html(
                                   '<h3>  id de la session enchere : ' + session.id + '</h3>'+
                                   '<h3>  le gangant est           : ' + session.idGagnant + '</h3>'+
                                   '<h3>  la derniere mise est     : ' + session.derniereMise + '</h3>'
                               );
-
                               if( '{{ app.user.id }}' == session.idGagnant )
                               {
                                   $('#fin2').show();
@@ -554,36 +500,30 @@
                 $('#mise_btn').hide();
                 $('#zid').hide();
             }
-
             $('#timer').html(m + ":" + s);
             setTimeout(startTimer, 1000);
         }
-
         function checkSecond(sec) {
             if (sec < 10 && sec >= 0) {sec = "0" + sec}; // add zero in front of numbers < 10
             if (sec < 0) {sec = "59"};
             return sec;
         }
-
-
         </script>
 
     <script>
         <!--
-        function init(){
-            loop();
-        }
-        function loop(){
-            // ICI ON SET LE LOOP : 5000 = 5 secondes
-            setTimeout('loop();',5000);
 
-// ici il faut recuperer et afficher les dernieres mises chaque 3 secondes ensuite essayer d'implementer le event listener
+        function loop(){
+
+            var checktime={{ time_check }};
+
             if($('#mises').html()!="<h3>Cette Session est terminé</h3>"){
+                if(checktime){
             $(document).ready(function(){
 
                 obj = new Object();
                 obj["action"] = "afficher";
-                var derniere_mise =0;
+                var derniere_mise ="{{ prod['seuil_mise'] }}";
                 $.ajax({
                     type: 'POST',
                     url: '{{ path("produitdetail_encheres",{"id":prod['id_encheres']}) }}',
@@ -596,8 +536,6 @@
                                 "<ul>"+
                                 "<li>"+
                                 "<div class='cp-recent-inner'>"+
-                                //    "<figure class='cp-thumb'>"+
-                                //   "</figure>"+
                                 "<span class='text-error'>"+'id client : ' + m.id_client +"</span>"+"</br>"+
                                 "<span class='text-danger'>"+'date mise : '+m.date_mise+"</span>"+"</br>"+
                                 "<span class='text-success' >"+'mise : '+m.mise+ "</span>"+
@@ -605,19 +543,107 @@
                                 "</li>"+
                                 "</ul>"
                             );
-                            derniere_mise=parseInt(m.derniere_mise)+1; })
-                        if($('#zid').val()=='')
+                            derniere_mise=parseInt(m.derniere_mise)+1;
+
+                        })
+                        if($('#zid').val()=='' && derniere_mise>{{ prod['seuil_mise'] }})
                         {$('#mise').html('<span id="mise" > mise '+derniere_mise+'</span> ');
                           $('#fin').html(derniere_mise);}
                     }
                 });
-            });}
+            });}}
 
         }
 
-        init();
 
         -->
+    </script>
+
+    <script>
+        // This object will be sent everytime you submit a message in the sendMessage function.
+        var clientInformation = {
+            username: new Date().getTime().toString()
+            // You can add more information in a static object
+        };
+
+        // START SOCKET CONFIG
+        /**
+         * Note that you need to change the "sandbox" for the URL of your project.
+         * According to the configuration in Sockets/Chat.php , change the port if you need to.
+         * @type WebSocket
+         */
+        var conn = new WebSocket('ws://localhost:10');
+
+        conn.onopen = function(e) {
+            console.info("Connection established succesfully");
+        };
+
+        conn.onmessage = function(e) {
+            var data = JSON.parse(e.data);
+            Chat.appendMessage(data.username, data.message);
+
+            if(data.message=="")
+            {loop();
+             document.getElementById('timer').innerHTML =
+                02 + ":" + 00;
+             $('#zid').val('');
+             $('#timer').show();}
+
+            console.log(data);
+        };
+
+        conn.onerror = function(e){
+            alert("Error: something went wrong with the socket.");
+            console.error(e);
+        };
+        // END SOCKET CONFIG
+
+
+        /// Some code to add the messages to the list element and the message submit.
+        document.getElementById("mise_btn").addEventListener("click",function(){
+            var msg ="";
+            Chat.sendMessage(msg);
+        }, false);
+
+        /// Some code to add the messages to the list element and the message submit.
+        document.getElementById("form-submit").addEventListener("click",function(){
+            var msg = document.getElementById("form-message").value;
+
+            if(!msg){
+                alert("Please send something on the chat");
+            }
+
+            Chat.sendMessage(msg);
+            // Empty text area
+            document.getElementById("form-message").value = "";
+        }, false);
+
+        // Mini API to send a message with the socket and append a message in a UL element.
+        var Chat = {
+            appendMessage: function(username,message){
+                var from;
+
+                if(username == clientInformation.username){
+                    from = "me";
+                }else{
+                    from = clientInformation.username;
+                }
+
+                // Append List Item
+                if(message!="")
+                {var ul = document.getElementById("chat-list");
+                 var li = document.createElement("li");
+                 li.appendChild(document.createTextNode(from + " : "+ message));
+                 ul.appendChild(li);}
+            },
+            sendMessage: function(text){
+                clientInformation.message = text;
+                // Send info as JSON
+                conn.send(JSON.stringify(clientInformation));
+                // Add my own message to the list
+                this.appendMessage(clientInformation.username, clientInformation.message);
+            }
+        };
     </script>
 
 {% endblock %}

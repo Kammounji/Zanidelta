@@ -3,6 +3,9 @@
 parameters:
 
 services:
+    authentication.handler.login_success_handler:
+            class:  FOS\UserBundle\Security\LoginSuccessHandler
+            arguments:  ['@router', '@security.authorization_checker']
     fos_user.doctrine_registry:
         alias: doctrine
 

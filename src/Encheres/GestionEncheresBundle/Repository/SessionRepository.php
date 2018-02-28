@@ -10,20 +10,19 @@ namespace Encheres\GestionEncheresBundle\Repository;
  */
 class SessionRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function getEncheresId($id_prd,$idProprietaire,$seuilmise,$seuilparticipants)
+    public function getEncheresId($id_prd,$idProprietaire,$seuilmise)
            {
                $conn = $this->getEntityManager()->getConnection();
 
                $sql = '
         SELECT id_encheres FROM encheres  
         WHERE id_cible= :id_prd and seuil_mise= :seuilmise 
-        and seuil_participants= :seuilparticipants and id_proprietaire= :idProprietaire';
+        and id_proprietaire= :idProprietaire';
 
                $stmt = $conn->prepare($sql);
                $stmt->execute([
                    'id_prd'=>$id_prd,
                    'seuilmise'=>$seuilmise,
-                   'seuilparticipants'=>$seuilparticipants,
                    'idProprietaire'=>$idProprietaire
                ]);
 
