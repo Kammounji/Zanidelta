@@ -1,4 +1,0 @@
-# HTTrack Website Copier Cookie File
-# This file format is compatible with Netscape cookies
-.crunchpress.com	TRUE	/	FALSE	1999999999	__cfduid	dd21090a530cd42099676c02f86ddf2e91517679466
-

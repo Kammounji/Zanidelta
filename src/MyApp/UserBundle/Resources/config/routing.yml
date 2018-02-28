@@ -1,7 +1,0 @@
-affiche:
-    path:     /affiche
-    defaults: { _controller: MyAppUserBundle:User:affiche }
-
-logreg:
-    path:   /logreg
-    defaults: { _controller: MyAppUserBundle:User:logandreg }
