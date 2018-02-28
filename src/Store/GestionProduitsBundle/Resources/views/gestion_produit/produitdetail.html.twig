@@ -1,0 +1,222 @@
+{% extends "StoreGestionProduitsBundle:Default:layout.html.twig" %}
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+{# {% form_theme form 'bootstrap_3_horizontal_layout.html.twig' %} #}
+        {% block head %}
+
+            {{ parent() }}
+        {% endblock %}
+    {% block content %}
+
+<div class="cp-wrapper">
+
+    {% block header %}
+        {{ parent() }}
+    {% endblock %}
+
+    <section class="cp-inner-banner">
+        <div class="container">
+            <div class="cp-inner-banner-outer">
+                <h2>Online store</h2>
+
+                <ul class="breadcrumb">
+                    <li><a href="{{ path("affiche") }}">Home</a></li>
+                    <li class="active">Product Detail</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <div class="cp-main-content">
+
+        <section class="cp-product-section pd-t100">
+            <div class="container">
+
+                <div class="cp-pro-detail-info">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12">
+                            <div class="cp-product-slider2 pretty-gallery">
+                                <div class="owl-carousel" id="cp_product-slider">
+                                    <div class="item">
+                                        <img src="{{ asset('uploads/'~l.nomImage) }}" alt="" />
+                                        <a href="{{ asset('uploads/'~l.nomImage) }}" data-rel="{{ asset('uploads/'~l.nomImage) }}"><i class="fa fa-arrows"></i></a>
+                                    </div>
+                                    <div class="item">
+                                        <img src="{{ asset('uploads/'~l.nomImage) }}" alt="" />
+                                        <a href="{{ asset('uploads/'~l.nomImage) }}" data-rel="{{ asset('uploads/'~l.nomImage) }}"><i class="fa fa-arrows"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <div class="cp-text">
+                                <h3>{{ l.idCategorie.nom }}</h3>
+
+                                <div class="pro-price">
+                                    <span class="old">{{ l.prixAncien }}</span>
+                                    <span class="new">{{ l.prixNouv }}</span>
+                                </div>
+                                <p> {{ l.description }}</p>
+<br><br><br><br><br>
+                                <div class="cp-blog-section" align="center">
+                                {% if uid != null %}
+                                    {% if is_granted('ROLE_CLIENT') %}
+                                        {% for f in fav if (f.idClient == uid and f.idProduit == l.id) %}
+                                            <a href="{{ path("deletefav",{'id':f.id}) }}"><i class="fa fa-heart">favorisé</i></a>
+                                        {% else %}
+                                            <a href="{{ path("ajoutfav",{'id':l.id}) }}"><i class="fa fa-heart-o">ajouter à favoris?</i></a>
+                                        {% endfor %}
+                                    {% endif %}
+                                {% endif %}
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <style>
+                @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
+                fieldset, label { margin: 0; padding: 0; }
+                body{ margin: 20px; }
+                h1 { font-size: 1.5em; margin: 10px; }
+
+                /****** Style Star Rating Widget *****/
+
+                .rating {
+                border: none;
+                float: left;
+                }
+
+                .rating > input { display: none; }
+                .rating > label:before {
+                margin: 5px;
+                font-size: 1.25em;
+                font-family: FontAwesome;
+                display: inline-block;
+                content: "\f005";
+                }
+
+                .rating > .half:before {
+                content: "\f089";
+                position: absolute;
+                }
+
+                .rating > label {
+                color: #ddd;
+                float: right;
+                }
+
+                /***** CSS Magic to Highlight Stars on Hover *****/
+
+                .rating > input:checked ~ label, /* show gold star when clicked */
+                .rating:not(:checked) > label:hover, /* hover current star */
+                .rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+
+                .rating > input:checked + label:hover, /* hover current star when changing rating */
+                .rating > input:checked ~ label:hover,
+                .rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+                .rating > input:checked ~ label:hover ~ label { color: #FFED85;  }
+                </style>
+
+                <div class="cp-tab-box cp-product-tabs">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="active"><a href="#cp_tab1" role="tab" data-toggle="tab">Description</a></li>
+                        <li><a href="#cp_tab2" role="tab" data-toggle="tab">Commentaire</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active fade in" id="cp_tab1">
+                            <div class="cp-tab-info-box">
+                                <div class="cp-tab-text">
+                                    <p>{{ l.description }}</p>
+                                 </div>
+
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="cp_tab2">
+                            <div class="cp-tab-info-box">
+
+                                <ul class="cp-comments-holder">
+
+                                    {% for c in comm %}
+                                        {% if c.idCible == l.id %}
+                                    <ul class="cp-comments-holder cp-comments-holder2">
+                                        <div class="cp-comments-box">
+                                            <div class="cp-round-img">
+                                                <img alt="" src="{{ asset('images/comments-sm-img1.jpg') }}">
+                                            </div>
+                                            <div class="cp-text">
+                                                <h5>{{ c.idClient}}</h5>
+
+                                                {% if u == c.idClient %}
+                                                <a href="{{ path('supprprod',{'id':c.id}) }}">Supprimer</a>/
+                                                <a href="{{ path('updateprod',{'id':c.id}) }}">Modifier</a>
+                                                {% endif %}
+                                                <ul class="cp-meta-list">
+                                                    <li>{{ c.date |date("m/d/y h:m")}}</li>
+
+                                                </ul>
+                                                <p>{{ c.texte }}</p>
+
+                                            </div>
+                                        </div>
+                                    </ul>
+
+
+                                {% endif %}
+                                    {% endfor %}
+
+                                    {{ form_start(form) }}
+
+                                    <div class="cp-checkout-form" align="center" >
+                                        <div class="inner-holder" align="center">
+                                            <div class="row">
+                                                <label>Commentaire :</label><br>
+                                                    {{ form_widget(form.texte, { 'attr': {'id': 'emojionearea'} }) }}
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+
+                                    <br>
+                                    <div align="center">
+                                        <input type="submit" align="center" class="btn-submit cp-btn-style2" value="{{ 'commenter'|trans }}" />
+                                    </div>
+
+
+
+                                    {{ form_end(form) }}
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+            s1.async=true;
+            s1.src='https://embed.tawk.to/5a9461244b401e45400d380d/default';
+            s1.charset='UTF-8';
+            s1.setAttribute('crossorigin','*');
+            s0.parentNode.insertBefore(s1,s0);
+        })();
+    </script>
+    <!--End of Tawk.to Script-->
+    {% block footer %}
+        {{ parent() }}
+    {% endblock %}
+</div>
+
+
+{% block script %}
+    {{ parent() }}
+{% endblock %}
+{% endblock %}

@@ -1,0 +1,145 @@
+{% extends "StoreGestionProduitsBundle:Default:layout.html.twig" %}
+
+
+        {% block head %}
+            {{ parent() }}
+        {% endblock %}
+    {% block content %}
+
+
+<div class="cp-wrapper">
+
+    {% block header %}
+        {{ parent() }}
+    {% endblock %}
+
+    <section class="cp-inner-banner">
+        <div class="container">
+            <div class="cp-inner-banner-outer">
+                <h2>Online store</h2>
+
+                <ul class="breadcrumb">
+                    <li><a href="{{ path("affiche") }}">Home</a></li>
+                    <li class="active">Product Page</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+    <div class="cp-main-content">
+
+        <section class="cp-product-section pd-t100">
+
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="col-md-12">
+
+                        <div class="cp-tabs-holder">
+
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade in active" id="tab-01">
+                                    <div class="row">
+                                        <aside class="cp-sidebar-outer">
+                                            <div class="widget widget-clouds">
+                                                <div class="tagcloud">
+                                                    <h3>Categories:</h3>
+                                                    <a href="{{ path('produit') }}">Tous les categorie</a><br>
+                                                    {% for c in m %}
+
+                                                        <a href="{{ path('afficheCat',{'id':c.id}) }}">{{ c.nom }}</a><br>
+                                                    {% endfor %}
+
+                                                </div>
+                                            </div>
+                                        </aside>
+                                        {% for p in prod %}
+                                            {% if p.etat=="confirmer" %}
+                                        <div class="col-md-3 col-sm-6">
+
+                                            <div class="cp-pro-item">
+                                                <div class="cp-pro-img">
+
+                                                    <img src="{{ asset('uploads/'~p.nomImage) }}" alt="">
+
+                                                    <div class="cp-pro-caption">
+                                                    <ul>
+                                                        <li class="share">
+                                                            {% if uid != null %}
+                                                                {% if is_granted('ROLE_CLIENT') %}
+                                                                    {% for f in fav if (f.idClient == uid and f.idProduit == p.id) %}
+                                                                        <a href="{{ path("deletefav",{'id':f.id}) }}"><i class="fa fa-heart"></i></a>
+                                                                    {% else %}
+                                                                        <a href="{{ path("ajoutfav",{'id':p.id}) }}"><i class="fa fa-heart-o"></i></a>
+                                                                    {% endfor %}
+                                                                {% endif %}
+                                                            {% endif %}
+
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                </div>
+                                                <div class="cp-text">
+                                                    <div class="top">
+                                                        <h3><a href="{{ path("produitdetaile",{'id':p.id}) }}">{{ p.description }}</a></h3>
+                                                        <span class="price">{{ p.prixNouv }} DNT</span>
+                                                    </div>
+
+                                                    <div class="cp-listed">
+                                                        <span><a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></span>
+                                                        <span><a href="{{ path("produitdetaile",{'id':p.id}) }}"><i class="fa fa-link" aria-hidden="true"></i></a></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                                {% endif %}
+                                            {% endfor %}
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container" align="center">
+                    <div class="navigation">
+                        {{ knp_pagination_render(prod) }}
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+    </div>
+
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+            s1.async=true;
+            s1.src='https://embed.tawk.to/5a9461244b401e45400d380d/default';
+            s1.charset='UTF-8';
+            s1.setAttribute('crossorigin','*');
+            s0.parentNode.insertBefore(s1,s0);
+        })();
+    </script>
+    <!--End of Tawk.to Script-->
+    {% block footer %}
+        {{ parent() }}
+    {% endblock %}
+</div>
+
+    {% block script %}
+        {{ parent() }}
+    {% endblock %}
+
+{% endblock %}

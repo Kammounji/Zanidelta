@@ -1,0 +1,134 @@
+{% extends "StoreGestionProduitsBundle:Default:layout.html.twig" %}
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+{# {% form_theme form 'bootstrap_3_horizontal_layout.html.twig' %} #}
+        {% block head %}
+            {{ parent() }}
+        {% endblock %}
+    {% block content %}
+
+<div class="cp-wrapper">
+
+    {% block header %}
+        {{ parent() }}
+    {% endblock %}
+
+<section class="cp-inner-banner">
+<div class="container">
+<div class="cp-inner-banner-outer">
+<h2>Espace Ajout Produit</h2>
+
+<ul class="breadcrumb">
+<li><a href="{{ path("affiche") }}">Home</a></li>
+<li>Espace Magasin</li>
+<li class="active">Espace Ajout Produit</li>
+</ul>
+</div>
+</div>
+</section>
+
+        <section class="cp-departments-section cp-departments-section_v2 pd-t100">
+        <div class="cp-bg-movement" data-ibg-bg="images/banner/White_screen.jpg"></div>
+        <div class="container" >
+        <div class="row">
+        <div class="col-md-6" >
+    {{ form_start(form) }}
+<br>
+        <div class="col-md-12 col-sm-12" >
+            <div class="inner-holder" >
+                <div class="row">
+                <label>id categorie:</label><br>
+                {{ form_widget(form.idCategorie) }}
+                </div>
+            </div>
+        </div>
+<br>
+        <div class="col-md-12 col-sm-12" >
+            <div class="inner-holder" >
+                <div class="row">
+                <label>Caracteristique:</label><br>
+                {{ form_widget(form.caracteristiques) }}
+                </div>
+            </div>
+        </div>
+<br>
+        <div class="col-md-12 col-sm-12" >
+            <div class="inner-holder" >
+                <div class="row">
+                <label>Description:</label><br>
+                {{ form_widget(form.description) }}
+                </div>
+            </div>
+        </div>
+<br>
+        <div class="col-md-12 col-sm-12">
+            <div class="inner-holder">
+                <div class="row">
+                    <label>Image:</label><br>
+                {{ form_widget(form.file) }}
+                </div>
+            </div>
+        </div>
+<br>
+        <div class="col-md-12 col-sm-12">
+            <div class="inner-holder">
+                <div class="row">
+                    <label> Poid:</label><br>
+                    {{ form_widget(form.poid) }}
+                </div>
+            </div>
+        </div>
+<br>
+        <div class="col-md-12 col-sm-12">
+            <div class="inner-holder">
+                <div class="row">
+                    <label> Prix :</label><br>
+                        {{ form_widget(form.prixNouv) }}
+                </div>
+            </div>
+        </div>
+<br>
+
+            <div class="col-md-12 col-sm-12">
+                <div class="inner-holder">
+                    <div class="row">
+                        <label> Quantite:</label><br>
+                        {{ form_widget(form.quantite) }}
+                    </div>
+                </div>
+            </div>
+            <br>
+                <div align="center">
+                    <input type="submit" align="center" class="btn-submit cp-btn-style2" value="{{ 'ajouter'|trans }}" />
+                </div>
+
+
+
+    {{ form_end(form) }}
+        </div>
+        </div>
+        </div>
+        </section>
+
+    {% block footer %}
+        {{ parent() }}
+    {% endblock %}
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+            s1.async=true;
+            s1.src='https://embed.tawk.to/5a9461244b401e45400d380d/default';
+            s1.charset='UTF-8';
+            s1.setAttribute('crossorigin','*');
+            s0.parentNode.insertBefore(s1,s0);
+        })();
+    </script>
+    <!--End of Tawk.to Script-->
+</div>
+
+
+        {% block script %}
+            {{ parent() }}
+        {% endblock %}
+    {% endblock %}

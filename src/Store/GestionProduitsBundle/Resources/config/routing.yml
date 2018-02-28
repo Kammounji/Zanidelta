@@ -1,0 +1,64 @@
+ajoutmag:
+    path:     /ajoutmag
+    defaults: { _controller: StoreGestionProduitsBundle:Default:ajoutmag }
+
+produit:
+    path:     /produit
+    defaults: { _controller: StoreGestionProduitsBundle:Default:produit }
+
+slideproduit:
+    path:     /slideproduit
+    defaults: { _controller: StoreGestionProduitsBundle:Default:slideproduit }
+
+produitdetaile:
+    path:     /produitdetaile{id}
+    defaults: { _controller: StoreGestionProduitsBundle:Default:produitdetaile }
+
+espacemag:
+    path:     /espacemag
+    defaults: { _controller: StoreGestionProduitsBundle:Default:espacemag }
+
+modsuppstore:
+    path:     /modsuppstore
+    defaults: { _controller: StoreGestionProduitsBundle:Default:modsuppstore }
+
+modifdetailmag:
+    path:     /modifdetailmag
+    defaults: { _controller: StoreGestionProduitsBundle:Default:modifdetailmag }
+
+accueilProduit:
+    path:     /accueilProduit
+    defaults: { _controller: StoreGestionProduitsBundle:admin:acceuilProduit }
+produitAdmin:
+    path:     /produitAdmin
+    defaults: { _controller: StoreGestionProduitsBundle:admin:produitAdmin }
+supprprod:
+    path:     /supprprod{id}
+    defaults: { _controller: StoreGestionProduitsBundle:Default:deleteprod }
+updateprod:
+    path:     /updateprod{id}
+    defaults: { _controller: StoreGestionProduitsBundle:Default:updateprod }
+updateEtat:
+    path:     /updateEtat{id}
+    defaults: { _controller: StoreGestionProduitsBundle:admin:updateetat }
+deleteprod:
+    path:     /deleteprod{id}
+    defaults: { _controller: StoreGestionProduitsBundle:admin:deleteprod}
+chat:
+    path:     /chat
+    defaults: { _controller: StoreGestionProduitsBundle:admin:chat}
+afficheCat:
+    path:     /afficheCat{id}
+    defaults: { _controller: StoreGestionProduitsBundle:Default:afficheCat}
+ajoutfav:
+    path:     /ajoutfav{id}
+    defaults: { _controller: StoreGestionProduitsBundle:Default:ajoutfav}
+deletefav:
+    path:     /deletefav{id}
+    defaults: { _controller: StoreGestionProduitsBundle:Default:deletefav}
+afficherfav:
+    path:     /afficherfav
+    defaults: { _controller: StoreGestionProduitsBundle:Default:afficherfav}
+nomuser:
+    path:     /nomuser
+    defaults: { _controller: StoreGestionProduitsBundle:admin:nomuser}

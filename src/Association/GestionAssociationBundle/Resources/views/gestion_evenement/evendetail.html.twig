@@ -1,0 +1,191 @@
+{% extends "MyAppUserBundle:Default:layout.html.twig" %}
+        {% block head %}
+            {{ parent() }}
+        {% endblock %}
+    {% block content %}
+
+<div class="cp-wrapper">
+
+    {% block header %}
+        {{ parent() }}
+    {% endblock %}
+
+    <section class="cp-inner-banner">
+        <div class="container">
+            <div class="cp-inner-banner-outer">
+                <h2>Blog</h2>
+
+                <ul class="breadcrumb">
+                    <li><a href="{{ path("affiche") }}">Home</a></li>
+                    <li>Pages</li>
+                    <li class="active">Blog Detail</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <div class="cp-main-content">
+
+        <section class="cp-blog-section cp-blog-full-section pd-t100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+
+                        <article class="cp-blog-item">
+                            <figure class="cp-thumb">
+                                <img src="{{ asset('images/blog/blog-full-img-01.jpg') }}" alt="">
+                            </figure>
+                            <div class="cp-text">
+                                <div class="cp-date-box">
+                                    <span>15</span>
+                                    July
+                                </div>
+                                <div class="cp-inner">
+                                    <h3>Praesent vehicula dapibus diam non porttitor. </h3>
+                                    <div class="cp-top">
+                                        <ul class="cp-meta-listed">
+                                            <li><i class="fa fa-user" aria-hidden="true"></i> Michel Jhon</li>
+                                            <li><i class="fa fa-user" aria-hidden="true"></i> 762</li>
+                                            <li>
+                                                <i class="fa fa-user" aria-hidden="true"></i>
+                                                <a href="#">Pets,</a>
+                                                <a href="#">Cats,</a>
+                                                <a href="#">Vaternity,</a>
+                                                <a href="#">Pet Health,</a>
+                                                <a href="#">Medical</a>
+                                            </li>
+                                        </ul>
+                                        <ul class="right-nav">
+                                            <li><i class="fa fa-heart" aria-hidden="true"></i> 232</li>
+                                            <li class="share share-push"><a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i></a></li>
+                                        </ul>
+                                        <ul class="cp-social-links share-holder">
+                                            <li><a href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-phone-square" aria-hidden="true"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-skype" aria-hidden="true"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <p>Etiam dictum. Nunc enim. Sed massa tellus, aliquam rhoncus, venenatis quis, suscipit ac, libero. Praesent odio tellus, posuere sed, dictum sed, fermentum at, orci. Etiam dictum. Nunc enim. Sed massa tellus, aliquam rhoncus, venenatis quis, suscipit ac, libero. Praesent odio tellus, posuere sed, dictum sed, fermentum at, orci. Etiam dictum. Nunc enim. Sed massa tellus, aliquam rhoncus, venenatis quis, suscipit ac, libero. Praesent odio tellus, posuere sed, dictum sed, fermentum at, orci. Etiam dictum. Nunc enim. Sed massa tellus, aliquam rhoncus, venenatis quis, suscipit ac, libero. Praesent odio tellus, posuere sed dictum sed.</p>
+                                    <p>Etiam dictum. Nunc enim. Sed massa tellus, aliquam rhoncus, venenatis quis, suscipit ac, libero. Praesent odio tellus, posuere sed, dictum sed, fermentum at, orci. Etiam dictum. Nunc enim. Sed massa tellus, aliquam rhoncus, venenatis quis, suscipit ac, libero. Praesent odio tellus, posuere sed, dictum sed, fermentum at, orci. Etiam dictum. Nunc enim. Sed massa tellus, aliquam rhoncus, venenatis quis.</p>
+                                    <p>Etiam dictum. Nunc enim. Sed massa tellus, aliquam rhoncus, venenatis quis, suscipit ac, libero. Praesent odio tellus, posuere sed, dictum sed, fermentum at, orci. Etiam dictum. Nunc enim. Sed massa tellus, aliquam rhoncus, venenatis quis, suscipit ac, libero.
+                                        Praesent odio tellus, posuere sed, dictum .</p>
+                                    <blockquote class="cp-blockquote">
+                                        <p>“Etiam dictum. Nunc enim. Sed massa tellus, aliquam rhoncus, venenatis quis, suscipit ac, libero. Praesent odio tellus, posuere sed, dictum sed, fermentum at, orci. Etiam dictum. Nunc enim. Sed massa tellus, aliquam rhoncus, venenatis quis, suscipit ac, libero. Praesent odio tellus, posuere sed, dictum “</p>
+                                    </blockquote>
+
+                                    <div class="cp-blog-testimonial">
+                                        <div class="cp-top">
+                                            <div class="cp-round-img">
+                                                <img alt="" src="{{ asset('images/comments-sm-img4.jpg') }}">
+                                            </div>
+                                            <p> “Etiam dictum. Nunc enim. Sed massa tellus, aliquam rhoncus, venenatis quis, suscipitNunc enim. Sed massa tellus, aliquam rhoncus, venenatis quis, suscipitNunc enim. Sed massa tellus, aliquam rhoncus, venenatis”</p>
+                                        </div>
+                                        <div class="cp-bottom">
+                                            <h5>Victor Tihai</h5>
+                                            <span>CEO Hospital</span>
+                                        </div>
+                                    </div>
+
+                                    <ul class="cp-comments-holder cp-comments-holder2">
+                                        <li>
+
+                                            <div class="cp-comments-box">
+                                                <div class="cp-round-img">
+                                                    <img alt="" src="{{ asset('images/comments-sm-img1.jpg') }}">
+                                                </div>
+                                                <div class="cp-text">
+                                                    <h5>Miche hassy</h5>
+                                                    <ul class="cp-meta-list">
+                                                        <li>July 18,2016</li>
+                                                        <li class="reply"><a href="#">Reply</a></li>
+                                                    </ul>
+                                                    <p>Aenean arcu tortor, suscipit vitae,Aenean arcu tortor, suscipit vitae,Aenean arcu suscipit vitae,Aenean arcu torto.</p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+
+                                            <div class="cp-comments-box">
+                                                <div class="cp-round-img">
+                                                    <img alt="" src="{{ asset('images/comments-sm-img2.jpg') }}">
+                                                </div>
+                                                <div class="cp-text">
+                                                    <h5>David Mate</h5>
+                                                    <ul class="cp-meta-list">
+                                                        <li>June 25,2016</li>
+                                                        <li class="reply"><a href="#">Reply</a></li>
+                                                    </ul>
+                                                    <p>Aenean arcu tortor, suscipit vitae,Aenean arcu tortor, suscipit vitae,Aenean arcu tortor, suscipit vitae,Aenean arcu torto.</p>
+                                                </div>
+                                            </div>
+                                            <ul>
+                                                <li>
+
+                                                    <div class="cp-comments-box">
+                                                        <div class="cp-round-img">
+                                                            <img alt="" src="{{ asset('images/comments-sm-img3.jpg') }}">
+                                                        </div>
+                                                        <div class="cp-text">
+                                                            <h5>Niky Bard</h5>
+                                                            <ul class="cp-meta-list">
+                                                                <li>Aug 18,2016</li>
+                                                                <li class="reply"><a href="#">Reply</a></li>
+                                                            </ul>
+                                                            <p>Aenean arcu tortor, suscipit vitae,Aenean arcu tortor, suscipit vitae,Aenean arcu tortor, suscipit vitae,Aenean arcu torto.</p>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+
+                                    <div class="cp-form-box">
+                                        <h3>Leave A Reply</h3>
+                                        <form action="http://html.crunchpress.com/pet-care/form3.php" method="post">
+                                            <div class="row">
+                                                <div class="col-md-6 col-sm-6">
+                                                    <div class="inner-holder">
+                                                        <input type="text" placeholder="Name" name="name2" required pattern="[a-zA-Z ]+">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-sm-6">
+                                                    <div class="inner-holder">
+                                                        <input type="text" placeholder="Email" name="email2" required pattern="^[a-zA-Z0-9-\_.]+@[a-zA-Z0-9-\_.]+\.[a-zA-Z0-9.]{2,5}$">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 col-sm-12">
+                                                    <div class="inner-holder">
+                                                        <textarea placeholder="Message" name="comment2" required></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 col-sm-12">
+                                                    <div class="inner-holder cp-btn-holder">
+                                                        <button type="submit" class="cp-btn-style3 btn-submit" value="Submit" name="submit2">Submit Now</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    {% block footer %}
+        {{ parent() }}
+    {% endblock %}
+</div>
+
+
+        {% block script %}
+            {{ parent() }}
+        {% endblock %}
+
+    {% endblock %}

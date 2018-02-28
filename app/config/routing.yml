@@ -1,0 +1,39 @@
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+
+services:
+    resource: "@ReclamationDresseurReclamationBundle/Resources/config/routing.yml"
+    prefix: /service
+
+
+store_gestion_produits:
+    resource: "@StoreGestionProduitsBundle/Resources/config/routing.yml"
+
+
+transactions_gestion_commande:
+    resource: "@TransactionsGestionCommandeBundle/Resources/config/routing.yml"
+
+
+veterinaire_gestion_rdv:
+    resource: "@VeterinaireGestionRDVBundle/Resources/config/routing.yml"
+
+
+association_gestion_association:
+    resource: "@AssociationGestionAssociationBundle/Resources/config/routing.yml"
+
+
+encheres_gestion_encheres:
+    resource: "@EncheresGestionEncheresBundle/Resources/config/routing.yml"
+
+
+my_app_user:
+    resource: "@MyAppUserBundle/Resources/config/routing.yml"
+
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+mgilet_notifications:
+    resource: "@MgiletNotificationBundle/Controller/"
+    prefix: /notifications

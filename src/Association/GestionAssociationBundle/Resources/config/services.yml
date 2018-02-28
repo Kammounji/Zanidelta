@@ -1,0 +1,4 @@
+services:
+#    association_gestion_association.example:
+#        class: Association\GestionAssociationBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

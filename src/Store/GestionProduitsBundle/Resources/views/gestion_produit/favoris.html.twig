@@ -1,0 +1,82 @@
+{% extends "StoreGestionProduitsBundle:Default:layout.html.twig" %}
+        {% block head %}
+            {{ parent() }}
+        {% endblock %}
+    {% block content %}
+
+<div class="cp-wrapper">
+
+    {% block header %}
+        {{ parent() }}
+    {% endblock %}
+
+    <section class="cp-inner-banner">
+        <div class="container">
+            <div class="cp-inner-banner-outer">
+                <h2>Online store</h2>
+
+                <ul class="breadcrumb">
+                    <li><a href="{{ path("affiche") }}">Home</a></li>
+                    <li class="active">Favoris</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <br>
+    <table class="table table-hover m-0 tickets-list table-actions-bar dt-responsive nowrap" cellspacing="0" width="100%" id="datatable">
+        <thead>
+        <tr>
+
+            <th>Nom Produits Favoris</th>
+            <th>Supprimer Favoris</th>
+        </tr>
+        </thead>
+        {% for p in prod %}
+        {% for f in fav if (f.idClient == uid and f.idProduit == p.id) %}
+            <tbody>
+            <tr>
+
+
+                <td>
+                    <a href="{{ path('produitdetaile',{'id':p.id}) }}"  {{ p.description }}>{{ p.description }}</a>
+
+                </td>
+
+                <td>
+                    <a href="{{ path('deletefav',{'id':f.id}) }}">Supprimer</a>
+                </td>
+
+
+
+            </tr>
+{% endfor %}
+            {% endfor %}
+
+
+            </tbody>
+
+    </table>
+
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+            s1.async=true;
+            s1.src='https://embed.tawk.to/5a9461244b401e45400d380d/default';
+            s1.charset='UTF-8';
+            s1.setAttribute('crossorigin','*');
+            s0.parentNode.insertBefore(s1,s0);
+        })();
+    </script>
+    <!--End of Tawk.to Script-->
+    {% block footer %}
+        {{ parent() }}
+    {% endblock %}
+</div>
+
+
+{% block script %}
+    {{ parent() }}
+{% endblock %}
+{% endblock %}
